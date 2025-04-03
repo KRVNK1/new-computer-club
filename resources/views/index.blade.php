@@ -74,18 +74,69 @@
         </section>
 
         <section class="tariff-section">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d48ac20d4973017f72fe043cde28ef9df74fb535ad9220e96c358f6a74c0250e?placeholderIfAbsent=true"
-            class="background-image" alt="Specs Background">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2e0ecf94d4af04e5db2ca64904a3a66b3c635487da89fb1dc6ebd4beb0e199b?placeholderIfAbsent=true"
+            class="background-image" alt="Hero Background">
             <div class="tariff-content">
-                <div class="section-tariff-container">
+                <div class="section-tariff-header">
                     <h2 class="section-title-highlight">ТАРИФЫ</h2>
                     <h2 class="section-title">ТАРИФЫ</h2>
                 </div>
-                <div class="tariff-columns">
-                    <div class="tariff-item"></div>
-                    <div class="tariff-item"></div>
-                    <div class="tariff-item"></div>
-                </div>
+                <div class="pricing-grid">
+                    <article class="pricing-card">
+                      <div class="card-image-container">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/144225748cccea5d93784f896c253fb89950f4f1"
+                          alt="Standard Plan"
+                          class="card-image"
+                        />
+                      </div>
+                      <div class="card-content">
+                        <div class="card-info">
+                          <h2 class="plan-name">STANDART</h2>
+                          <p class="plan-price">1000 руб/сутки</p>
+                        </div>
+                        <div class="card-action">
+                          <button class="select-button">Выбрать</button>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="pricing-card">
+                      <div class="card-image-container">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/661ec274e0021b90aa1c4d37451d5c4750f68056"
+                          alt="Premium Plan"
+                          class="card-image"
+                        />
+                      </div>
+                      <div class="card-content">
+                        <div class="card-info">
+                          <h2 class="plan-name">PREMIUM</h2>
+                          <p class="plan-price">1166 руб/сутки</p>
+                        </div>
+                        <div class="card-action">
+                          <button class="select-button">Выбрать</button>
+                        </div>
+                      </div>
+                    </article>
+                    <article class="pricing-card">
+                      <div class="card-image-container">
+                        <img
+                          src="https://cdn.builder.io/api/v1/image/assets/TEMP/5808bc61716feaf9389f8638adf558aef1ebe683"
+                          alt="VIP Plan"
+                          class="card-image"
+                        />
+                      </div>
+                      <div class="card-content">
+                        <div class="card-info">
+                          <h2 class="plan-name">VIP</h2>
+                          <p class="plan-price">1500 руб/сутки</p>
+                        </div>
+                        <div class="card-action">
+                          <button class="select-button">Выбрать</button>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
             </div>
 
         </section>
@@ -242,6 +293,6 @@
         </footer>
     </div>
 
-</body>
 
+</body>
 </html>

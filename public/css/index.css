@@ -452,18 +452,145 @@ html {
     height: 1px;
 }
 
+/*  */
+
+.tariff-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    padding: 42px 300px 115px;
+    background-color: #171022;
+    opacity: 0.94;
+}
+
+.tariff-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    max-width: 1320px;
+}
+
+.section-tariff-header {
+    font-weight: 300;
+    font-family: 'Roboto';
+    font-size: 64px;
+    white-space: nowrap;
+    position: relative;
+    padding-bottom: 43px;
+
+
+    .section-title {
+        color: #9D72FF;
+
+        position: absolute;
+        top: 4px;
+        left: 4px;
+    }
+
+
+}
+
+.section-tariff-header .section-title-highlight {
+    position: relative;
+    color: white;
+    z-index: 10;
+    font-size: 64px;
+    font-weight: 300;
+
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px;
+}
+
+
+/* Pricing card */
+.pricing-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Orbitron';
+}
+
+.card-image-container {
+    height: 350px;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-info {
+    text-align: center;
+}
+
+.plan-name {
+    font-size: 48px;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+.plan-price {
+    font-size: 24px;
+    color: #000000;
+    margin-top: 0.5rem;
+}
+
+.card-action {
+    margin-top: 27px;
+}
+
+.select-button {
+    width: 100%;
+    color: #ffffff;
+    font-size: 24px;
+    font-family: "Orbitron", sans-serif;
+    background-color: #4a90e2;
+    border-radius: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+
+
 /* Map section styles */
 .map-section {
     display: flex;
     flex-direction: column;
     position: relative;
-    min-height: 950px;
+    min-height: 1050px;
     padding: 139px 80px;
     align-items: center;
     justify-content: center;
 }
 
-/* Подвал */
+.map-image {
+    aspect-ratio: 1.4;
+    object-fit: contain;
+    object-position: center;
+    width: 1079px;
+    margin-bottom: -30px;
+    min-height: 772px;
+    max-width: 100%;
+}
+
+/* Footer styles */
 .footer {
     display: flex;
     flex-direction: column;
@@ -544,15 +671,17 @@ html {
 .footer-link {
     text-decoration: none;
     color: inherit;
-}
 
-.footer-link:not(:first-child) {
-    margin-top: 17px;
-}
+    &:not(:first-child) {
+        margin-top: 17px;
 
-.footer-link:nth-child(2),
-.footer-link:nth-child(4) {
-    margin-top: 21px;
+    }
+
+    &:nth-child(2),
+    &:nth-child(4) {
+        margin-top: 21px;
+
+    }
 }
 
 .footer-address {
@@ -764,6 +893,10 @@ html {
 
     .specs-column.peripherals .specs-divider {
         margin-right: 3px;
+    }
+
+    .pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .map-section {
