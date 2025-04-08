@@ -27,6 +27,12 @@
                     <a href="#map" class="nav-link">Как добраться</a>
                     <a href="#login" class="login-button">Войти</a>
                 </nav>
+
+                <nav class="nav-menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </nav>
             </div>
         </header>
 
@@ -78,7 +84,7 @@
         </section>
 
         <section class="tariff-section">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2e0ecf94d4af04e5db2ca64904a3a66b3c635487da89fb1dc6ebd4beb0e199b?placeholderIfAbsent=true"
+            <img src="{{ asset ('/img/background/background-tariffs.png') }}"
                 class="background-image" alt="Hero Background">
             <div class="tariff-content">
                 <div class="section-tariff-header">
@@ -89,7 +95,7 @@
                     <article class="pricing-card">
                         <div class="card-image-container">
                             <img
-                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/144225748cccea5d93784f896c253fb89950f4f1"
+                                src="{{ asset ('/img/tariffs/pc1.png') }}"
                                 alt="Standard Plan"
                                 class="card-image" />
                         </div>
@@ -106,7 +112,7 @@
                     <article class="pricing-card">
                         <div class="card-image-container">
                             <img
-                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/661ec274e0021b90aa1c4d37451d5c4750f68056"
+                                src="{{ asset ('/img/tariffs/pc2.png') }}"
                                 alt="Premium Plan"
                                 class="card-image" />
                         </div>
@@ -123,7 +129,7 @@
                     <article class="pricing-card">
                         <div class="card-image-container">
                             <img
-                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/5808bc61716feaf9389f8638adf558aef1ebe683"
+                                src="{{ asset ('/img/tariffs/pc3.png') }}"
                                 alt="VIP Plan"
                                 class="card-image" />
                         </div>
@@ -143,7 +149,7 @@
         </section>
 
         <section class="specs-section">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d48ac20d4973017f72fe043cde28ef9df74fb535ad9220e96c358f6a74c0250e?placeholderIfAbsent=true"
+            <img src="{{ asset ('/img/background/background-specs.png') }}"
                 class="background-image" alt="Specs Background">
             <div class="specs-content">
                 <div class="section-title-container">
@@ -158,8 +164,6 @@
                 <div class="specs-columns">
                     <div class="specs-column">
                         <div class="specs-card">
-                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d48ac20d4973017f72fe043cde28ef9df74fb535ad9220e96c358f6a74c0250e?placeholderIfAbsent=true"
-                                class="background-image" alt="Specs Background">
                             <h3 class="specs-category">конфигурация</h3>
                             <div class="specs-item">
                                 <h4 class="specs-name">Процессор</h4>
@@ -205,8 +209,6 @@
                     </div>
                     <div class="specs-column peripherals">
                         <div class="specs-card">
-                            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/d48ac20d4973017f72fe043cde28ef9df74fb535ad9220e96c358f6a74c0250e?placeholderIfAbsent=true"
-                                class="background-image" alt="Specs Background">
                             <h3 class="specs-category">периферия</h3>
                             <div class="specs-item">
                                 <h4 class="specs-name">Наушники</h4>
@@ -251,18 +253,21 @@
         </section>
 
         <section class="map-section" id="map">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0dbad5c0fb338286684e67f598ea770044f330df417a19d7371768f515f7d3ec?placeholderIfAbsent=true"
+            <img src="{{ asset ('/img/background/background-map.png') }}"
                 class="background-image" alt="Map Background">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.286145079853!2d104.33602099191262!3d52.25634870326969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5da83c78d0d719df%3A0xa314048ed68d1175!2z0JHQsNC50LrQsNC70YzRgdC60LDRjyDRg9C7Liwg0JjRgNC60YPRgtGB0LosINCY0YDQutGD0YLRgdC60LDRjyDQvtCx0LsuLCA2NjQwNzU!5e0!3m2!1sru!2sru!4v1742996734020!5m2!1sru!2sru"
                 width="1080" height="770" style="border:1px solid; z-index: 10; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
 
         <footer class="footer">
-            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/11edc48478e32c12a30d8ba1e231e3d0afc8600e58df02a539ba7956c5d439d5?placeholderIfAbsent=true"
+            <img src="{{ asset ('/img/background/background-footer.png') }}"
                 class="background-image" alt="Footer Background">
             <div class="footer-content">
-                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7106b7d9c84ef4cb2b57f084f9d536f02ee9f920b186e917e5b6dc15291a42c0?placeholderIfAbsent=true"
-                    class="footer-logo" alt="Cyber Arena Logo">
+                <a href="#">
+                    <img src="{{ asset ('/img/LOGO.png') }}"
+                        class="footer-logo" alt="Cyber Arena Logo">
+
+                </a>
                 <div class="footer-info">
                     <div class="footer-divider"></div>
                     <div class="footer-column">

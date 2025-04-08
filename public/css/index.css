@@ -32,7 +32,7 @@ html {
     object-position: center;
 }
 
-/* Header styles */
+/* Шапка */
 .header {
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@ html {
     margin-left: 35px;
     width: 100%;
     max-width: 1473px;
-    align-items: stretch;
+    align-items: center;
     gap: 20px;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -92,6 +92,23 @@ html {
     color: inherit;
 }
 
+.nav-menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+}
+
+.nav-menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
 .login-button {
     border-radius: 15px;
     border: 3px solid rgba(0, 0, 0, 1);
@@ -109,7 +126,7 @@ html {
     color: white;
 }
 
-/* Hero section styles */
+/* первая секция */
 .hero-section {
     display: flex;
     position: relative;
@@ -117,8 +134,7 @@ html {
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding-top: 84px;
-    padding-bottom: 104px;
+    padding: 84px 180px 104px;
 }
 
 .hero-content {
@@ -199,7 +215,7 @@ html {
     left: 0;
     width: 32px;
     height: 32px;
-    background-image: url(./img/square_list.svg);
+    background: url('/img/svg/rect-advantages.svg');
 }
 
 .booking-button {
@@ -238,7 +254,7 @@ html {
     flex-grow: 1;
 }
 
-/* Gallery section styles */
+/* фото */
 .gallery-section {
     display: flex;
     flex-direction: column;
@@ -257,14 +273,9 @@ html {
 }
 
 .gallery-container {
-    gap: 20px;
-    display: flex;
-}
-
-
-
-.gallery-item:not(:first-child) {
-    margin-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px;
 }
 
 .gallery-image {
@@ -462,7 +473,7 @@ html {
     width: 100%;
     position: relative;
     z-index: 10;
-    padding: 42px 300px 115px;
+    padding: 42px 125px 115px;
     background-color: #171022;
     opacity: 0.94;
 }
@@ -483,16 +494,12 @@ html {
     position: relative;
     padding-bottom: 43px;
 
-
     .section-title {
         color: #9D72FF;
-
         position: absolute;
         top: 4px;
         left: 4px;
     }
-
-
 }
 
 .section-tariff-header .section-title-highlight {
@@ -704,6 +711,9 @@ html {
 
 /* Media queries */
 @media (max-width: 991px) {
+
+    /*  */
+
     .header {
         max-width: 100%;
         padding-left: 20px;
@@ -724,6 +734,8 @@ html {
         white-space: initial;
     }
 
+    /*  */
+    
     .hero-section {
         max-width: 100%;
         padding-left: 20px;
@@ -789,6 +801,8 @@ html {
         margin-top: 40px;
     }
 
+    /*  */
+
     .gallery-section {
         max-width: 100%;
         padding-left: 20px;
@@ -799,19 +813,7 @@ html {
         max-width: 100%;
     }
 
-    .gallery-container {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-    }
-
-    .gallery-item {
-        width: 100%;
-    }
-
-    .gallery-item:not(:first-child) {
-        margin-left: 0;
-    }
+   
 
     .gallery-image {
         margin-top: 40px;
@@ -914,5 +916,24 @@ html {
     .footer {
         padding-left: 20px;
         padding-right: 20px;
+    }
+}
+
+@media (max-width:1220px) {
+    
+}
+
+
+@media (max-width:480px) {
+    .navigation {
+        max-width: 100%;
+        margin-right: 40px;
+        padding-left: 40px;
+        padding-right: 40px;
+        display: none;
+    }
+
+    .nav-menu-toggle {
+        display: flex;
     }
 }
