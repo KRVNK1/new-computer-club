@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        Roboto,
+        -apple-system,
+        Helvetica,
+        sans-serif;
+    background-color: rgba(255, 255, 255, 1);
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.main-container {
+    background-color: rgba(255, 255, 255, 1);
+    overflow: hidden;
+}
+
+.background-image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Шапка */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+    min-height: 123px;
+    width: 100%;
+    padding: 12px 70px 19px;
+    align-items: center;
+    font-family:
+        Roboto,
+        -apple-system,
+        Helvetica,
+        sans-serif;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 1);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.header-content {
+    position: relative;
+    display: flex;
+    margin-left: 35px;
+    margin-right: 40px;
+
+    width: 100%;
+    max-width: 1473px;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.logo {
+    aspect-ratio: 1.14;
+    object-fit: contain;
+    object-position: center;
+    width: 105px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    max-width: 100%;
+}
+
+.navigation {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    align-items: center;
+    gap: 40px 81px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    align-self: stretch;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-menu-toggle {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 40px;
+    padding: 12px 9px;
+    border-radius: 5px;
+    background-color: black;
+}
+
+.nav-menu-toggle .bar {
+    height: 2px;
+    width: 100%;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.login-button {
+    border-radius: 15px;
+    border: 3px solid rgba(0, 0, 0, 1);
+    align-self: stretch;
+    padding: 19px 59px;
+    white-space: nowrap;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s ease-in;
+
+}
+
+.login-button:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Footer styles */
+.footer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 289px;
+    max-width: 100%;
+    padding: 48px 70px;
+    align-items: center;
+    font-family:
+        Roboto,
+        -apple-system,
+        Helvetica,
+        sans-serif;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 1);
+    justify-content: center;
+}
+
+.footer-content {
+    position: relative;
+    display: flex;
+    width: 1274px;
+    max-width: 100%;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-logo {
+    aspect-ratio: 1.15;
+    object-fit: contain;
+    object-position: center;
+    width: 142px;
+    border-radius: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-shrink: 0;
+    max-width: 100%;
+}
+
+.footer-info,
+.footer-contacts {
+    display: flex;
+    align-items: stretch;
+    gap: 21px;
+}
+
+.footer-divider {
+    border: 1px solid rgba(0, 0, 0, 1);
+    width: 1px;
+    flex-shrink: 0;
+    height: 193px;
+}
+
+.footer-column {
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.footer-heading {
+    font-weight: 600;
+    align-self: start;
+    font-size: inherit;
+}
+
+.footer-links {
+    display: flex;
+    margin-top: 20px;
+    padding-left: 15px;
+    flex-direction: column;
+    align-items: start;
+    font-weight: 400;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: inherit;
+
+    &:not(:first-child) {
+        margin-top: 17px;
+
+    }
+
+    &:nth-child(2),
+    &:nth-child(4) {
+        margin-top: 21px;
+
+    }
+}
+
+.footer-address {
+    display: flex;
+    margin-top: 24px;
+    padding-left: 15px;
+    flex-direction: column;
+    align-items: start;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.phone-number {
+    margin-top: 21px;
+}
+
+.email {
+    margin-top: 23px;
+}

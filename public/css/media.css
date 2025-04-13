@@ -1,0 +1,525 @@
+@media (max-width: 1332px) {
+
+    /* ШАПКА */
+    .header {
+        padding: 12px 40px;
+    }
+
+    .header-content {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .navigation {
+        gap: 40px;
+    }
+
+    .nav-link {
+        font-size: 20px;
+    }
+
+    .login-button {
+        padding: 15px 30px;
+    }
+
+    /* ПРИВЕТСТВИЕ */
+    .hero-section {
+        padding: 70px 100px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 26px;
+    }
+
+    .feature-item {
+        font-size: 24px;
+    }
+
+    /* ГАЛЕРЕЯ */
+    .gallery-section {
+        padding: 80px 50px;
+    }
+
+    .gallery-container {
+        gap: 25px;
+    }
+
+    /* ТАРИФЫ */
+    .tariff-section {
+        padding: 80px 80px;
+    }
+
+    .pricing-card {
+        width: 280px;
+    }
+
+    .plan-name {
+        font-size: 36px;
+    }
+
+    .plan-price {
+        font-size: 20px;
+    }
+
+    /* КОМПЛЕКТЮУЩИЕ */
+    .specs-section {
+        padding: 80px 50px;
+    }
+
+    .specs-card {
+        min-width: 550px;
+        padding: 35px 50px;
+    }
+
+    /* КАРТА */
+    .map-section {
+        padding: 80px 30px;
+    }
+
+    .map-section iframe {
+        width: 900px;
+        height: 650px;
+    }
+}
+
+@media (max-width: 991px) {
+
+    /* ШАПКА */
+    .header {
+        padding: 12px 20px;
+    }
+
+    .navigation {
+        display: none;
+        position: fixed;
+        top: 123px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(23, 16, 34, 0.98);
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        z-index: 100;
+    }
+
+    .navigation.active {
+        display: flex;
+    }
+
+    .nav-link {
+        color: white !important;
+        padding: 10px 0;
+    }
+
+    .login-button {
+        margin: 10px 0;
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    .nav-menu-toggle {
+        display: flex;
+        width: 50px;
+        height: 50px;
+    }
+
+    .hero-image-container {
+        display: none;
+    }
+
+    .header-content {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    .navigation {
+        max-width: 100%;
+    }
+
+    .login-button {
+        padding-left: 20px;
+        padding-right: 20px;
+        white-space: initial;
+    }
+
+    /* ПРИВЕТСТВИЕ */
+
+    .hero-section {
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 100px;
+    }
+
+    .hero-content {
+        display: block;
+        max-width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .hero-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        margin-top: 40px;
+        font-size: 40px;
+    }
+
+    .hero-subtitle {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+        font-size: 40px;
+    }
+
+    .hero-title-overlay {
+        max-width: 100%;
+        font-size: 40px;
+    }
+
+    .feature-list {
+        display: grid;
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+        align-self: center;
+    }
+
+    .booking-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top: 40px;
+        white-space: initial;
+    }
+
+    .hero-image-container {
+        width: 100%;
+    }
+
+    .hero-image {
+        max-width: 100%;
+        margin-top: 40px;
+    }
+
+    /* ГАЛЕРЕЯ */
+
+    .gallery-section {
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .gallery-content {
+        max-width: 100%;
+    }
+
+    .separator-image {
+        max-width: 100%;
+    }
+
+    /* КОМПЛЕКТУЮЩИЕ */
+
+    .specs-section {
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .specs-content {
+        max-width: 100%;
+    }
+
+    .section-title-container {
+        text-align: center;
+        max-width: 100%;
+        font-size: 40px;
+        white-space: initial;
+    }
+
+    .section-title-highlight{
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .tabs-container {
+        justify-content: center;
+        margin-top: 40px;
+    }
+
+    .specs-details {
+        max-width: 100%;
+        margin-top: 40px;
+    }
+
+    .specs-columns {
+        align-self: center;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        margin-top: 0;
+    }
+
+    .specs-column {
+        width: 100%;
+    }
+
+    .specs-card {
+        min-width: 550px;
+        margin-top: 40px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .specs-item {
+        max-width: 100%;
+        margin-right: 4px;
+    }
+
+    .specs-divider {
+        margin-right: 2px;
+    }
+
+    .specs-column.peripherals .specs-item {
+        max-width: 100%;
+        margin-right: 3px;
+    }
+
+    .specs-column.peripherals .specs-item:first-of-type {
+        margin-top: 40px;
+    }
+
+    .specs-column.peripherals .specs-divider {
+        margin-right: 3px;
+    }
+
+    .pricing-grid {
+        justify-content: center;
+    }
+
+    /* КАРТА */
+
+    .map-section {
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 100px;
+        padding-bottom: 100px;
+
+        iframe {
+            width: 700px;
+            height: 500px;
+        }
+    }
+
+    /* ФУТЕР */
+
+    .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (max-width:480px) {
+    /* ШАПКА */
+
+    .navigation {
+        max-width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+        display: none;
+    }
+
+    .nav-menu-toggle {
+        display: flex;
+    }
+
+    /* ПРИВЕТСТВИЕ */
+
+    .hero-content {
+        display: block;
+    }
+
+    .hero-section {
+        min-height: 387px;
+        max-height: 400px;
+        padding: 52px 30px 63px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .hero-title {
+        display: flex;
+        justify-content: center;
+        font-size: 26px;
+
+        margin-bottom: 28px;
+    }
+
+    .hero-image-container {
+        display: none;
+    }
+
+    .feature-list {
+        position: relative;
+        margin: 0px;
+        margin-left: 30px;
+        display: grid;
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+        align-self: center;
+    }
+
+    .feature-item {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .feature-item::before {
+        width: 24px;
+        height: 24px;
+        left: -36px;
+        transform: translate(0%, -20%);
+    }
+
+    .booking-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+
+        width: 297px;
+        height: 51px;
+        font-size: 20px;
+        margin-top: 32px;
+    }
+
+    /* ГАЛЕРЕЯ */
+
+    .gallery-section {
+        min-height: 460px;
+        padding: 40px 57px;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+
+    }
+
+    .gallery-item {
+        width: 100%;
+        height: 170px;
+    }
+
+    .gallery-item:last-child {
+        grid-area: 2 / 1 / 3 / 3;
+    }
+
+    .gallery-image:last-child {
+        height: 180px;
+    }
+
+    .tariff-section {
+        padding: 40px 50px 50px;
+    }
+
+    .section-title-highlight {
+        font-size: 40px;
+    }
+
+    .pricing-grid {
+        justify-content: center;
+    }
+
+    .pricing-card {
+        width: 156px;
+        height: 250px;
+    }
+
+    .card-info {
+        .plan-name {
+            font-size: 20px;
+        }
+
+        .plan-price {
+            font-size: 14px;
+        }
+    }
+
+    .card-content {
+        padding: 5px 8px 10px;
+
+        .card-info {
+            padding-bottom: 7px;
+        }
+    }
+
+    .card-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .select-button {
+            width: 132px;
+            height: 22px;
+            font-size: 14px;
+            margin-top: 0;
+        }
+    }
+
+    /* КОМПЛЕКТУЮЩИЕ */
+
+    .specs-title {
+        font-size: 44px;
+        text-shadow: 3px 3px black;
+
+    }
+
+    .tab-button {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .tab-button:last-child {
+        padding: 20px;
+    }
+
+    .specs-card {
+        max-width: 400px;
+        min-width: 380px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .specs-name, .specs-value {
+        font-size: 20px;
+    }
+
+    /* КАРТА */
+
+    .map-section iframe {
+        width: 400px;
+        height: 600px;
+    }
+
+    /* ФУТЕР */
+}
