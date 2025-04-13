@@ -809,7 +809,7 @@ html {
 
 @media (max-width: 991px) {
 
-    /*  */
+    /* ШАПКА */
     .header {
         padding: 12px 20px;
     }
@@ -867,7 +867,7 @@ html {
         white-space: initial;
     }
 
-    /*  */
+    /* ПРИВЕТСТВИЕ */
 
     .hero-section {
         max-width: 100%;
@@ -889,9 +889,6 @@ html {
     }
 
     .hero-text {
-        /* display: flex;
-        flex-direction: column;
-        align-self: ; */
         max-width: 100%;
         margin-top: 40px;
         font-size: 40px;
@@ -942,7 +939,7 @@ html {
         margin-top: 40px;
     }
 
-    /*  */
+    /* ГАЛЕРЕЯ */
 
     .gallery-section {
         max-width: 100%;
@@ -957,6 +954,8 @@ html {
     .separator-image {
         max-width: 100%;
     }
+
+    /* КОМПЛЕКТУЮЩИЕ */
 
     .specs-section {
         max-width: 100%;
@@ -1035,6 +1034,8 @@ html {
         justify-content: center;
     }
 
+    /* КАРТА */
+
     .map-section {
         max-width: 100%;
         padding-left: 20px;
@@ -1048,6 +1049,8 @@ html {
         }
     }
 
+    /* ФУТЕР */
+
     .footer {
         padding-left: 20px;
         padding-right: 20px;
@@ -1055,6 +1058,8 @@ html {
 }
 
 @media (max-width:480px) {
+    /* ШАПКА */
+
     .navigation {
         max-width: 100%;
         padding-left: 40px;
@@ -1065,6 +1070,8 @@ html {
     .nav-menu-toggle {
         display: flex;
     }
+
+    /* ПРИВЕТСТВИЕ */
 
     .hero-content {
         display: block;
@@ -1125,6 +1132,8 @@ html {
         font-size: 20px;
         margin-top: 32px;
     }
+
+    /* ГАЛЕРЕЯ */
 
     .gallery-section {
         min-height: 460px;
@@ -1198,6 +1207,8 @@ html {
         }
     }
 
+    /* КОМПЛЕКТУЮЩИЕ */
+
     .specs-title {
         font-size: 44px;
         text-shadow: 3px 3px black;
@@ -1224,8 +1235,12 @@ html {
         font-size: 20px;
     }
 
+    /* КАРТА */
+
     .map-section iframe {
         width: 400px;
         height: 600px;
     }
+
+    /* ФУТЕР */
 }
