@@ -210,6 +210,7 @@ html {
 }
 
 .feature-item {
+    position: relative;
     margin-top: 10px;
 }
 
@@ -217,9 +218,10 @@ html {
     content: '';
     position: absolute;
     display: block;
-    left: 0;
+    left: -40px;
     width: 32px;
     height: 32px;
+    transform: translate(0%, 0%);
     background-image: url('/img/svg/rect-advantages.svg');
     background-repeat: no-repeat;
     background-size: contain;
@@ -247,23 +249,23 @@ html {
 }
 
 .hero-image-container {
-    display: flex;
-    flex-direction: column;
-    line-height: normal;
-    width: 50%;
-    margin-left: 20px;
-}
+    position: relative;
+    align-self: center;
 
-.hero-image {
-    object-position: center;
-    width: 100%;
-    flex-grow: 1;
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+    }
 }
 
 /* фото */
+
 .gallery-section {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     position: relative;
     min-height: 622px;
     width: 100%;
@@ -382,7 +384,6 @@ html {
 
 .tab-button.active {
     background-color: rgba(23, 16, 34, 0.94);
-    padding: 26px 39px;
     color: rgba(255, 255, 255, 1);
     border: none;
 }
@@ -392,6 +393,14 @@ html {
 }
 
 /* КАРТОЧКИ */
+
+.specs-title {
+    color: #9D72FF;
+    font-weight: 500;
+    font-size: 64px;
+    text-shadow: 4px 4px black;
+}
+
 
 .specs-columns {
     display: flex;
@@ -409,6 +418,7 @@ html {
     border-radius: 10px;
     position: relative;
     min-height: 456px;
+    min-width: 600px;
     width: 100%;
     padding: 45px 66px;
     align-items: stretch;
@@ -459,7 +469,6 @@ html {
     background-color: rgba(255, 255, 255, 1);
     border: 1px solid rgba(255, 255, 255, 1);
     margin-top: 9px;
-    width: 466px;
     flex-shrink: 0;
     max-width: 100%;
     height: 1px;
@@ -504,13 +513,13 @@ html {
     }
 }
 
-.section-tariff-header .section-title-highlight {
+.section-title-highlight {
     position: relative;
     color: white;
     z-index: 10;
     font-size: 64px;
     font-weight: 300;
-
+    text-shadow: 3px 3px #9D72FF;
 }
 
 .pricing-grid {
@@ -582,7 +591,6 @@ html {
     display: flex;
     flex-direction: column;
     position: relative;
-    min-height: 1050px;
     padding: 139px 80px;
     align-items: center;
     justify-content: center;
@@ -710,19 +718,143 @@ html {
     margin-top: 23px;
 }
 
-/* Media queries */
+@media (max-width: 1332px) {
+
+    /* ШАПКА */
+    .header {
+        padding: 12px 40px;
+    }
+
+    .header-content {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .navigation {
+        gap: 40px;
+    }
+
+    .nav-link {
+        font-size: 20px;
+    }
+
+    .login-button {
+        padding: 15px 30px;
+    }
+
+    /* ПРИВЕТСТВИЕ */
+    .hero-section {
+        padding: 70px 100px;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle {
+        font-size: 26px;
+    }
+
+    .feature-item {
+        font-size: 24px;
+    }
+
+    /* ГАЛЕРЕЯ */
+    .gallery-section {
+        padding: 80px 50px;
+    }
+
+    .gallery-container {
+        gap: 25px;
+    }
+
+    /* ТАРИФЫ */
+    .tariff-section {
+        padding: 80px 80px;
+    }
+
+    .pricing-card {
+        width: 280px;
+    }
+
+    .plan-name {
+        font-size: 36px;
+    }
+
+    .plan-price {
+        font-size: 20px;
+    }
+
+    /* КОМПЛЕКТЮУЩИЕ */
+    .specs-section {
+        padding: 80px 50px;
+    }
+
+    .specs-card {
+        min-width: 550px;
+        padding: 35px 50px;
+    }
+
+    /* КАРТА */
+    .map-section {
+        padding: 80px 30px;
+    }
+
+    .map-section iframe {
+        width: 900px;
+        height: 650px;
+    }
+}
+
+
 @media (max-width: 991px) {
 
     /*  */
-
     .header {
-        max-width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 12px 20px;
+    }
+
+    .navigation {
+        display: none;
+        position: fixed;
+        top: 123px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(23, 16, 34, 0.98);
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        z-index: 100;
+    }
+
+    .navigation.active {
+        display: flex;
+    }
+
+    .nav-link {
+        color: white !important;
+        padding: 10px 0;
+    }
+
+    .login-button {
+        margin: 10px 0;
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    .nav-menu-toggle {
+        display: flex;
+        width: 50px;
+        height: 50px;
+    }
+
+    .hero-image-container {
+        display: none;
     }
 
     .header-content {
         max-width: 100%;
+        padding: 0 20px;
     }
 
     .navigation {
@@ -745,6 +877,7 @@ html {
     }
 
     .hero-content {
+        display: block;
         max-width: 100%;
         margin-bottom: 10px;
     }
@@ -756,6 +889,9 @@ html {
     }
 
     .hero-text {
+        /* display: flex;
+        flex-direction: column;
+        align-self: ; */
         max-width: 100%;
         margin-top: 40px;
         font-size: 40px;
@@ -763,9 +899,13 @@ html {
 
     .hero-subtitle {
         max-width: 100%;
+        text-align: center;
     }
 
     .hero-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         max-width: 100%;
         font-size: 40px;
     }
@@ -775,7 +915,18 @@ html {
         font-size: 40px;
     }
 
+    .feature-list {
+        display: grid;
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+        align-self: center;
+    }
+
     .booking-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+
         padding-left: 20px;
         padding-right: 20px;
         margin-top: 40px;
@@ -818,22 +969,19 @@ html {
     }
 
     .section-title-container {
+        text-align: center;
         max-width: 100%;
         font-size: 40px;
         white-space: initial;
     }
 
-    .section-title-highlight,
-    .section-title {
+    .section-title-highlight{
+        text-align: center;
         max-width: 100%;
-        font-size: 40px;
-    }
-
-    .section-title-highlight {
-        margin-right: 3px;
     }
 
     .tabs-container {
+        justify-content: center;
         margin-top: 40px;
     }
 
@@ -843,9 +991,11 @@ html {
     }
 
     .specs-columns {
+        align-self: center;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
+        margin-top: 0;
     }
 
     .specs-column {
@@ -853,7 +1003,7 @@ html {
     }
 
     .specs-card {
-        max-width: 100%;
+        min-width: 550px;
         margin-top: 40px;
         padding-left: 20px;
         padding-right: 20px;
@@ -891,10 +1041,11 @@ html {
         padding-right: 20px;
         padding-top: 100px;
         padding-bottom: 100px;
-    }
 
-    .map-image {
-        margin-bottom: 10px;
+        iframe {
+            width: 700px;
+            height: 500px;
+        }
     }
 
     .footer {
@@ -902,9 +1053,6 @@ html {
         padding-right: 20px;
     }
 }
-
-@media (max-width:1220px) {}
-
 
 @media (max-width:480px) {
     .navigation {
@@ -947,7 +1095,6 @@ html {
 
     .feature-list {
         position: relative;
-        font-size: 14px;
         margin: 0px;
         margin-left: 30px;
         display: grid;
@@ -956,6 +1103,7 @@ html {
     }
 
     .feature-item {
+        font-size: 14px;
         margin-bottom: 12px;
     }
 
@@ -1006,7 +1154,9 @@ html {
         padding: 40px 50px 50px;
     }
 
-    
+    .section-title-highlight {
+        font-size: 40px;
+    }
 
     .pricing-grid {
         justify-content: center;
@@ -1029,7 +1179,7 @@ html {
 
     .card-content {
         padding: 5px 8px 10px;
-        
+
         .card-info {
             padding-bottom: 7px;
         }
@@ -1039,6 +1189,7 @@ html {
         display: flex;
         justify-content: center;
         align-items: center;
+
         .select-button {
             width: 132px;
             height: 22px;
@@ -1047,5 +1198,34 @@ html {
         }
     }
 
+    .specs-title {
+        font-size: 44px;
+        text-shadow: 3px 3px black;
 
+    }
+
+    .tab-button {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .tab-button:last-child {
+        padding: 20px;
+    }
+
+    .specs-card {
+        max-width: 400px;
+        min-width: 380px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .specs-name, .specs-value {
+        font-size: 20px;
+    }
+
+    .map-section iframe {
+        width: 400px;
+        height: 600px;
+    }
 }

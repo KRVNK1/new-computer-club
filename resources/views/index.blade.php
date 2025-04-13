@@ -90,7 +90,6 @@
             <div class="tariff-content">
                 <div class="section-tariff-header">
                     <h2 class="section-title-highlight">ТАРИФЫ</h2>
-                    <h2 class="section-title">ТАРИФЫ</h2>
                 </div>
                 <div class="pricing-grid">
                     <article class="pricing-card">
@@ -154,8 +153,7 @@
                 class="background-image" alt="Specs Background">
             <div class="specs-content">
                 <div class="section-title-container">
-                    <h2 class="section-title-highlight">КОМПЛЕКТУЮЩИЕ</h2>
-                    <h2 class="section-title">КОМПЛЕКТУЮЩИЕ</h2>
+                    <h2 class="specs-title" data-text="КОМПЛЕКТУЮЩИЕ">КОМПЛЕКТУЮЩИЕ</h2>
                 </div>
                 <div class="tabs-container">
                     <button class="tab-button active">standart</button>
