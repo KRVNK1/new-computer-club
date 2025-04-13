@@ -72,13 +72,14 @@
                             class="gallery-image" alt="Gaming Setup 1">
                     </div>
                     <div class="gallery-item">
-                        <img src="{{ asset ('/img/gallery/item2.png') }}"
-                            class="gallery-image" alt="Gaming Setup 2">
-                    </div>
-                    <div class="gallery-item">
                         <img src="{{ asset ('/img/gallery/item3.png') }}"
                             class="gallery-image" alt="Gaming Setup 3">
                     </div>
+                    <div class="gallery-item">
+                        <img src="{{ asset ('/img/gallery/item2.png') }}"
+                            class="gallery-image" alt="Gaming Setup 2">
+                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -104,7 +105,7 @@
                                 <h2 class="plan-name">STANDART</h2>
                                 <p class="plan-price">1000 руб/сутки</p>
                             </div>
-                            <div class="card-action">
+                            <div class="card-btn">
                                 <button class="select-button">Выбрать</button>
                             </div>
                         </div>
@@ -121,7 +122,7 @@
                                 <h2 class="plan-name">PREMIUM</h2>
                                 <p class="plan-price">1166 руб/сутки</p>
                             </div>
-                            <div class="card-action">
+                            <div class="card-btn">
                                 <button class="select-button">Выбрать</button>
                             </div>
                         </div>
@@ -138,7 +139,7 @@
                                 <h2 class="plan-name">VIP</h2>
                                 <p class="plan-price">1500 руб/сутки</p>
                             </div>
-                            <div class="card-action">
+                            <div class="card-btn">
                                 <button class="select-button">Выбрать</button>
                             </div>
                         </div>
@@ -185,9 +186,7 @@
                             <div class="specs-divider"></div>
                             <div class="specs-item">
                                 <h4 class="specs-name">
-                                    Оперативная
-                                    <br>
-                                    память
+                                    Оперативная память
                                 </h4>
                                 <p class="specs-value">
                                     16 gb
