@@ -84,6 +84,13 @@ DB_DATABASE=computer_club
 DB_USERNAME=root
 DB_PASSWORD=1234
 
+DB_CONNECTION=mysql
+DB_HOST=web.edu
+DB_PORT=3306
+DB_DATABASE=22065_computerclub
+DB_USERNAME=22065
+DB_PASSWORD=
+
 3)Сделать миграции
 php artisan migrate:fresh
 
