@@ -1,0 +1,297 @@
+/* Стили для страницы бронирования */
+.booking-container {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+.booking-left {
+    flex: 1;
+    background-color: #b8a9e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.booking-right {
+    width: 350px;
+    background-color: #1a1a2e;
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tariff-header {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.tariff-image {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.tariff-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tariff-title h1 {
+    margin-top: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 2.5rem;
+}
+
+.tariff-title p {
+    color: #333;
+    font-weight: 500;
+}
+
+.booking-details {
+    color: white;
+}
+
+.price-info {
+    margin-bottom: 25px;
+}
+
+.booking-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.booking-control label {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-control input {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    background-color: white;
+    font-size: 1.2rem;
+}
+
+.btn-plus, .btn-minus {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn-minus {
+    border-radius: 4px 0 0 4px;
+}
+
+.btn-plus {
+    border-radius: 0 4px 4px 0;
+}
+
+.total-price {
+    margin: 30px 0;
+}
+
+.btn-order {
+    width: 100%;
+    padding: 15px;
+    background-color: #4a7bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-order:hover {
+    background-color: #3a6ae6;
+}
+
+.booking-right h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.comment-area {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    resize: none;
+    background-color: #ccc;
+}
+
+.btn-quick-book {
+    width: 100%;
+    padding: 10px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Переключатель тарифов */
+.tariff-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 0 15px;
+}
+
+.tariff-option {
+    background-color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+.tariff-option:hover {
+    background-color: #f0f0f0;
+}
+
+.tariff-option.active {
+    background-color: #4a7bff;
+    color: white;
+}
+
+.tariff-option h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+/* Стили для страницы подтверждения */
+.confirmation-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 15px;
+}
+
+.confirmation-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirmation-card h1 {
+    color: #4a7bff;
+    margin-bottom: 30px;
+}
+
+.confirmation-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.confirmation-item {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.confirmation-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.confirmation-item p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #4a7bff;
+    font-weight: bold;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btn-home, .btn-dashboard {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #4a7bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-home:hover, .btn-dashboard:hover {
+    background-color: #3a6ae6;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .booking-container {
+        flex-direction: column;
+    }
+    
+    .booking-right {
+        width: 100%;
+    }
+    
+    .tariff-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .booking-control {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .tariff-switcher {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .confirmation-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .confirmation-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

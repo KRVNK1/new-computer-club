@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WorkStation extends Model
+class Workstation extends Model
 {
     protected $fillable = [
         'number',

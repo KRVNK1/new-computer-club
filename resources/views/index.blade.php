@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Arena - Эксклюзивный компьютерный клуб</title>
     <link rel="stylesheet" href="{{  asset('css/global/global.css') }}">
-    <link rel="stylesheet" href="{{  asset('css/index.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/media.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/animations.css') }}">
+    <link rel="stylesheet" href="{{  asset('css/index.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
