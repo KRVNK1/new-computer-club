@@ -69,6 +69,9 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 1)Установить composer
 composer install
 
+2)Установить npm
+npm install
+
 2)Создать файл .env и исправить его
 cp .env.example .env
 php artisan key:generate
@@ -81,7 +84,13 @@ DB_DATABASE=computer_club
 DB_USERNAME=root
 DB_PASSWORD=1234
 
-3)php artisan migrate:fresh
+3)Сделать миграции
+php artisan migrate:fresh
 
-4)php artian db:seed (для создания записей в бд)
+4)Сделать сидеры
+php artisan db:seed (для создания записей в бд)
 
+## Запуск проекта
+
+1)npm run dev
+2)php artisan serve
