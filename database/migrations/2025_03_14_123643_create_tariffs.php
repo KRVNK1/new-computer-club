@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 10);
             $table->decimal('price_per_hour', 10, 2);
+            $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });
