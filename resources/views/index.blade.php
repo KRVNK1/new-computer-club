@@ -14,7 +14,7 @@
 
 <body>
     <div class="main-container">
-    
+
         <header class="header">
             <img src="{{ asset ('/img/background/background-header.png') }}"
                 class="background-image" alt="Background">
@@ -83,7 +83,7 @@
                         <img src="{{ asset ('/img/gallery/item2.png') }}"
                             class="gallery-image" alt="Gaming Setup 2">
                     </div>
-                    
+
                 </div>
             </div>
         </section>
@@ -96,57 +96,26 @@
                     <h2 class="section-title-highlight">ТАРИФЫ</h2>
                 </div>
                 <div class="pricing-grid">
+                    @foreach($tariffs as $tariff)
                     <article class="pricing-card">
                         <div class="card-image-container">
                             <img
-                                src="{{ asset ('/img/tariffs/pc1.png') }}"
-                                alt="Standard Plan"
+                                src="{{ asset($tariff->image) }}"
+                                alt="{{ $tariff->name }} Plan"
                                 class="card-image" />
                         </div>
                         <div class="card-content">
                             <div class="card-info">
-                                <h2 class="plan-name">STANDART</h2>
-                                <p class="plan-price">1000 руб/сутки</p>
+                                <h2 class="plan-name">{{ strtoupper($tariff->name) }}</h2>
+                                <p class="plan-price">{{ $tariff->price_per_hour * 24 }} руб/сутки</p>
                             </div>
                             <div class="card-btn">
-                                <button class="select-button">Выбрать</button>
+                                <a href="{{ route('booking.show', $tariff->id) }}" class="select-button">Выбрать</a>
                             </div>
                         </div>
                     </article>
-                    <article class="pricing-card">
-                        <div class="card-image-container">
-                            <img
-                                src="{{ asset ('/img/tariffs/pc2.png') }}"
-                                alt="Premium Plan"
-                                class="card-image" />
-                        </div>
-                        <div class="card-content">
-                            <div class="card-info">
-                                <h2 class="plan-name">BOOTCAMP</h2>
-                                <p class="plan-price">1166 руб/сутки</p>
-                            </div>
-                            <div class="card-btn">
-                                <button class="select-button">Выбрать</button>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="pricing-card">
-                        <div class="card-image-container">
-                            <img
-                                src="{{ asset ('/img/tariffs/pc3.png') }}"
-                                alt="VIP Plan"
-                                class="card-image" />
-                        </div>
-                        <div class="card-content">
-                            <div class="card-info">
-                                <h2 class="plan-name">VIP</h2>
-                                <p class="plan-price">1500 руб/сутки</p>
-                            </div>
-                            <div class="card-btn">
-                                <button class="select-button">Выбрать</button>
-                            </div>
-                        </div>
-                    </article>
+                    @endforeach
+
                 </div>
             </div>
 

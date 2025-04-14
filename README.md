@@ -81,4 +81,7 @@ DB_DATABASE=computer_club
 DB_USERNAME=root
 DB_PASSWORD=1234
 
-3)php artisan migrate
+3)php artisan migrate:fresh
+
+4)php artian db:seed (для создания записей в бд)
+

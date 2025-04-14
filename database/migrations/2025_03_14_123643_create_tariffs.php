@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tariffs', function (Blueprint $table) {
             $table->id();
             $table->string('name', 10);
-            $table->decimal('price_per_hour', 10, 2);
+            $table->integer('price_per_hour');
             $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
