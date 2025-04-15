@@ -134,7 +134,6 @@
 
     <script>
     // Переменные для расчета
-    const basePrice1 = parseInt("{{ $tariff -> price_per_hour }}");
     const basePrice = "{{ $tariff -> price_per_hour }}";
     let hours = 24;
     let people = 1;
