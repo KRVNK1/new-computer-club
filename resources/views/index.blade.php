@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyber Arena - Эксклюзивный компьютерный клуб</title>
+    <link rel="stylesheet" href="{{  asset('css/index.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/global.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/media.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/animations.css') }}">
-    <link rel="stylesheet" href="{{  asset('css/index.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
@@ -29,7 +29,7 @@
                     <a href="#tariffs" class="nav-link">Тарифы</a>
                     <a href="#specs" class="nav-link">Комплектующие</a>
                     <a href="#map" class="nav-link">Как добраться</a>
-                    <a href="{{ route('login') }}" class="login-button">Войти</a>
+                    <a href="{{ route('profile') }}" class="login-button">Войти</a>
                 </nav>
 
                 <nav class="nav-menu-toggle">
@@ -58,7 +58,7 @@
                         <li class="feature-item">топовое железо</li>
                         <li class="feature-item">Лаундж зона и кофе бар</li>
                     </ul>
-                    <a href="#booking" class="booking-button">Забронировать</a>
+                    <a href="#tariffs" class="booking-button">Забронировать</a>
                 </div>
                 <div class="hero-image-container">
                     <img src="{{ asset ('/img/hero.png') }} " alt="hero">
@@ -405,36 +405,33 @@
             <img src="{{ asset ('/img/background/background-footer.png') }}"
                 class="background-image" alt="Footer Background">
             <div class="footer-content">
-                <a href="#">
-                    <img src="{{ asset ('/img/LOGO.png') }}"
-                        class="footer-logo" alt="Cyber Arena Logo">
+                <div class="footer-logo-container">
+                    <a href="#">
+                        <img src="/img/LOGO.png" alt="Cyber Arena Logo" class="footer-logo">
+                    </a>
+                </div>
 
-                </a>
                 <div class="footer-info">
-                    <div class="footer-divider"></div>
                     <div class="footer-column">
                         <h3 class="footer-heading">ИНФОРМАЦИЯ</h3>
+                        <div class="footer-divider"></div>
                         <nav class="footer-links">
-                            <a href="#about" class="footer-link">О нас</a>
-                            <a href="#services" class="footer-link">Услуги</a>
-                            <a href="#contacts" class="footer-link">Контакты</a>
-                            <a href="#policy" class="footer-link">Политика конф.</a>
+                            <a href="#" class="footer-link">О нас</a>
+                            <a href="#" class="footer-link">Контакты</a>
+                            <a href="#" class="footer-link">Политика конф.</a>
                         </nav>
                     </div>
                 </div>
+
                 <div class="footer-contacts">
-                    <div class="footer-divider"></div>
                     <div class="footer-column">
                         <h3 class="footer-heading">КОНТАКТЫ</h3>
-                        <address class="footer-address">
-                            <p>
-                                Санкт-Петербург,
-                                <br>
-                                Невский пр. 140
-                            </p>
+                        <div class="footer-divider"></div>
+                        <div class="footer-address">
+                            <p>Иркутск, Ленина 5А</p>
                             <p class="phone-number">(812) 444-33-11</p>
                             <p class="email">shop@shop.ru</p>
-                        </address>
+                        </div>
                     </div>
                 </div>
             </div>

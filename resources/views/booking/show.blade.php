@@ -95,97 +95,92 @@
         <img src="{{ asset ('/img/background/background-footer.png') }}"
             class="background-image" alt="Footer Background">
         <div class="footer-content">
-            <a href="#">
-                <img src="{{ asset ('/img/LOGO.png') }}"
-                    class="footer-logo" alt="Cyber Arena Logo">
+            <div class="footer-logo-container">
+                <a href="#">
+                    <img src="/img/LOGO.png" alt="Cyber Arena Logo" class="footer-logo">
+                </a>
+            </div>
 
-            </a>
             <div class="footer-info">
-                <div class="footer-divider"></div>
                 <div class="footer-column">
                     <h3 class="footer-heading">ИНФОРМАЦИЯ</h3>
+                    <div class="footer-divider"></div>
                     <nav class="footer-links">
-                        <a href="#about" class="footer-link">О нас</a>
-                        <a href="#services" class="footer-link">Услуги</a>
-                        <a href="#contacts" class="footer-link">Контакты</a>
-                        <a href="#policy" class="footer-link">Политика конф.</a>
+                        <a href="#" class="footer-link">О нас</a>
+                        <a href="#" class="footer-link">Контакты</a>
+                        <a href="#" class="footer-link">Политика конф.</a>
                     </nav>
                 </div>
             </div>
+
             <div class="footer-contacts">
-                <div class="footer-divider"></div>
                 <div class="footer-column">
                     <h3 class="footer-heading">КОНТАКТЫ</h3>
-                    <address class="footer-address">
-                        <p>
-                            Санкт-Петербург,
-                            <br>
-                            Невский пр. 140
-                        </p>
+                    <div class="footer-divider"></div>
+                    <div class="footer-address">
+                        <p>Иркутск, Ленина 5А</p>
                         <p class="phone-number">(812) 444-33-11</p>
                         <p class="email">shop@shop.ru</p>
-                    </address>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="{{ asset('js/animations.js') }}"></script>
-
     <script>
-    // Переменные для расчета
-    const basePrice1 = parseInt("{{ $tariff -> price_per_hour }}");
-    const basePrice = "{{ $tariff -> price_per_hour }}";
-    let hours = 24;
-    let people = 1;
-    
-    // Функции для изменения количества часов
-    function incrementHours() {
-        if (hours < 72) {
-            hours++;
+        const basePrice = "{{ $tariff -> price_per_hour }}";
+        let hours = 24;
+        let people = 1;
+        
+
+        // Функции для изменения количества часов
+        function incrementHours() {
+            if (hours < 72) {
+                hours++;
+                document.getElementById('hours').value = hours;
+                updateTotalPrice();
+            }
+        }
+
+        function decrementHours() {
+            if (hours > 1) {
+                hours--;
+                document.getElementById('hours').value = hours;
+                updateTotalPrice();
+            }
+        }
+
+        // Функции для изменения количества людей
+        function incrementPeople() {
+            if (people < 5) {
+                people++;
+                document.getElementById('people').value = people;
+                updateTotalPrice();
+            }
+        }
+
+        function decrementPeople() {
+            if (people > 1) {
+                people--;
+                document.getElementById('people').value = people;
+                updateTotalPrice();
+            }
+        }
+
+        // бронирование на 4 часа
+        function quickBook() {
+            hours = 4;
             document.getElementById('hours').value = hours;
             updateTotalPrice();
         }
-    }
-    
-    function decrementHours() {
-        if (hours > 1) {
-            hours--;
-            document.getElementById('hours').value = hours;
-            updateTotalPrice();
+
+        // Обновление общей стоимости
+        function updateTotalPrice() {
+            const totalPrice = basePrice * hours * people;
+            document.getElementById('totalPrice').textContent = totalPrice;
         }
-    }
-    
-    // Функции для изменения количества людей
-    function incrementPeople() {
-        if (people < 5) {
-            people++;
-            document.getElementById('people').value = people;
-            updateTotalPrice();
-        }
-    }
-    
-    function decrementPeople() {
-        if (people > 1) {
-            people--;
-            document.getElementById('people').value = people;
-            updateTotalPrice();
-        }
-    }
-    
-    // Функция для быстрого бронирования на 4 часа
-    function quickBook() {
-        hours = 4;
-        document.getElementById('hours').value = hours;
-        updateTotalPrice();
-    }
-    
-    // Функция для обновления общей стоимости
-    function updateTotalPrice() {
-        const totalPrice = basePrice * hours * people;
-        document.getElementById('totalPrice').textContent = totalPrice;
-    }
-</script>
+    </script>
 
 </body>
 

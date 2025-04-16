@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
 
             tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active', 'fade-in', 'visible'));
 
             this.classList.add('active');
 
-            tabContents[index].classList.add('active');
+            tabContents[index].classList.add('active', 'fade-in', 'visible');
         });
     });
 });
