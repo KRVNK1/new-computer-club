@@ -39,62 +39,62 @@
     </header>
 
     <section class="auth-container">
-    <div class="auth-form">
+        <div class="auth-form" style="width: 500px;">
 
-        
-        <h1 class="auth-title">Вход в аккаунт</h1>
-        
-        @if($errors->any())
+
+            <h1 class="auth-title">Вход в аккаунт</h1>
+
+            @if($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
+                    <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
-        @endif
-        
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-            
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Пароль</label>
-                <input id="password" type="password" class="form-control" name="password" required>
-            </div>
-            
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label class="form-check-label" for="remember">
-                    Запомнить меня
-                </label>
-            </div>
-            
-            <button type="submit" class="btn btn-primary">
-                Войти
-            </button>
-            
-            <div class="auth-links">
-                @if (Route::has('password.request'))
+            @endif
+
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input id="password" type="password" class="form-control" name="password" required>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                    <label class="form-check-label" for="remember">
+                        Запомнить меня
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Войти
+                </button>
+
+                <div class="auth-links">
+                    @if (Route::has('password.request'))
                     <a class="auth-link" href="{{ route('password.request') }}">
                         Забыли пароль?
                     </a>
-                @endif
-                
-                <div class="auth-divider">
-                    <span>или</span>
+                    @endif
+
+                    <div class="auth-divider">
+                        <span>или</span>
+                    </div>
+
+                    <a class="auth-link" href="{{ route('register') }}">
+                        Зарегистрироваться
+                    </a>
                 </div>
-                
-                <a class="auth-link" href="{{ route('register') }}">
-                    Зарегистрироваться
-                </a>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
     </section>
 
 

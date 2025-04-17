@@ -261,45 +261,5 @@
 
 /* Адаптивность */
 @media (max-width: 768px) {
-    .booking-container {
-        flex-direction: column;
-    }
     
-    .booking-right {
-        width: 100%;
-    }
-    
-    .tariff-header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .tariff-title p{
-        margin-top: 10px;
-    }
-    
-    .booking-control {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .tariff-switcher {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .confirmation-details {
-        grid-template-columns: 1fr;
-    }
-    
-    .confirmation-actions {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .price-info, .total-price {
-        text-align: center;
-    }
 }

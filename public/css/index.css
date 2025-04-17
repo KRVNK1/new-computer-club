@@ -1,4 +1,4 @@
-/* ПРИВЕТСТВИЕ */
+/* Приветствие */
 
 .hero-section {
     display: flex;
@@ -129,7 +129,7 @@
     }
 }
 
-/* ГАЛЕРЕЯ */
+/* Галерея */
 
 .gallery-section {
     display: flex;
@@ -171,7 +171,7 @@
     border-radius: 0;
 }
 
-/* ТАРИФЫ */
+/* Тарифы */
 
 .tariff-section {
     display: flex;
@@ -282,7 +282,7 @@
     cursor: pointer;
 }
 
-/* КОМПЛЕКТУЮЩИЕ */
+/* Комплектующие */
 
 .specs-section {
     display: flex;
@@ -435,7 +435,7 @@
     height: 1px;
 }
 
-/* КАРТА */
+/* Карта */
 .map-section {
     display: flex;
     flex-direction: column;

@@ -154,18 +154,3 @@
 .btn-secondary:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
-
-@media (max-width: 768px) {
-    .confirmation-actions {
-        flex-direction: column;
-    }
-
-    .detail-row {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .detail-value {
-        padding-left: 10px;
-    }
-}
