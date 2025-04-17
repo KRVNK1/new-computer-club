@@ -39,6 +39,7 @@
     </header>
 
     <section class="booking-container">
+    
         <div class="booking-left">
             <div class="tariff-header">
                 <div class="tariff-image">
@@ -61,7 +62,7 @@
                         <label>КОЛИЧЕСТВО ЧАСОВ</label>
                         <div class="quantity-control">
                             <button type="button" class="btn-minus" onclick="decrementHours()">-</button>
-                            <input type="number" name="hours" id="hours" value="24" min="1" max="72" readonly>
+                            <input type="number" name="hours" id="hours" value="24" min="1" max="24" readonly>
                             <button type="button" class="btn-plus" onclick="incrementHours()">+</button>
                         </div>
                     </div>
@@ -135,7 +136,7 @@
     let people = 1;
 
     function incrementHours() {
-        if (hours < 72) {
+        if (hours < 24) {
             hours++;
             document.getElementById('hours').value = hours;
             updateTotalPrice();

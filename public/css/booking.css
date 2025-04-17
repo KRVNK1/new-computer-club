@@ -275,6 +275,10 @@
         text-align: center;
     }
     
+    .tariff-title p{
+        margin-top: 10px;
+    }
+    
     .booking-control {
         flex-direction: column;
         gap: 10px;
@@ -293,5 +297,9 @@
     .confirmation-actions {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .price-info, .total-price {
+        text-align: center;
     }
 }

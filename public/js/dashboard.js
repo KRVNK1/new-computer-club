@@ -35,6 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     alert.style.display = 'none';
                 }, 500);
             });
-        }, 500000);
+        }, 5000);
     }
 });
