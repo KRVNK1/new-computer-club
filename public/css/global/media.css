@@ -253,7 +253,7 @@
         white-space: initial;
     }
 
-    .section-title-highlight{
+    .section-title-highlight {
         text-align: center;
         max-width: 100%;
     }
@@ -327,12 +327,39 @@
             height: 500px;
         }
     }
+}
 
-    /* ФУТЕР */
+@media (max-width:768px) {
+    .footer-content {
+        display: grid;
+        grid-template-columns: 2fr;
+        grid-template-rows: 2fr;
+    }
 
-    .footer {
-        padding-left: 20px;
-        padding-right: 20px;
+    .footer-logo-container {
+        grid-column: span 2 / span 2;
+    }
+
+    .footer-info,
+    .footer-contacts {
+        margin-top: 20px;
+    }
+
+    .footer-column {
+        align-items: center;
+    }
+
+    .footer-heading {
+        text-align: center;
+    }
+
+    .footer-divider {
+        margin: 5px auto 15px;
+    }
+
+    .footer-links,
+    .footer-address {
+        align-items: center;
     }
 }
 
@@ -489,7 +516,7 @@
     /* КОМПЛЕКТУЮЩИЕ */
 
     .specs-title {
-        font-size: 44px;
+        font-size: 40px;
         text-shadow: 3px 3px black;
 
     }
@@ -510,7 +537,8 @@
         padding-right: 30px;
     }
 
-    .specs-name, .specs-value {
+    .specs-name,
+    .specs-value {
         font-size: 20px;
     }
 
@@ -522,4 +550,8 @@
     }
 
     /* ФУТЕР */
+
+    .footer {
+        padding: 20px;
+    }
 }

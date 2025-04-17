@@ -93,6 +93,7 @@ html {
     margin-bottom: auto;
     text-decoration: none;
     color: inherit;
+    font-family: i;
 }
 
 .nav-menu-toggle {
@@ -136,39 +137,38 @@ html {
     display: flex;
     flex-direction: column;
     position: relative;
-    min-height: 289px;
-    max-width: 100%;
-    padding: 48px 70px;
+    min-height: 150px;
+    width: 100%;
+    padding: 30px 70px;
     align-items: center;
-    font-family:
-        Roboto,
-        -apple-system,
-        Helvetica,
-        sans-serif;
-    font-size: 18px;
+    font-family: Roboto, -apple-system, Helvetica, sans-serif;
+    font-size: 16px;
     color: rgba(0, 0, 0, 1);
-    justify-content: center;
+    background-color: #fff;
+    border-top: 1px solid #eaeaea;
 }
 
 .footer-content {
     position: relative;
     display: flex;
-    width: 1274px;
-    max-width: 100%;
-    align-items: stretch;
-    gap: 20px;
-    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1200px;
+    align-items: center;
     justify-content: space-between;
+}
+
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-logo {
     aspect-ratio: 1.15;
     object-fit: contain;
     object-position: center;
-    width: 142px;
+    width: 100px;
     border-radius: 5px;
-    margin-top: auto;
-    margin-bottom: auto;
     flex-shrink: 0;
     max-width: 100%;
 }
@@ -177,14 +177,14 @@ html {
 .footer-contacts {
     display: flex;
     align-items: stretch;
-    gap: 21px;
+    margin: 0 20px;
 }
 
 .footer-divider {
-    border: 1px solid rgba(0, 0, 0, 1);
-    width: 1px;
-    flex-shrink: 0;
-    height: 193px;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    width: 100%;
+    margin-bottom: 15px;
+    display: block;
 }
 
 .footer-column {
@@ -196,49 +196,46 @@ html {
 
 .footer-heading {
     font-weight: 600;
-    align-self: start;
     font-size: inherit;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
 }
 
 .footer-links {
     display: flex;
-    margin-top: 20px;
-    padding-left: 15px;
+    padding-left: 0;
     flex-direction: column;
     align-items: start;
     font-weight: 400;
+    margin: 0;
 }
 
 .footer-link {
     text-decoration: none;
     color: inherit;
-
-    &:not(:first-child) {
-        margin-top: 17px;
-
-    }
-
-    &:nth-child(2),
-    &:nth-child(4) {
-        margin-top: 21px;
-
-    }
+    margin-bottom: 10px;
 }
 
 .footer-address {
     display: flex;
-    margin-top: 24px;
-    padding-left: 15px;
     flex-direction: column;
     align-items: start;
     font-weight: 400;
     font-style: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-address p {
+    margin: 0 0 10px 0;
 }
 
 .phone-number {
-    margin-top: 21px;
+    margin-top: 10px;
 }
 
 .email {
-    margin-top: 23px;
+    margin-top: 10px;
 }
