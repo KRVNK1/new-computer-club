@@ -13,10 +13,8 @@ class BookingController extends Controller
 {
     public function show($tariffId)
     {
-        // Получаем выбранный тариф
         $tariff = Tariff::findOrFail($tariffId);
 
-        // Получаем все тарифы для переключателя
         $tariffs = Tariff::all();
 
         // Получаем доступные рабочие станции для выбранного типа тарифа
@@ -32,17 +30,15 @@ class BookingController extends Controller
 
     public function store(Request $request, $tariffId)
     {
-        // Валидация данных
         $validated = $request->validate([
             'hours' => 'required|integer|min:1|max:72',
             'people' => 'required|integer|min:1|max:5',
             'comment' => 'nullable|string|max:500',
         ]);
 
-        // Получаем тариф
         $tariff = Tariff::findOrFail($tariffId);
 
-        // Находим свободную рабочую станцию соответствующего типа
+        // нахождение рабочего места по типу(тариф) и статусу
         $workstation = Workstation::where('type', $tariff->name)
             ->where('status', 'Свободно')
             ->first();
@@ -77,7 +73,7 @@ class BookingController extends Controller
     {
         $booking = Booking::with(['tariff', 'workstation', 'user'])->findOrFail($bookingId);
 
-        // Проверяем, принадлежит ли бронирование текущему пользователю
+        // Проверка, принадлежит ли бронирование текущему пользователю
         if ($booking->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             abort(403, 'Unauthorized action.');
         }
