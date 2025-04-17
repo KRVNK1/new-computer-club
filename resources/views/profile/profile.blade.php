@@ -74,6 +74,7 @@
 
 
                 <div class="dashboard-content">
+                    <!-- Обзор -->
                     <div class="tab-content active" id="overview">
                         <div class="stats-grid">
                             <div class="stat-card">
@@ -162,12 +163,20 @@
                                         <span class="info-value">{{ $user->phone }}</span>
                                     </li>
                                 </ul>
-
+                                <!--  -->
                                 <div class="dashboard-actions">
+                                    
                                     <button class="btn btn-primary" onclick="switchTab('profile')">
                                         <i class="icon-edit"></i>
                                         Редактировать
                                     </button>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="icon-logout"></i>
+                                            Выйти
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -254,7 +254,7 @@
 /* Кнопки и действия */
 .dashboard-actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-top: 20px;
 }
 
@@ -328,30 +328,6 @@
 .form-control:focus {
     outline: none;
     border-color: #4a7bff;
-}
-
-/* Уведомления */
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-}
-
-.alert-success {
-    background-color: rgba(16, 185, 129, 0.2);
-    color: #10b981;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.alert-danger {
-    background-color: rgba(239, 68, 68, 0.2);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.alert ul {
-    margin: 0;
-    padding-left: 20px;
 }
 
 /* Пагинация */

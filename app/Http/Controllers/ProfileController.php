@@ -27,17 +27,27 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request)
     {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $user = Auth::user();
+        
+        // Получаем валидированные данные
+        $validated = $request->validated();
+        
+        // Обновляем основную информацию
+        $user->first_name = $validated['first_name'];
+        $user->last_name = $validated['last_name'];
+        $user->email = $validated['email'];
+        $user->phone = $validated['phone'];
+        
+        // Обновляем пароль, если он был предоставлен
+        if ($request->filled('new_password')) {
+            $user->password = Hash::make($validated['new_password']);
         }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        
+        $user->save();
+        
+        return redirect()->route('profile')->with('success', 'Личная информация успешно обновлена.');
     }
 
     /**
@@ -70,7 +80,7 @@ class ProfileController extends Controller
 
         $user = Auth::user();
         $user->password = Hash::make($validated['password']);
-        $user()->save();
+        $user->save();
 
         return back()->with('status', 'Пароль успешно изменен');
     }

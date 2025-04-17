@@ -1,13 +1,19 @@
+const alerts = document.querySelectorAll('.alert');
+const tabContents = document.querySelectorAll('.tab-content');
+const currentDashTab = document.querySelector('.dashboard-tab[data-tab="' + tabId + '"]')
+const dashboardTabs = document.querySelectorAll('.dashboard-tab');
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Функция для переключения вкладок
+    // переключение вкладок
     window.switchTab = function(tabId) {
         // Скрываем все вкладки
-        document.querySelectorAll('.tab-content').forEach(function(tab) {
+
+        tabContents.forEach((tab) => {
             tab.classList.remove('active');
         });
         
         // Убираем активный класс у всех кнопок
-        document.querySelectorAll('.dashboard-tab').forEach(function(button) {
+        dashboardTabs.forEach((button) => {
             button.classList.remove('active');
         });
         
@@ -15,21 +21,21 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById(tabId).classList.add('active');
         
         // Добавляем активный класс к кнопке
-        document.querySelector('.dashboard-tab[data-tab="' + tabId + '"]').classList.add('active');
+        currentDashTab.classList.add('active');
     };
     
     // Обработчик клика по вкладкам
-    document.querySelectorAll('.dashboard-tab').forEach(function(tab) {
-        tab.addEventListener('click', function() {
+    dashboardTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
             switchTab(this.getAttribute('data-tab'));
         });
     });
     
-    // Автоматическое скрытие уведомлений через 5 секунд
-    const alerts = document.querySelectorAll('.alert');
+    // Скрытие уведомлений об ошибках
+
     if (alerts.length > 0) {
-        setTimeout(function() {
-            alerts.forEach(function(alert) {
+        setTimeout(() => {
+            alerts.forEach((alert) => {
                 alert.style.opacity = '0';
                 setTimeout(function() {
                     alert.style.display = 'none';

@@ -1,0 +1,171 @@
+.booking-confirmation {
+    background-color: #171022;
+    padding: 40px 20px;
+    min-height: calc(100vh - 200px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.confirmation-container {
+    max-width: 800px;
+    width: 100%;
+    background: rgba(109, 40, 217, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+}
+
+.confirmation-header {
+    text-align: center;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirmation-header h1 {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.confirmation-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(16, 185, 129, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #10b981;
+    margin-bottom: 20px;
+}
+
+.confirmation-details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.confirmation-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.confirmation-section h2 {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.detail-label {
+    color: #b8a9e0;
+    font-size: 0.9rem;
+}
+
+.detail-value {
+    color: white;
+    font-weight: 500;
+}
+
+.status-active {
+    color: #10b981;
+}
+
+.status-completed {
+    color: #3b82f6;
+}
+
+.status-cancelled {
+    color: #ef4444;
+}
+
+.total-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.total-price .detail-value {
+    color: #10b981;
+}
+
+.payment-info {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 5px;
+    border-left: 3px solid #10b981;
+}
+
+.payment-info p {
+    color: #b8a9e0;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.confirmation-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #4a7bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3a6ae6;
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+    .confirmation-actions {
+        flex-direction: column;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .detail-value {
+        padding-left: 10px;
+    }
+}
