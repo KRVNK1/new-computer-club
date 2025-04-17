@@ -19,7 +19,7 @@
             <img src="{{ asset ('/img/background/background-header.png') }}"
                 class="background-image" alt="Background">
             <div class="header-content">
-                <a href="#">
+                <a href="{{ route('index') }}">
                     <img src="{{ asset ('/img/LOGO.png') }}"
                         class="logo" alt="Cyber Arena Logo">
                 </a>

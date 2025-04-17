@@ -93,7 +93,7 @@ html {
     margin-bottom: auto;
     text-decoration: none;
     color: inherit;
-    font-family: i;
+    font-family: inherit;
 }
 
 .nav-menu-toggle {

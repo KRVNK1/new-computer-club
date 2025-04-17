@@ -8,7 +8,7 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', [TariffController::class, 'index'])->name('home');
 
-Route::get('/index', [TariffController::class, 'index']);
+Route::get('/index', [TariffController::class, 'index'])->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/booking/{tariff}', [BookingController::class, 'show'])->name('booking.show');

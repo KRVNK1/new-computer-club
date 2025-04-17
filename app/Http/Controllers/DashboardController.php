@@ -14,7 +14,7 @@ class DashboardController extends Controller
         
         // Статистика
         $totalBookings = Booking::where('user_id', $user->id)->count();
-        $totalHours = Booking::where('user_id', $user->id)->sum('hours') ?? 0;
+        $totalHours = Booking::where('user_id', $user->id)->sum('hours');
         
         // бронирования для вкладки История
         $bookings = Booking::where('user_id', $user->id)
