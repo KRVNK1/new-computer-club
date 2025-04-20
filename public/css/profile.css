@@ -51,6 +51,7 @@
 }
 
 .dashboard-tab {
+    font-size: 14px;
     padding: 15px 25px;
     color: #b8a9e0;
     font-weight: 600;
@@ -87,7 +88,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .stat-card {
@@ -115,14 +116,15 @@
 .dashboard-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 20px;
 }
 
 .dashboard-card {
+    display: flex;
+    flex-direction: column;
     background: rgba(109, 40, 217, 0.2);
     border-radius: 10px;
     padding: 25px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 20px;
 }
@@ -255,7 +257,7 @@
 .dashboard-actions {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: auto;
 }
 
 .btn {
@@ -330,38 +332,6 @@
     border-color: #4a7bff;
 }
 
-/* Пагинация */
-.pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.pagination nav {
-    display: flex;
-}
-
-.pagination .page-item {
-    margin: 0 5px;
-}
-
-.pagination .page-link {
-    padding: 8px 12px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-}
-
-.pagination .page-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.pagination .page-item.active .page-link {
-    background-color: #4a7bff;
-}
-
 /* Иконки */
 [class^="icon-"] {
     display: inline-block;
@@ -414,4 +384,119 @@
 
 .icon-save {
     background-image: url(../img/svg/icons/icon-save.svg);
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Основной контейнер пагинации */
+.ui.pagination.menu {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Элементы пагинации */
+.ui.pagination.menu .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #b8a9e0;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    margin: 0;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Ховер эффект для элементов */
+.ui.pagination.menu .item:hover:not(.active):not(.disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    opacity: 1;
+}
+
+/* Активная страница */
+.ui.pagination.menu .active.item {
+    background-color: #4a7bff;
+    color: white;
+    font-weight: 700;
+}
+
+/* Неактивные элементы (Previous/Next когда они недоступны) */
+.ui.pagination.menu .disabled.item {
+    color: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Иконки в пагинации */
+.ui.pagination.menu .item i.icon {
+    width: 16px;
+    height: 18px;
+    background-position: center;
+    opacity: 0.5;
+}
+
+.ui.pagination.menu .item i.left {
+    background-image: url(../img/svg/icons/icon-arrow-left.svg);
+}
+
+.ui.pagination.menu .item i.right {
+    background-image: url(../img/svg/icons/icon-arrow-right.svg);
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 640px) {
+    .ui.pagination.menu {
+        gap: 5px;
+    }
+
+    .ui.pagination.menu .item {
+        min-width: 35px;
+        height: 35px;
+        padding: 0 8px;
+        font-size: 0.85rem;
+    }
+
+    .ui.pagination.menu .item.active,
+    .ui.pagination.menu .item.prev,
+    .ui.pagination.menu .item.next {
+        display: flex;
+    }
+}
+
+/* Анимация при переходе между страницами */
+.ui.pagination.menu .item {
+    transition: transform 0.2s, background-color 0.3s, color 0.3s;
+}
+
+.ui.pagination.menu .item:active {
+    transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+    .pagination-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .pagination-info {
+        margin-bottom: 0;
+        text-align: left;
+    }
 }

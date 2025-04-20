@@ -1,7 +1,8 @@
 .auth-container {
     display: flex;
     justify-content: center;
-    background: linear-gradient(to bottom, #4a2a6b, #1a1a2e);
+    background-color: #231C2D;
+    /* background: linear-gradient(to bottom, #4a2a6b, #1a1a2e); */
     padding: 50px ;
 }
 

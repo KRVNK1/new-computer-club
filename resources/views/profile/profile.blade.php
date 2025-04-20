@@ -327,7 +327,7 @@
                                 Выход из аккаунта
                             </h2>
 
-                            <p style="color: white;">Нажмите кнопку ниже, чтобы выйти из своего аккаунта.</p>
+                            <p style="color: white; margin-bottom : 20px;">Нажмите кнопку ниже, чтобы выйти из своего аккаунта.</p>
 
                             <div class="dashboard-actions">
                                 <form action="{{ route('logout') }}" method="POST">

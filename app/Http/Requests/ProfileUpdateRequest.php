@@ -28,7 +28,7 @@ class ProfileUpdateRequest extends FormRequest
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'phone' => ['required', 'string', 'max:20'],
-            'current_password' => ['nullable', 'required_with:new_password', function ($attribute, $value, $fail) use ($user) {
+            'current_password' => ['nullable', 'required_with:new_password', function ($value, $fail) use ($user) {
                 if (!Hash::check($value, $user->password)) {
                     $fail('Текущий пароль указан неверно.');
                 }
@@ -42,14 +42,10 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'first_name.required' => 'Поле "Имя" обязательно для заполнения.',
             'last_name.required' => 'Поле "Фамилия" обязательно для заполнения.',
-            'login.required' => 'Поле "Логин" обязательно для заполнения.',
-            'login.unique' => 'Такой логин уже используется.',
             'email.required' => 'Поле "Email" обязательно для заполнения.',
             'email.email' => 'Введите корректный email адрес.',
             'email.unique' => 'Такой email уже используется.',
             'phone.required' => 'Поле "Телефон" обязательно для заполнения.',
-            'new_password.min' => 'Пароль должен содержать не менее 8 символов.',
-            'new_password.confirmed' => 'Пароли не совпадают.',
         ];
     }
 }

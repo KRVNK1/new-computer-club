@@ -258,8 +258,3 @@
 .btn-home:hover, .btn-dashboard:hover {
     background-color: #3a6ae6;
 }
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    
-}

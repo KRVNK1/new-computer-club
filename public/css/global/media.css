@@ -407,21 +407,6 @@
         text-align: center;
     }
 
-    /* Подтверждение бронирования */
-
-    .confirmation-actions {
-        flex-direction: column;
-    }
-
-    .detail-row {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .detail-value {
-        padding-left: 10px;
-    }
-
     /* Личный кабинет */
 
     .dashboard-cards {
@@ -431,25 +416,7 @@
     .stats-grid {
         grid-template-columns: 1fr;
     }
-    
-    .booking-meta {
-        flex-direction: column;
-    }
-    
-    .booking-meta span {
-        margin-bottom: 5px;
-    }
-    
-    .booking-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .booking-status {
-        margin-top: 10px;
-        align-self: flex-start;
-    }
-    
+
     .dashboard-tabs {
         overflow-x: auto;
         white-space: nowrap;
@@ -462,7 +429,7 @@
 }
 
 @media (max-width:480px) {
-    /* ШАПКА */
+    /* Шапка */
 
     .navigation {
         max-width: 100%;
@@ -475,7 +442,7 @@
         display: flex;
     }
 
-    /* ПРИВЕТСТВИЕ */
+    /* Приветствие */
 
     .hero-content {
         display: block;
@@ -537,7 +504,7 @@
         margin-top: 32px;
     }
 
-    /* ГАЛЕРЕЯ */
+    /* Галерея */
 
     .gallery-section {
         min-height: 460px;
@@ -611,7 +578,7 @@
         }
     }
 
-    /* КОМПЛЕКТУЮЩИЕ */
+    /* Комплектующие */
 
     .specs-title {
         font-size: 40px;
