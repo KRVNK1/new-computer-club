@@ -8,25 +8,25 @@ class Booking extends Model
 {
     protected $fillable = [
         'user_id',
-        'workstation_id',
         'tariff_id',
-        'hours',
+        'start_time',
+        'end_time',
         'people',
         'comment',
         'total_price',
         'status'
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    
-    public function workstation()
+
+    public function workstations()
     {
-        return $this->belongsTo(Workstation::class);
+        return $this->belongsToMany(Workstation::class, 'booking_workstation')->withTimestamps();
     }
-    
+
     public function tariff()
     {
         return $this->belongsTo(Tariff::class);

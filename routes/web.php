@@ -22,4 +22,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 });
 
+Route::post('/booking/check-availability', [BookingController::class, 'checkAvailability'])
+    ->name('booking.check-availability')
+    ->middleware('auth');
+
 require __DIR__.'/auth.php';

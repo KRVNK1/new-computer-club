@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tariffs', function (Blueprint $table) {
+        Schema::create('booking_workstation', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 10);
-            $table->integer('price_per_hour');
-            $table->boolean('is_room'); // true для VIP (бронируется целиком)
-            $table->string('image')->nullable();
-            $table->text('description')->nullable();
+            $table->foreignId('booking_id')->constrained()->onDelete('cascade');
+            $table->foreignId('workstation_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tariffs');
+        Schema::dropIfExists('booking_workstation');
     }
 };

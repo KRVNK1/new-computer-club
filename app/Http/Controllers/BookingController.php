@@ -18,66 +18,132 @@ class BookingController extends Controller
         $tariffs = Tariff::all();
 
         // Получаем доступные рабочие станции для выбранного типа тарифа
-        $workstations = Workstation::where('type', $tariff->name)
-            ->where('status', 'Свободно')
-            ->get();
+        if ($tariff->is_room) {
+            $availableSpots = 1; // Для VIP комнаты - либо доступна, либо нет
+        } else {
+            $availableSpots = Workstation::where('type', $tariff->name)
+                ->where('status', 'Свободно')
+                ->count();
+        }
 
         // Количество доступных мест
-        $availableSpots = $workstations->count();
+        $maxPeople = $tariff->is_room ? 5 : $availableSpots;
 
-        return view('booking.show', compact('tariff', 'tariffs', 'availableSpots'));
+        return view('booking.show', compact('tariff', 'tariffs', 'availableSpots', 'maxPeople'));
     }
 
     public function store(Request $request, $tariffId)
     {
         $validated = $request->validate([
-            'hours' => 'required|integer|min:1|max:72',
-            'people' => 'required|integer|min:1|max:5',
-            'comment' => 'nullable|string|max:500',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'people' => 'required|integer|min:1',
+            'comment' => 'nullable|string',
         ]);
 
         $tariff = Tariff::findOrFail($tariffId);
 
+        // Расчет часов
+        $startTime = new \DateTime($validated['start_time']);
+        $endTime = new \DateTime($validated['end_time']);
+        $hours = ceil(($endTime->getTimestamp() - $startTime->getTimestamp()) / 3600); // ceil - округление 
+
         // нахождение рабочего места по типу(тариф) и статусу
-        $workstation = Workstation::where('type', $tariff->name)
-            ->where('status', 'Свободно')
-            ->first();
+        if ($tariff->is_room) {
+            // Для VIP комнаты
+            $workstations = Workstation::where('type', $tariff->name)
+                ->where('status', 'Свободно')
+                ->take(5)
+                ->get();
 
-        if (!$workstation) {
-            return back()->with('error', 'К сожалению, все места данного типа заняты.');
+            if ($workstations->count() < 5) {
+                return back()->with('error', 'VIP-комната уже занята');
+            }
+
+            $totalPrice = $tariff->price_per_hour * $hours;
+        } else {
+            // Для общего зала
+            $workstations = Workstation::where('type', $tariff->name)
+                ->where('status', 'Свободно')
+                ->take($validated['people'])
+                ->get();
+
+            if ($workstations->count() < $validated['people']) {
+                return back()->with('error', 'Недостаточно свободных мест');
+            }
+
+            $totalPrice = $tariff->price_per_hour * $hours * $validated['people'];
         }
-
-        // Расчет стоимости
-        $totalPrice = $tariff->price_per_hour * $validated['hours'] * $validated['people'];
 
         // Создание бронирования
         $booking = new Booking();
         $booking->user_id = Auth::id();
-        $booking->workstation_id = $workstation->id;
         $booking->tariff_id = $tariff->id;
-        $booking->hours = $validated['hours'];
+        $booking->start_time = $validated['start_time'];
+        $booking->end_time = $validated['end_time'];
         $booking->people = $validated['people'];
         $booking->comment = $validated['comment'] ?? '';
         $booking->total_price = $totalPrice;
         $booking->save();
 
-        // Обновляем статус рабочей станции
-        $workstation->status = 'Занято';
-        $workstation->save();
-
+        // Обновляем статус рабочих мест
+        foreach ($workstations as $workstation) {
+            $workstation->status = 'Занято';
+            $workstation->save();
+            
+            $booking->workstations()->attach($workstation->id);
+        }
+        
         return redirect()->route('booking.confirmation', $booking->id)
             ->with('success', 'Бронирование успешно создано!');
     }
 
     public function confirmation($bookingId)
     {
-        $booking = Booking::with(['tariff', 'workstation', 'user'])->findOrFail($bookingId);
+        $booking = Booking::with(['tariff', 'workstations', 'user'])->findOrFail($bookingId);
+        
+        $startTime = new \DateTime($booking['start_time']);
+        $endTime = new \DateTime($booking['end_time']);
+        $hours = ceil(($endTime->getTimestamp() - $startTime->getTimestamp()) / 3600); // ceil - округление 
 
         // Проверка, принадлежит ли бронирование текущему пользователю
         if ($booking->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             abort(403, 'Unauthorized action.');
         }
 
-        return view('booking.confirmation', compact('booking'));
+        return view('booking.confirmation', compact('booking', 'hours'));
     }
+
+
+
+    // public function checkAvailability(Request $request)
+    // {
+    //     $tariffId = $request->tariff_id;
+    //     $people = $request->people;
+        
+    //     $tariff = Tariff::findOrFail($tariffId);
+        
+    //     if ($tariff->is_room) {
+    //         $available = Workstation::where('type', $tariff->name)
+    //             ->where('status', 'Свободно')
+    //             ->count() >= 5;
+                
+    //         return response()->json([
+    //             'available' => $available,
+    //             'message' => $available ? 'VIP-комната доступна' : 'VIP-комната занята'
+    //         ]);
+    //     } else {
+    //         $availableCount = Workstation::where('type', $tariff->name)
+    //             ->where('status', 'Свободно')
+    //             ->count();
+                
+    //         $available = $availableCount >= $people;
+            
+    //         return response()->json([
+    //             'available' => $available,
+    //             'availableCount' => $availableCount,
+    //             'message' => $available ? "Доступно мест: $availableCount" : "Недостаточно мест. Доступно: $availableCount"
+    //         ]);
+    //     }
+    // }
 }

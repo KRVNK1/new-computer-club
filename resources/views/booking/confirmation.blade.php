@@ -80,11 +80,13 @@
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Рабочее место:</span>
-                        <span class="detail-value">{{ $booking->workstation->number }}</span>
+                        @foreach($booking->workstations as $workstation)
+                        <span class="detail-value">{{ $workstation->number }}</span>
+                        @endforeach
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Количество часов:</span>
-                        <span class="detail-value">{{ $booking->hours }}</span>
+                        <span class="detail-value">{{ $hours }}</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Количество человек:</span>

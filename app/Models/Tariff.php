@@ -10,9 +10,9 @@ class Tariff extends Model
     protected $fillable = [
         'name',
         'price_per_hour',
+        'is_room',
         'image',
         'description',
-        'timestamps'
     ];
     
     public function bookings()
