@@ -23,10 +23,10 @@
             </a>
 
             <nav class="navigation">
-                <a href="#gallery" class="nav-link">Фото</a>
-                <a href="#tariffs" class="nav-link">Тарифы</a>
-                <a href="#specs" class="nav-link">Комплектующие</a>
-                <a href="#map" class="nav-link">Как добраться</a>
+                <a href="{{ url('/index#gallery') }}" class="nav-link">Фото</a>
+                <a href="{{ url('/index#tariffs') }}" class="nav-link">Тарифы</a>
+                <a href="{{ url('/index#specs') }}" class="nav-link">Комплектующие</a>
+                <a href="{{ url('/index#map') }}" class="nav-link">Как добраться</a>
                 <a href="{{ route('login') }}" class="login-button">Войти</a>
             </nav>
 
@@ -39,7 +39,7 @@
     </header>
 
     <section class="booking-container">
-    
+
         <div class="booking-left">
             <div class="tariff-header">
                 <div class="tariff-image">
@@ -130,57 +130,56 @@
 
     <script src="{{ asset('js/animations.js') }}"></script>
     <script>
+        const basePrice = "{{ $tariff -> price_per_hour }}";
+        let hours = 24;
+        let people = 1;
 
-    const basePrice = "{{ $tariff -> price_per_hour }}";
-    let hours = 24;
-    let people = 1;
+        function incrementHours() {
+            if (hours < 24) {
+                hours++;
+                document.getElementById('hours').value = hours;
+                updateTotalPrice();
+            }
+        }
 
-    function incrementHours() {
-        if (hours < 24) {
-            hours++;
+        function decrementHours() {
+            if (hours > 1) {
+                hours--;
+                document.getElementById('hours').value = hours;
+                updateTotalPrice();
+            }
+        }
+
+
+        function incrementPeople() {
+            if (people < 5) {
+                people++;
+                document.getElementById('people').value = people;
+                updateTotalPrice();
+            }
+        }
+
+        function decrementPeople() {
+            if (people > 1) {
+                people--;
+                document.getElementById('people').value = people;
+                updateTotalPrice();
+            }
+        }
+
+        // бронирование на 4 часа
+        function quickBook() {
+            hours = 4;
             document.getElementById('hours').value = hours;
             updateTotalPrice();
         }
-    }
-    
-    function decrementHours() {
-        if (hours > 1) {
-            hours--;
-            document.getElementById('hours').value = hours;
-            updateTotalPrice();
-        }
-    }
-    
 
-    function incrementPeople() {
-        if (people < 5) {
-            people++;
-            document.getElementById('people').value = people;
-            updateTotalPrice();
+        // обновления общей стоимости
+        function updateTotalPrice() {
+            const totalPrice = basePrice * hours * people;
+            document.getElementById('totalPrice').textContent = totalPrice;
         }
-    }
-    
-    function decrementPeople() {
-        if (people > 1) {
-            people--;
-            document.getElementById('people').value = people;
-            updateTotalPrice();
-        }
-    }
-    
-    // бронирование на 4 часа
-    function quickBook() {
-        hours = 4;
-        document.getElementById('hours').value = hours;
-        updateTotalPrice();
-    }
-    
-    // обновления общей стоимости
-    function updateTotalPrice() {
-        const totalPrice = basePrice * hours * people;
-        document.getElementById('totalPrice').textContent = totalPrice;
-    }
-</script>
+    </script>
 
 </body>
 

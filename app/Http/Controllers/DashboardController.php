@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $bookings = Booking::where('user_id', $user->id)
             ->with(['tariff', 'workstation'])
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(3);
         
         return view('profile.profile', compact('user', 'totalBookings', 'totalHours', 'bookings'));
     }

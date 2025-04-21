@@ -23,11 +23,15 @@
                 </a>
 
                 <nav class="navigation">
-                    <a href="#gallery" class="nav-link">Фото</a>
-                    <a href="#tariffs" class="nav-link">Тарифы</a>
-                    <a href="#specs" class="nav-link">Комплектующие</a>
-                    <a href="#map" class="nav-link">Как добраться</a>
-                    <a href="{{ route('login') }}" class="login-button">Войти</a>
+                    <a href="{{ url('/index#gallery') }}" class="nav-link">Фото</a>
+                    <a href="{{ url('/index#tariffs') }}" class="nav-link">Тарифы</a>
+                    <a href="{{ url('/index#specs') }}" class="nav-link">Комплектующие</a>
+                    <a href="{{ url('/index#map') }}" class="nav-link">Как добраться</a>
+                    @if (Auth::check())
+                        <a href="{{ route('index') }}" class="login-button">Назад</a>
+                        @else
+                        <a href="{{ route('login') }}" class="login-button">Войти</a>
+                    @endif
                 </nav>
 
                 <nav class="nav-menu-toggle">

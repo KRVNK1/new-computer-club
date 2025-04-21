@@ -24,10 +24,10 @@
             </a>
 
             <nav class="navigation">
-                <a href="#gallery" class="nav-link">Фото</a>
-                <a href="#tariffs" class="nav-link">Тарифы</a>
-                <a href="#specs" class="nav-link">Комплектующие</a>
-                <a href="#map" class="nav-link">Как добраться</a>
+                <a href="{{ url('/index#gallery') }}" class="nav-link">Фото</a>
+                <a href="{{ url('/index#tariffs') }}" class="nav-link">Тарифы</a>
+                <a href="{{ url('/index#specs') }}" class="nav-link">Комплектующие</a>
+                <a href="{{ url('/index#map') }}" class="nav-link">Как добраться</a>
                 <a href="{{ route('login') }}" class="login-button">Войти</a>
             </nav>
 
@@ -59,19 +59,15 @@
                     <div class="detail-row">
                         <span class="detail-label">Статус:</span>
                         <span class="detail-value status-{{ $booking->status }}">
-                            @switch($booking->status)
-                            @case('active')
+                            @if ($booking->status === 'active')
                             Активно
-                            @break
-                            @case('completed')
+                            @elseif ($booking->status === 'completed')
                             Завершено
-                            @break
-                            @case('cancelled')
+                            @elseif ($booking->status === 'cancelled')
                             Отменено
-                            @break
-                            @default
+                            @else
                             {{ $booking->status }}
-                            @endswitch
+                            @endif
                         </span>
                     </div>
                 </div>
