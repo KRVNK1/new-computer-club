@@ -73,7 +73,7 @@
                         <input type="datetime-local" name="end_time" id="end_time" required>
                     </div>
 
-                    <div class="booking-control">
+                    <div class="booking-control" id="people-field">
                         <label>КОЛИЧЕСТВО ЧЕЛОВЕК</label>
                         <div class="quantity-control">
                             <button type="button" class="btn-minus">-</button>
@@ -137,8 +137,15 @@
     <script src="{{ asset('js/animations.js') }}"></script>
     <script>
         const basePrice = "{{ $tariff -> price_per_hour }}";
-        const isRoom = "{{ $tariff->is_room ? 'true' : 'false' }}";
-        let currentPeople = parseInt(document.getElementById("people").value);
+        const isRoom = "{{ $tariff -> is_room ? 'true' : 'false' }}";
+
+        const type = "{{ $tariff -> name }}";
+
+        const currentPeople = document.getElementById("people");
+        if (type == 'VIP') {
+            document.querySelector('#people-field').style = 'display:none;'
+        }
+
         const maxPeople = Number.parseInt(document.getElementById("people").getAttribute("max"));
 
         const startTime = new Date(document.getElementById('start_time').value);
@@ -152,7 +159,7 @@
 
         btnMinus.addEventListener('click', () => {
             decrementPeople();
-            
+
         })
 
         btnPlus.addEventListener('click', () => {
@@ -160,18 +167,17 @@
         })
 
         function incrementPeople() {
-            if (currentPeople < maxPeople) {
-                currentPeople++;
-                currentPeople.value = people;
+            const currentPeopleValue = parseInt(currentPeople.value);
+            if (currentPeopleValue < maxPeople) {
+                currentPeople.value = currentPeopleValue + 1;
                 updateTotalPrice();
-                console.log('message')
             }
         }
 
         function decrementPeople() {
-            if (currentPeople > 1) {
-                currentPeople--;
-                currentPeople.value = people;
+            const currentPeopleValue = parseInt(currentPeople.value);
+            if (currentPeopleValue > 1) {
+                currentPeople.value = currentPeopleValue - 1;
                 updateTotalPrice();
             }
         }
@@ -200,6 +206,10 @@
 
         // обновления общей стоимости
         function updateTotalPrice() {
+            const currentPeopleValue = parseInt(currentPeople.value);
+
+            console.log('updateTotalPrice')
+
             const startTimeInput = document.getElementById("start_time").value;
             const endTimeInput = document.getElementById("end_time").value;
 
@@ -207,6 +217,8 @@
                 document.getElementById("totalPrice").textContent = basePrice;
                 return;
             }
+
+            console.log('updateTotalPrice1')
 
             const startTime = new Date(startTimeInput);
             const endTime = new Date(endTimeInput);
@@ -216,25 +228,36 @@
                 return;
             }
 
+            console.log('updateTotalPrice222', isRoom)
+
+
             // Расчет разницы в часах
             const diffMs = endTime - startTime;
             const diffHours = Math.max(1, Math.ceil(diffMs / (1000 * 60 * 60)));
 
             // Расчет стоимости
             let totalPrice;
-            if (isRoom) {
+            if (isRoom == 'true') {
+                console.log('updateTotalPrice3', typeof isRoom)
+
                 // Для VIP - цена за всю комнату
                 totalPrice = basePrice * diffHours;
             } else {
+                console.log({
+                    currentPeopleValue,
+                    basePrice,
+                    diffHours
+                })
                 // Для общего зала - цена за человека
-                totalPrice = basePrice * diffHours * currentPeople;
+                totalPrice = basePrice * diffHours * currentPeopleValue;
             }
+
+
 
             document.getElementById("totalPrice").textContent = totalPrice;
         }
 
         updateTotalPrice()
-
     </script>
 
 </body>

@@ -19,7 +19,7 @@ class BookingController extends Controller
 
         // Получаем доступные рабочие станции для выбранного типа тарифа
         if ($tariff->is_room) {
-            $availableSpots = 1; // Для VIP комнаты - либо доступна, либо нет
+            $availableSpots = 5; // Для VIP комнаты - либо доступна, либо нет
         } else {
             $availableSpots = Workstation::where('type', $tariff->name)
                 ->where('status', 'Свободно')
@@ -90,10 +90,10 @@ class BookingController extends Controller
         foreach ($workstations as $workstation) {
             $workstation->status = 'Занято';
             $workstation->save();
-            
+
             $booking->workstations()->attach($workstation->id);
         }
-        
+
         return redirect()->route('booking.confirmation', $booking->id)
             ->with('success', 'Бронирование успешно создано!');
     }
@@ -101,7 +101,7 @@ class BookingController extends Controller
     public function confirmation($bookingId)
     {
         $booking = Booking::with(['tariff', 'workstations', 'user'])->findOrFail($bookingId);
-        
+
         $startTime = new \DateTime($booking['start_time']);
         $endTime = new \DateTime($booking['end_time']);
         $hours = ceil(($endTime->getTimestamp() - $startTime->getTimestamp()) / 3600); // ceil - округление 
@@ -120,14 +120,14 @@ class BookingController extends Controller
     // {
     //     $tariffId = $request->tariff_id;
     //     $people = $request->people;
-        
+
     //     $tariff = Tariff::findOrFail($tariffId);
-        
+
     //     if ($tariff->is_room) {
     //         $available = Workstation::where('type', $tariff->name)
     //             ->where('status', 'Свободно')
     //             ->count() >= 5;
-                
+
     //         return response()->json([
     //             'available' => $available,
     //             'message' => $available ? 'VIP-комната доступна' : 'VIP-комната занята'
@@ -136,9 +136,9 @@ class BookingController extends Controller
     //         $availableCount = Workstation::where('type', $tariff->name)
     //             ->where('status', 'Свободно')
     //             ->count();
-                
+
     //         $available = $availableCount >= $people;
-            
+
     //         return response()->json([
     //             'available' => $available,
     //             'availableCount' => $availableCount,
