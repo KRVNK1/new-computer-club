@@ -35,18 +35,13 @@ class BookingController extends Controller
     public function store(Request $request, $tariffId)
     {
         $validated = $request->validate([
-            'start_time' => 'required',
-            'end_time' => 'required',
+            'hours' => 'required|integer|min:1|max:24',
             'people' => 'required|integer|min:1',
             'comment' => 'nullable|string',
         ]);
 
         $tariff = Tariff::findOrFail($tariffId);
-
-        // Расчет часов
-        $startTime = new \DateTime($validated['start_time']);
-        $endTime = new \DateTime($validated['end_time']);
-        $hours = ceil(($endTime->getTimestamp() - $startTime->getTimestamp()) / 3600); // ceil - округление 
+        $hours = $validated['hours'];
 
         // нахождение рабочего места по типу(тариф) и статусу
         if ($tariff->is_room) {
@@ -79,8 +74,7 @@ class BookingController extends Controller
         $booking = new Booking();
         $booking->user_id = Auth::id();
         $booking->tariff_id = $tariff->id;
-        $booking->start_time = $validated['start_time'];
-        $booking->end_time = $validated['end_time'];
+        $booking->hours = $validated['hours'];
         $booking->people = $validated['people'];
         $booking->comment = $validated['comment'] ?? '';
         $booking->total_price = $totalPrice;
@@ -90,7 +84,6 @@ class BookingController extends Controller
         foreach ($workstations as $workstation) {
             $workstation->status = 'Занято';
             $workstation->save();
-
             $booking->workstations()->attach($workstation->id);
         }
 
@@ -101,11 +94,7 @@ class BookingController extends Controller
     public function confirmation($bookingId)
     {
         $booking = Booking::with(['tariff', 'workstations', 'user'])->findOrFail($bookingId);
-
-        $startTime = new \DateTime($booking['start_time']);
-        $endTime = new \DateTime($booking['end_time']);
-        $hours = ceil(($endTime->getTimestamp() - $startTime->getTimestamp()) / 3600); // ceil - округление 
-
+        $hours = $booking->hours;
         // Проверка, принадлежит ли бронирование текущему пользователю
         if ($booking->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
             abort(403, 'Unauthorized action.');

@@ -14,13 +14,7 @@ class DashboardController extends Controller
 
         // Статистика на вкладке обзор
         $totalBookings = Booking::where('user_id', $user->id)->count();
-        $totalHours = Booking::where('user_id', $user->id)
-            ->get()
-            ->sum(function ($booking) {
-                $start = new \DateTime($booking->start_time);
-                $end = new \DateTime($booking->end_time);
-                return ceil(($end->getTimestamp() - $start->getTimestamp()) / 3600);
-            });
+        $totalHours = Booking::where('user_id', $user->id)->sum('hours');
 
         // бронирования для вкладки История
         $bookings = Booking::where('user_id', $user->id)
@@ -28,12 +22,6 @@ class DashboardController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(3);
 
-        $bookings->getCollection()->transform(function ($booking) {
-            $start = new \DateTime($booking->start_time);
-            $end = new \DateTime($booking->end_time);
-            $booking->hours = ceil(($end->getTimestamp() - $start->getTimestamp()) / 3600);
-            return $booking;
-        });
 
         return view('profile.profile', compact('user', 'totalBookings', 'totalHours', 'bookings'));
     }

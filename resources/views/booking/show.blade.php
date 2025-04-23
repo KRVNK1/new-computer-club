@@ -65,25 +65,25 @@
                     </div>
 
                     <div class="booking-control">
-                        <label>ВРЕМЯ НАЧАЛА</label>
-                        <input type="datetime-local" name="start_time" id="start_time" required>
-                    </div>
-                    <div class="booking-control">
-                        <label>ВРЕМЯ ОКОНЧАНИЯ</label>
-                        <input type="datetime-local" name="end_time" id="end_time" required>
+                        <label>КОЛИЧЕСТВО ЧАСОВ</label>
+                        <div class="quantity-control">
+                            <button type="button" class="btn-minus" id="btn-minus-hours">-</button>
+                            <input type="number" name="hours" id="hours" value="1" min="1" max="24" readonly>
+                            <button type="button" class="btn-plus" id="btn-plus-hours">+</button>
+                        </div>
                     </div>
 
                     <div class="booking-control" id="people-field">
                         <label>КОЛИЧЕСТВО ЧЕЛОВЕК</label>
                         <div class="quantity-control">
-                            <button type="button" class="btn-minus">-</button>
+                            <button type="button" class="btn-minus" id="btn-minus-people">-</button>
                             <input type="number" name="people" id="people" value="1" min="1" max="{{ $maxPeople ?? 5 }}" readonly>
-                            <button type="button" class="btn-plus">+</button>
+                            <button type="button" class="btn-plus" id="btn-plus-people">+</button>
                         </div>
                     </div>
 
                     <div class="total-price">
-                        <h2>ОБЩАЯ СТОИМОСТЬ: <span id="totalPrice">{{ $tariff->price_per_hour}}</span> РУБ.</h2>
+                        <h2>ОБЩАЯ СТОИМОСТЬ: <span id="totalPrice">{{ $tariff->price_per_hour }}</span> РУБ.</h2>
                     </div>
 
                     <button type="submit" class="btn-order">ОФОРМИТЬ ЗАКАЗ</button>
@@ -142,28 +142,36 @@
         const type = "{{ $tariff -> name }}";
 
         const currentPeople = document.getElementById("people");
+        const hoursInput = document.getElementById("hours");
         if (type == 'VIP') {
             document.querySelector('#people-field').style = 'display:none;'
         }
 
         const maxPeople = Number.parseInt(document.getElementById("people").getAttribute("max"));
 
-        const startTime = new Date(document.getElementById('start_time').value);
-        const endTime = new Date(document.getElementById('end_time').value);
+        // Получаем кнопки + и - для людей
+        const btnMinusPeople = document.querySelector("#btn-minus-people");
+        const btnPlusPeople = document.querySelector("#btn-plus-people");
 
-        const btnMinus = document.querySelector(".btn-minus");
-        const btnPlus = document.querySelector(".btn-plus");
+        // Получаем кнопки + и - для часов
+        const btnMinusHours = document.querySelector("#btn-minus-hours");
+        const btnPlusHours = document.querySelector("#btn-plus-hours");
 
-        document.getElementById("start_time").addEventListener("change", updateTotalPrice)
-        document.getElementById("end_time").addEventListener("change", updateTotalPrice)
-
-        btnMinus.addEventListener('click', () => {
+        btnMinusPeople.addEventListener('click', () => {
             decrementPeople();
 
         })
 
-        btnPlus.addEventListener('click', () => {
+        btnPlusPeople.addEventListener('click', () => {
             incrementPeople();
+        })
+
+        btnMinusHours.addEventListener('click', () => {
+            decrementHours();
+        })
+
+        btnPlusHours.addEventListener('click', () => {
+            incrementHours();
         })
 
         function incrementPeople() {
@@ -182,81 +190,53 @@
             }
         }
 
+        function incrementHours() {
+            const currentHoursValue = Number.parseInt(hoursInput.value)
+            if (currentHoursValue < 24) {
+                hoursInput.value = currentHoursValue + 1
+                updateTotalPrice();
+            }
+        }
+
+        function decrementHours() {
+            const currentHoursValue = Number.parseInt(hoursInput.value)
+            if (currentHoursValue > 1) {
+                hoursInput.value = currentHoursValue - 1
+                updateTotalPrice();
+            }
+        }
+
         // бронирование на 4 часа
         function quickBook() {
-            const now = new Date()
-            const fourHours = new Date(now.getTime() + 4 * 60 * 60 * 1000)
-
-            // Форматирование даты и времени для input datetime-local
-            const formatDateTimeForInput = (date) => {
-                const year = date.getFullYear()
-                const month = String(date.getMonth() + 1).padStart(2, "0")
-                const day = String(date.getDate()).padStart(2, "0")
-                const hours = String(date.getHours()).padStart(2, "0")
-                const minutes = String(date.getMinutes()).padStart(2, "0")
-
-                return `${year}-${month}-${day}T${hours}:${minutes}`
-            }
-
-            document.getElementById("start_time").value = formatDateTimeForInput(now)
-            document.getElementById("end_time").value = formatDateTimeForInput(fourHours)
-
+            hoursInput.value = 4
             updateTotalPrice()
         }
 
         // обновления общей стоимости
         function updateTotalPrice() {
-            const currentPeopleValue = parseInt(currentPeople.value);
+            const currentPeopleValue = Number.parseInt(currentPeople.value)
+            const hours = Number.parseInt(hoursInput.value)
 
-            console.log('updateTotalPrice')
-
-            const startTimeInput = document.getElementById("start_time").value;
-            const endTimeInput = document.getElementById("end_time").value;
-
-            if (!startTimeInput || !endTimeInput) {
-                document.getElementById("totalPrice").textContent = basePrice;
-                return;
-            }
-
-            console.log('updateTotalPrice1')
-
-            const startTime = new Date(startTimeInput);
-            const endTime = new Date(endTimeInput);
-
-            if (isNaN(startTime.getTime()) || isNaN(endTime.getTime())) {
-                document.getElementById("totalPrice").textContent = basePrice;
-                return;
-            }
-
-            console.log('updateTotalPrice222', isRoom)
-
-
-            // Расчет разницы в часах
-            const diffMs = endTime - startTime;
-            const diffHours = Math.max(1, Math.ceil(diffMs / (1000 * 60 * 60)));
+            console.log("updateTotalPrice")
 
             // Расчет стоимости
-            let totalPrice;
-            if (isRoom == 'true') {
-                console.log('updateTotalPrice3', typeof isRoom)
-
+            let totalPrice
+            if (isRoom) {
+                console.log("updateTotalPrice - VIP комната")
                 // Для VIP - цена за всю комнату
-                totalPrice = basePrice * diffHours;
+                totalPrice = basePrice * hours
             } else {
                 console.log({
                     currentPeopleValue,
                     basePrice,
-                    diffHours
+                    hours,
                 })
                 // Для общего зала - цена за человека
-                totalPrice = basePrice * diffHours * currentPeopleValue;
+                totalPrice = basePrice * hours * currentPeopleValue
             }
 
-
-
-            document.getElementById("totalPrice").textContent = totalPrice;
+            document.getElementById("totalPrice").textContent = totalPrice
         }
-
         updateTotalPrice()
     </script>
 
