@@ -15,7 +15,7 @@ class TariffSeeder extends Seeder
     {
         Tariff::create([
             'name' => 'Standart',
-            'price_per_hour' => 45, // 1080 руб / 24 часа
+            'price_per_hour' => 120, // 2880 руб / 24 часа
             'is_room' => false,
             'image' => '/img/tariffs/pc1.png',
             'description' => 'Стандартная конфигурация для игр и работы'
@@ -23,7 +23,7 @@ class TariffSeeder extends Seeder
 
         Tariff::create([
             'name' => 'VIP',
-            'price_per_hour' => 425, // 85 * 5 = цена за всю комнату
+            'price_per_hour' => 800, // 160 * 5 = цена за всю комнату
             'is_room' => true,
             'image' => '/img/tariffs/pc3.png',
             'description' => 'Максимальная производительность и комфорт'

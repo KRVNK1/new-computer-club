@@ -149,17 +149,14 @@
 
         const maxPeople = Number.parseInt(document.getElementById("people").getAttribute("max"));
 
-        // Получаем кнопки + и - для людей
         const btnMinusPeople = document.querySelector("#btn-minus-people");
         const btnPlusPeople = document.querySelector("#btn-plus-people");
 
-        // Получаем кнопки + и - для часов
         const btnMinusHours = document.querySelector("#btn-minus-hours");
         const btnPlusHours = document.querySelector("#btn-plus-hours");
 
         btnMinusPeople.addEventListener('click', () => {
             decrementPeople();
-
         })
 
         btnPlusPeople.addEventListener('click', () => {
@@ -218,10 +215,9 @@
             const hours = Number.parseInt(hoursInput.value)
 
             console.log("updateTotalPrice")
-
             // Расчет стоимости
             let totalPrice
-            if (isRoom) {
+            if (isRoom == "true") {
                 console.log("updateTotalPrice - VIP комната")
                 // Для VIP - цена за всю комнату
                 totalPrice = basePrice * hours

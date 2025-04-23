@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tariffs', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 10);
+            $table->string('name', 20);
             $table->integer('price_per_hour');
             $table->boolean('is_room'); // true для VIP (бронируется целиком)
             $table->string('image')->nullable();

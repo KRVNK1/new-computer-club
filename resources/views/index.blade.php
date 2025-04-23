@@ -108,6 +108,7 @@
                             <div class="card-info">
                                 <h2 class="plan-name">{{ strtoupper($tariff->name) }}</h2>
                                 <p class="plan-price">{{ $tariff->price_per_hour * 24 }} руб/сутки</p>
+                                <p class="plan-price">{{ $tariff->price_per_hour }} руб/час</p>
                             </div>
                             <div class="card-btn">
                                 <a href="{{ route('booking.show', $tariff->id) }}" class="select-button">Выбрать</a>
@@ -130,7 +131,6 @@
                 </div>
                 <div class="tabs-container">
                     <button class="tab-button active">standart</button>
-                    <button class="tab-button">boot camp</button>
                     <button class="tab-button">Vip</button>
                 </div>
                 <div class="specs-columns active fade-in">
@@ -151,7 +151,7 @@
                                 <p class="specs-value">
                                     rtx
                                     <br>
-                                    4060
+                                    3060
                                 </p>
                             </div>
                             <div class="specs-divider"></div>
@@ -219,92 +219,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="specs-columns fade-in">
-                    <div class="specs-column">
-                        <div class="specs-card">
-                            <h3 class="specs-category">конфигурация</h3>
-                            <div class="specs-item">
-                                <h4 class="specs-name">Процессор</h4>
-                                <p class="specs-value">
-                                    Intel core
-                                    <br>
-                                    i5-13600KF
-                                </p>
-                            </div>
-                            <div class="specs-divider"></div>
-                            <div class="specs-item">
-                                <h4 class="specs-name">Видеокарта</h4>
-                                <p class="specs-value">
-                                    rtx
-                                    <br>
-                                    4060 TI
-                                </p>
-                            </div>
-                            <div class="specs-divider"></div>
-                            <div class="specs-item">
-                                <h4 class="specs-name">
-                                    Оперативная память
-                                </h4>
-                                <p class="specs-value">
-                                    32 gb
-                                    <br>
-                                    3200 mhz
-                                </p>
-                            </div>
-                            <div class="specs-divider"></div>
-                            <div class="specs-item">
-                                <h4 class="specs-name">Жесткий диск</h4>
-                                <p class="specs-value">
-                                    nvime ssd
-                                    <br>
-                                    256 gb
-                                </p>
-                            </div>
-                            <div class="specs-divider"></div>
-                        </div>
-                    </div>
-                    <div class="specs-column peripherals">
-                        <div class="specs-card">
-                            <h3 class="specs-category">периферия</h3>
-                            <div class="specs-item">
-                                <h4 class="specs-name">Наушники</h4>
-                                <p class="specs-value">
-                                    hyperx
-                                    <br>
-                                    cloud 2
-                                </p>
-                            </div>
-                            <div class="specs-divider"></div>
-                            <div class="specs-item">
-                                <h4 class="specs-name">Мышь</h4>
-                                <p class="specs-value">
-                                    lamzu atlantis
-                                    <br>
-                                    (black)
-                                </p>
-                            </div>
-                            <div class="specs-divider"></div>
-                            <div class="specs-item">
-                                <h4 class="specs-name">Клавиатура</h4>
-                                <p class="specs-value">
-                                    lunacy
-                                    <br>
-                                    in space
-                                </p>
-                            </div>
-                            <div class="specs-divider"></div>
-                            <div class="specs-item">
-                                <h4 class="specs-name">Монитор</h4>
-                                <p class="specs-value">
-                                    fragmachine
-                                    <br>
-                                    27.5", 240 гц
-                                </p>
-                            </div>
-                            <div class="specs-divider"></div>
-                        </div>
-                    </div>
-                </div>
+              
                 <div class="specs-columns fade-in">
                     <div class="specs-column">
                         <div class="specs-card">
