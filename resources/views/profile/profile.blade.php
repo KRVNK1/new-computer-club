@@ -385,7 +385,8 @@
             </div>
         </footer>
 
-        <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/mobile-menu.js') }}"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
     </div>
 
 </body>

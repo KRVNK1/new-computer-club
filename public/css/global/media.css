@@ -140,10 +140,27 @@
         max-width: 100%;
     }
 
+    .navigation.active {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-link,
     .login-button {
-        padding-left: 20px;
-        padding-right: 20px;
-        white-space: initial;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .login-button {
+        margin: 10px auto;
+        max-width: 200px;
+        border: 3px solid white;
+        color: white;
+    }
+
+    .login-button:hover {
+        background-color: white;
+        color: black;
     }
 
     /* ПРИВЕТСТВИЕ */
@@ -330,7 +347,9 @@
 }
 
 @media (max-width:768px) {
+
     /* Главная страница */
+    /* Футер */
     .footer-content {
         display: grid;
         grid-template-columns: 2fr;
@@ -368,42 +387,43 @@
     .booking-container {
         flex-direction: column;
     }
-    
+
     .booking-right {
         width: 100%;
     }
-    
+
     .tariff-header {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    
-    .tariff-title p{
+
+    .tariff-title p {
         margin-top: 10px;
     }
-    
+
     .booking-control {
         flex-direction: column;
         gap: 10px;
     }
-    
+
     .tariff-switcher {
         flex-direction: column;
         align-items: center;
         gap: 10px;
     }
-    
+
     .confirmation-details {
         grid-template-columns: 1fr;
     }
-    
+
     .confirmation-actions {
         flex-direction: column;
         gap: 10px;
     }
 
-    .price-info, .total-price {
+    .price-info,
+    .total-price {
         text-align: center;
     }
 
@@ -412,7 +432,7 @@
     .dashboard-cards {
         grid-template-columns: 1fr;
     }
-    
+
     .stats-grid {
         grid-template-columns: 1fr;
     }
@@ -422,7 +442,7 @@
         white-space: nowrap;
         padding-bottom: 5px;
     }
-    
+
     .dashboard-tab {
         padding: 10px 15px;
     }
@@ -535,6 +555,7 @@
     }
 
     .section-title-highlight {
+        text-shadow: 2px 2px #9D72FF;
         font-size: 40px;
     }
 
@@ -544,7 +565,7 @@
 
     .pricing-card {
         width: 156px;
-        height: 250px;
+        min-height: 250px;
     }
 
     .card-info {

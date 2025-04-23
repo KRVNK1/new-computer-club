@@ -133,6 +133,9 @@
             </div>
         </div>
     </footer>
+
+    <script src="{{ asset('js/mobile-menu.js') }}"></script>
+
 </body>
 
 </html>

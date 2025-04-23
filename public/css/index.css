@@ -49,14 +49,9 @@
 
 .hero-title__main {
     position: relative;
+    text-shadow: 3px 3px #732FCB;
+    text-align: center;
     z-index: 10;
-}
-
-.hero-title__second {
-    position: absolute;
-    top: 50%;
-    transform: translate(0.7%, -45%);
-    color: rgba(115, 47, 203, 1);
 }
 
 .feature-list {
@@ -237,7 +232,7 @@
 }
 
 .pricing-card {
-    width: 400px;
+    width: 350px;
     background-color: #ffffff;
     border-radius: 10px;
     overflow: hidden;
@@ -260,12 +255,14 @@
 
 .plan-name {
     font-size: 40px;
+    margin-bottom: 5px;
     color: #000000;
     text-transform: uppercase;
 }
 
 .plan-price {
     font-size: 24px;
+    margin-bottom: 5px;
     color: #000000;
 }
 
@@ -281,7 +278,7 @@
     border-radius: 8px;
     padding-top: 8px;
     padding-bottom: 8px;
-    margin-top: 27px;
+    margin-top: 15px;
 
     display: flex;
     justify-content: center;

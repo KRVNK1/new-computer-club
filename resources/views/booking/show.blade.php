@@ -134,6 +134,7 @@
         </div>
     </footer>
 
+    <script src="{{ asset('js/mobile-menu.js') }}"></script>
     <script src="{{ asset('js/animations.js') }}"></script>
     <script>
         const basePrice = "{{ $tariff -> price_per_hour }}";

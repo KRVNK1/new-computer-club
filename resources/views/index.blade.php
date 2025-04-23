@@ -50,7 +50,6 @@
                     </h2>
                     <div class="hero-title">
                         <h1 class="hero-title__main">Cyber arena</h1>
-                        <h1 class="hero-title__second">Cyber arena</h1>
                     </div>
 
                     <ul class="feature-list">
@@ -354,6 +353,7 @@
     </div>
 
     <script src="{{ asset('js/tabs.js') }}"></script>
+    <script src="{{ asset('js/mobile-menu.js') }}"></script>
     <script src="{{ asset('js/animations.js') }}"></script>
 
 </body>
