@@ -28,9 +28,9 @@
                     <a href="{{ url('/index#specs') }}" class="nav-link">Комплектующие</a>
                     <a href="{{ url('/index#map') }}" class="nav-link">Как добраться</a>
                     @if (Auth::check())
-                        <a href="{{ route('index') }}" class="login-button">Назад</a>
-                        @else
-                        <a href="{{ route('login') }}" class="login-button">Войти</a>
+                    <a href="{{ route('index') }}" class="login-button">Назад</a>
+                    @else
+                    <a href="{{ route('login') }}" class="login-button">Войти</a>
                     @endif
                 </nav>
 
@@ -172,7 +172,7 @@
                                 </ul>
                                 <!--  -->
                                 <div class="dashboard-actions">
-                                    
+
                                     <button class="btn btn-primary" onclick="switchTab('profile')">
                                         <i class="icon-edit"></i>
                                         Редактировать
@@ -347,6 +347,10 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="tab-content">
+                        <a href="{{ route('admin.users') }}" class="admin-button">Админ-панель</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -388,8 +392,8 @@
             </div>
         </footer>
 
-    <script src="{{ asset('js/mobile-menu.js') }}"></script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+        <script src="{{ asset('js/mobile-menu.js') }}"></script>
+        <script src="{{ asset('js/dashboard.js') }}"></script>
     </div>
 
 </body>

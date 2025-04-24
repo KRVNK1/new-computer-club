@@ -1,0 +1,459 @@
+/* Основные стили для админ-панели */
+:root {
+    --sidebar-bg: #1e1e2d;
+    --sidebar-active: #2a2a3c;
+    --primary-color: #4169e1;
+    --text-color: #333;
+    --light-text: #fff;
+    --border-color: #e0e0e0;
+    --header-height: 70px;
+    --sidebar-width: 250px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: var(--text-color);
+}
+
+/* Контейнер админ-панели */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Боковая панель */
+.sidebar {
+    position: relative;
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    color: var(--light-text);
+    height: 100vh;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.sidebar-nav {
+    padding: 20px 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-item i {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background-color: var(--sidebar-active);
+    color: var(--light-text);
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Подвал боковой панели */
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Основной контент */
+.main-content {
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+/* Шапка */
+.admin-header {
+    height: var(--header-height);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-title h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Контент */
+.content-wrapper {
+    padding: 30px;
+}
+
+/* Заголовок контента */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.content-header h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Таблицы */
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.admin-table {
+    width: 100%;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.admin-table th {
+    background-color: #f9f9f9;
+    font-weight: 500;
+}
+
+.admin-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table-image {
+    width: 60px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-icon:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-delete {
+    background-color: #ffebee;
+    color: #f44336;
+}
+
+.btn-delete:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Кнопки */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    background-color: #3151b5;
+}
+
+/* Статусы */
+.status-badge {
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-pending {
+    background-color: #f0ad4e;
+}
+
+.status-active {
+    background-color: #5cb85c;
+}
+
+.status-completed {
+    background-color: #5bc0de;
+}
+
+.status-cancelled {
+    background-color: #d9534f;
+}
+
+.status-свободно {
+    background-color: #5cb85c;
+}
+
+.status-занято {
+    background-color: #d9534f;
+}
+
+.status-не {
+    background-color: #f0ad4e;
+}
+
+/* Уведомления */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #2e7d32;
+}
+
+.alert-danger {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 4px solid #c62828;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Основной контейнер пагинации */
+.ui.pagination.menu {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Элементы пагинации */
+.ui.pagination.menu .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 0;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Ховер эффект для элементов */
+.ui.pagination.menu .item:hover:not(.active):not(.disabled) {
+    background-color: #4a7bff;
+    color: white;
+    opacity: 1;
+}
+
+/* Активная страница */
+.ui.pagination.menu .active.item {
+    background-color: #4a7bff;
+    color: white;
+    font-weight: 700;
+}
+
+/* Неактивные элементы (Previous/Next когда они недоступны) */
+.ui.pagination.menu .disabled.item {
+    color: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* Иконки в пагинации */
+.ui.pagination.menu .item i.icon {
+    width: 16px;
+    height: 18px;
+    background-position: center;
+    opacity: 0.5;
+}
+
+.ui.pagination.menu .item i.left {
+    background-image: url(../img/svg/icons/icon-arrow-left.svg);
+}
+
+.ui.pagination.menu .item i.right {
+    background-image: url(../img/svg/icons/icon-arrow-right.svg);
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 640px) {
+    .ui.pagination.menu {
+        gap: 5px;
+    }
+
+    .ui.pagination.menu .item {
+        min-width: 35px;
+        height: 35px;
+        padding: 0 8px;
+        font-size: 0.85rem;
+    }
+
+    .ui.pagination.menu .item.active,
+    .ui.pagination.menu .item.prev,
+    .ui.pagination.menu .item.next {
+        display: flex;
+    }
+}
+
+/* Анимация при переходе между страницами */
+.ui.pagination.menu .item {
+    transition: transform 0.2s, background-color 0.3s, color 0.3s;
+}
+
+.ui.pagination.menu .item:active {
+    transform: scale(0.95);
+}
+
+@media (min-width: 768px) {
+    .pagination-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .pagination-info {
+        margin-bottom: 0;
+        text-align: left;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 991px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar-header h1 {
+        display: none;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+
+    .nav-item i {
+        margin-right: 0;
+        font-size: 20px;
+    }
+
+    .main-content {
+        margin-left: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .admin-header {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+
+    .header-title {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-wrapper {
+        padding: 15px;
+    }
+}
+
+/* Исправление для кнопки добавления пользователя */
+.content-header .btn-primary i.fas.fa-plus {
+    margin-right: 5px;
+}
