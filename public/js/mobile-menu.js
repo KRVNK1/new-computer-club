@@ -14,12 +14,10 @@ menuToggle.addEventListener('click', function () {
         bars[0].style.transform = 'translateY(12px) rotate(45deg)';
         bars[1].style.opacity = '0';
         bars[2].style.transform = 'translateY(-12px) rotate(-45deg)';
-        document.body.style.position = 'fixed';
     } else {
         bars[0].style.transform = 'none';
         bars[1].style.opacity = '1';
         bars[2].style.transform = 'none';
-        document.body.style.position;
 
     }
 });
@@ -35,6 +33,7 @@ navLinks.forEach(link => {
         bars[0].style.transform = 'none';
         bars[1].style.opacity = '1';
         bars[2].style.transform = 'none';
+
     });
 });
 

@@ -46,8 +46,8 @@ class ProfileController extends Controller
         }
         
         $user->save();
-        
-        return redirect()->route('profile')->with('success', 'Личная информация успешно обновлена.');
+
+        return redirect()->route('profile')->with('status', 'Личная информация успешно обновлена.');
     }
 
     /**

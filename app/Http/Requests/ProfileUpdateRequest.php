@@ -26,11 +26,11 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'phone' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'string', 'email', 'email:rfc,dns', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'phone' => ['required', 'string', 'max:11', 'min:11'],
             'current_password' => ['nullable', 'required_with:new_password', function ($value, $fail) use ($user) {
                 if (!Hash::check($value, $user->password)) {
-                    $fail('Текущий пароль указан неверно.');
+                    $fail('Текущий пароль указан неверно.'); 
                 }
             }],
             'new_password' => ['nullable', 'min:8', 'confirmed'],
@@ -44,8 +44,11 @@ class ProfileUpdateRequest extends FormRequest
             'last_name.required' => 'Поле "Фамилия" обязательно для заполнения.',
             'email.required' => 'Поле "Email" обязательно для заполнения.',
             'email.email' => 'Введите корректный email адрес.',
+            'email.rfc,dns' => 'Введите корректный домена email.',
             'email.unique' => 'Такой email уже используется.',
             'phone.required' => 'Поле "Телефон" обязательно для заполнения.',
+            'phone.min' => 'Поле "Телефон" должно содержать 11 символов.',
+            'phone.max' => 'Поле "Телефон" должно содержать 11 символов.',
         ];
     }
 }

@@ -74,6 +74,9 @@
                     <button class="dashboard-tab" data-tab="bookings">История бронирований</button>
                     <button class="dashboard-tab" data-tab="profile">Личные данные</button>
                     <button class="dashboard-tab" data-tab="security">Безопасность</button>
+                    @if (auth()->user()->role === 'admin')
+                    <button class="dashboard-tab" data-tab="security">Админ-панель</button>
+                    @endif
                 </div>
 
 

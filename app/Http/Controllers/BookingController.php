@@ -103,36 +103,4 @@ class BookingController extends Controller
         return view('booking.confirmation', compact('booking', 'hours'));
     }
 
-
-
-    // public function checkAvailability(Request $request)
-    // {
-    //     $tariffId = $request->tariff_id;
-    //     $people = $request->people;
-
-    //     $tariff = Tariff::findOrFail($tariffId);
-
-    //     if ($tariff->is_room) {
-    //         $available = Workstation::where('type', $tariff->name)
-    //             ->where('status', 'Свободно')
-    //             ->count() >= 5;
-
-    //         return response()->json([
-    //             'available' => $available,
-    //             'message' => $available ? 'VIP-комната доступна' : 'VIP-комната занята'
-    //         ]);
-    //     } else {
-    //         $availableCount = Workstation::where('type', $tariff->name)
-    //             ->where('status', 'Свободно')
-    //             ->count();
-
-    //         $available = $availableCount >= $people;
-
-    //         return response()->json([
-    //             'available' => $available,
-    //             'availableCount' => $availableCount,
-    //             'message' => $available ? "Доступно мест: $availableCount" : "Недостаточно мест. Доступно: $availableCount"
-    //         ]);
-    //     }
-    // }
 }
