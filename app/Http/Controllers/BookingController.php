@@ -17,7 +17,7 @@ class BookingController extends Controller
 
         $tariffs = Tariff::all();
 
-        // Получаем доступные рабочие станции для выбранного типа тарифа
+        // Доступные рабочие мест для выбранного тарифа
         if ($tariff->is_room) {
             $availableSpots = 5; // Для VIP комнаты - либо доступна, либо нет
         } else {
@@ -80,7 +80,7 @@ class BookingController extends Controller
         $booking->total_price = $totalPrice;
         $booking->save();
 
-        // Обновляем статус рабочих мест
+        // Обновление статуса рабочих мест
         foreach ($workstations as $workstation) {
             $workstation->status = 'Занято';
             $workstation->save();

@@ -12,11 +12,11 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-        // Статистика на вкладке обзор
+        // Статистика на вкладке Обзор
         $totalBookings = Booking::where('user_id', $user->id)->count();
         $totalHours = Booking::where('user_id', $user->id)->sum('hours');
 
-        // бронирования для вкладки История
+        // Бронирования для вкладки История
         $bookings = Booking::where('user_id', $user->id)
             ->with(['tariff', 'workstations'])
             ->orderBy('created_at', 'desc')
