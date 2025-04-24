@@ -79,18 +79,13 @@
                 </button>
 
                 <div class="auth-links">
-                    @if (Route::has('password.request'))
-                    <a class="auth-link" href="{{ route('password.request') }}">
-                        Забыли пароль?
-                    </a>
-                    @endif
 
                     <div class="auth-divider">
                         <span>или</span>
                     </div>
 
                     <a class="auth-link" href="{{ route('register') }}">
-                        Зарегистрироваться
+                        Нету аккаунта? Зарегистрироваться
                     </a>
                 </div>
             </form>
