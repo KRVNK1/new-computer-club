@@ -568,6 +568,11 @@
         min-height: 250px;
     }
 
+    .card-image {
+        width: 156px;
+        height: 156px;
+    }
+
     .card-info {
         .plan-name {
             font-size: 20px;

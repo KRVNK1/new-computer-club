@@ -237,39 +237,11 @@ body {
 
 /* Статусы */
 .status-badge {
-    padding: 10px;
+    /* padding: 10px; */
     border-radius: 20px;
     font-size: 14px;
     font-weight: 500;
     display: inline-block;
-}
-
-.status-pending {
-    background-color: #f0ad4e;
-}
-
-.status-active {
-    background-color: #5cb85c;
-}
-
-.status-completed {
-    background-color: #5bc0de;
-}
-
-.status-cancelled {
-    background-color: #d9534f;
-}
-
-.status-свободно {
-    background-color: #5cb85c;
-}
-
-.status-занято {
-    background-color: #d9534f;
-}
-
-.status-не {
-    background-color: #f0ad4e;
 }
 
 /* Уведомления */
