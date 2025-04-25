@@ -188,8 +188,8 @@ body {
 }
 
 .btn-icon {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -319,6 +319,7 @@ body {
     border-radius: 8px;
     background-color: rgb(255, 255, 255);
     color: #000000;
+    border: 1px solid black;
     font-weight: 600;
     font-size: 0.95rem;
     margin: 0;
@@ -338,6 +339,7 @@ body {
     background-color: #4a7bff;
     color: white;
     font-weight: 700;
+    border: none;
 }
 
 /* Неактивные элементы (Previous/Next когда они недоступны) */

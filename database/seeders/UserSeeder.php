@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'email' => 'admin@bk.ru',
             'password' => '12345678',
             'phone' => '89085553535',
-            'role' => 'client'
+            'role' => 'admin'
         ]);
     }
 }

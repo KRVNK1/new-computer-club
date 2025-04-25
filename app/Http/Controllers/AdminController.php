@@ -53,8 +53,7 @@ class AdminController extends Controller
         $user->password = Hash::make($validated['password']);
         $user->save();
         
-        return redirect()->route('admin.users')
-            ->with('success', 'Пользователь успешно создан');
+        return redirect()->route('admin.users')->with('success', 'Пользователь успешно создан');
     }
     
     // Редактирования пользователя
@@ -329,8 +328,7 @@ class AdminController extends Controller
             $this->assignWorkstations($booking);
         }
         
-        return redirect()->route('admin.bookings')
-            ->with('success', 'Бронирование успешно создано');
+        return redirect()->route('admin.bookings')->with('success', 'Бронирование успешно создано');
     }
     
     // Редактирование бронирования
@@ -405,8 +403,7 @@ class AdminController extends Controller
         
         $booking->delete();
         
-        return redirect()->route('admin.bookings')
-            ->with('success', 'Бронирование удалено');
+        return redirect()->route('admin.bookings')->with('success', 'Бронирование удалено');
     }
     
     // Освобождение рабочего места
