@@ -385,7 +385,7 @@ class AdminController extends Controller
             'hours' => 'required|integer|min:1|max:24',
             'people' => 'required|integer|min:1',
             'comment' => 'nullable|string',
-            'status' => 'required|in:pending,active,completed,cancelled',
+            'status' => 'required|in:active,completed,cancelled',
         ]);
 
         $oldStatus = $booking->status;

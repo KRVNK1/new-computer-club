@@ -129,7 +129,7 @@
                         
                         <div class="form-group">
                             <label for="comment">Комментарий</label>
-                            <textarea id="comment" name="comment" class="form-control" rows="3"></textarea>
+                            <textarea id="comment" name="comment" class="form-control" rows="3" value="{{ old('comment', $booking->comment) }}"></textarea>
                         </div>
                         
                         <div class="form-group">

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\Tariff;
 use App\Models\Workstation;
+use Blaspsoft\Blasp\Facades\Blasp;
 
 class BookingController extends Controller
 {
@@ -19,7 +20,9 @@ class BookingController extends Controller
 
         // Доступные рабочие мест для выбранного тарифа
         if ($tariff->is_room) {
-            $availableSpots = 5; // Для VIP комнаты - либо доступна, либо нет
+            $availableSpots =  Workstation::where('type', 'VIP')
+                ->where('status', 'Свободно')
+                ->count(); // Для VIP комнаты - либо доступна, либо нет
         } else {
             $availableSpots = Workstation::where('type', $tariff->name)
                 ->where('status', 'Свободно')
@@ -87,6 +90,13 @@ class BookingController extends Controller
             $booking->workstations()->attach($workstation->id);
         }
 
+        // Проверка на маты
+        $sentence = $validated['comment'] ?? '';
+        $blasp = Blasp::check($sentence);
+        $cleaned = $blasp->getCleanString();
+        $booking->comment = $cleaned;
+        $booking->save();
+
         return redirect()->route('booking.confirmation', $booking->id)
             ->with('success', 'Бронирование успешно создано!');
     }
@@ -102,5 +112,4 @@ class BookingController extends Controller
 
         return view('booking.confirmation', compact('booking', 'hours'));
     }
-
 }
