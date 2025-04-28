@@ -242,8 +242,8 @@
 .card-image {
     width: 100%;
     height: 100%;
-    max-width: 280px;
-    max-height: 280px;
+    max-width: 350px;
+    max-height: 350px;
     object-fit: cover;
 }
 
