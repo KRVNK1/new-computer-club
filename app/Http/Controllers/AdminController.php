@@ -269,7 +269,7 @@ class AdminController extends Controller
         $validated = $request->validate([
             'number' => 'required|string|max:255|unique:workstations,number,' . $id,
             'type' => 'required|string|max:255',
-            'status' => 'required|in:Свободно,Занято,Не работает',
+            'status' => 'required|in:Свободно,Занято',
         ]);
 
         if ($validated['type'] === 'VIP') {

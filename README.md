@@ -72,7 +72,10 @@ composer install
 2)Установить npm
 npm install
 
-2)Создать файл .env и исправить его
+3)Установить blasp
+composer require blaspsoft/blasp
+
+4)Создать файл .env и исправить его
 cp .env.example .env
 php artisan key:generate
 
@@ -91,10 +94,10 @@ DB_DATABASE=22065_computerclub
 DB_USERNAME=22065
 DB_PASSWORD=
 
-3)Сделать миграции
+5)Сделать миграции
 php artisan migrate:fresh
 
-4)Сделать сидеры
+6)Сделать сидеры
 php artisan db:seed (для создания записей в бд)
 
 ## Запуск проекта
