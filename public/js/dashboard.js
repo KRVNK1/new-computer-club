@@ -51,6 +51,7 @@ function switchTab(id) {
 hideErrors();
 
 
+// ПЕРЕДЕЛАТЬТ
 const savedTab = localStorage.getItem('activeTab');
 if (savedTab && document.getElementById(savedTab)) {
     switchTab(savedTab);
