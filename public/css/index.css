@@ -50,7 +50,7 @@
 .hero-title__main {
     position: relative;
     text-shadow: 3px 3px #732FCB;
-    text-align: center;
+    text-align: left;
     z-index: 10;
 }
 
