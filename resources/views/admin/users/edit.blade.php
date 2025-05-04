@@ -129,7 +129,7 @@
                         <div class="form-group">
                             <label for="password">Новый пароль</label>
                             <input type="password" id="password" name="password" class="form-control">
-                            <span class="help-text">Оставьте пустым, если не хотите менять пароль</ы>
+                            <span class="help-text">Оставить пустым, если не хочется менять пароль</ы>
                         </div>
                         
                         <div class="form-group">

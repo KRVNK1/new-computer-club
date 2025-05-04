@@ -100,8 +100,11 @@
                         <div class="form-group">
                             <label for="type">Тип</label>
                             <select name="type" id="type">
-                                <option value="Standart">Стандарт</option>
-                                <option value="VIP">VIP</option>
+                                @foreach ($tariffs as $tariff)
+                                <option value="{{ $tariff->name }}">{{ $tariff->name }}</option>
+                                @endforeach
+                                <!-- <option value="Standart">Стандарт</option> -->
+                                <!-- <option value="VIP">VIP</option> -->
                             </select>
                         </div>
                         

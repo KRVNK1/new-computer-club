@@ -349,6 +349,11 @@
 @media (max-width:768px) {
 
     /* Главная страница */
+
+    .hero-title__main {
+        text-align: center;
+    }
+
     /* Футер */
     .footer-content {
         display: grid;

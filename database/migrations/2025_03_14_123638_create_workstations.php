@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('number')->unique();
             $table->enum('status', ['Свободно', 'Занято'])->default('Свободно');
-            $table->enum('type', ['Standart', 'VIP']);
+            $table->string('type');
             $table->timestamps();
         });
     }
