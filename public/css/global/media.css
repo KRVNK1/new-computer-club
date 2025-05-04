@@ -453,6 +453,12 @@
     }
 }
 
+@media (max-width:580px) {
+    .hero-title__main {
+        text-align: center;
+    }
+}
+
 @media (max-width:480px) {
     /* Шапка */
 

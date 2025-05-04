@@ -41,7 +41,7 @@ class AdminController extends Controller
             'login' => 'required|string|max:45',
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:20',
-            'role' => 'required|in:user,admin',
+            'role' => 'required|in:client,admin',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
@@ -269,7 +269,7 @@ class AdminController extends Controller
         $validated = $request->validate([
             'number' => 'required|string|max:255|unique:workstations,number,' . $id,
             'type' => 'required|string|max:255',
-            'status' => 'required|in:Свободно,Занято,Не работает',
+            'status' => 'required|in:Свободно,Занято',
         ]);
 
         if ($validated['type'] === 'VIP') {
