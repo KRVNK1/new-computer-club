@@ -92,11 +92,15 @@ class BookingController extends Controller
 
         // Проверка на маты
         $sentence = $validated['comment'] ?? '';
-        $blasp = Blasp::check($sentence);
-        $cleaned = $blasp->getCleanString();
-        $booking->comment = $cleaned;
-        $booking->save();
-
+        if(!empty($sentence)) {
+            $blasp = Blasp::check($sentence);
+            $cleaned = $blasp->getCleanString();
+            $booking->comment = $cleaned;
+            $booking->save();
+        } else {
+            $booking->save();
+        }
+       
         return redirect()->route('booking.confirmation', $booking->id)
             ->with('success', 'Бронирование успешно создано!');
     }
