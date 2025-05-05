@@ -8,6 +8,7 @@ use App\Models\WorkStation;
 
 class WorkstationSeeder extends Seeder
 {
+    // Создание рабочих мест
     public function run()
     {
         // Создаем 5 станций типа Standart

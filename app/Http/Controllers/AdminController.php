@@ -11,7 +11,7 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-
+    // Показ админ-панели
     public function index()
     {
         return redirect()->route('admin.users');
@@ -26,7 +26,7 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('users', 'activeTab'));
     }
 
-    // Создание пользователя
+    // Создание пользователя(представление)
     public function createUser()
     {
         return view('admin.users.create');
@@ -45,6 +45,7 @@ class AdminController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
+        // Создание пользователя
         $user = new User();
         $user->first_name = $validated['first_name'];
         $user->last_name = $validated['last_name'];
@@ -87,14 +88,14 @@ class AdminController extends Controller
         $user->phone = $validated['phone'];
         $user->role = $validated['role'];
 
+        // Если пароль указан, то создается новый пароль
         if (!empty($validated['password'])) {
             $user->password = Hash::make($validated['password']);
         }
 
         $user->save();
 
-        return redirect()->route('admin.users')
-            ->with('success', 'Данные пользователя обновлены');
+        return redirect()->route('admin.users')->with('success', 'Данные пользователя обновлены');
     }
 
     // Удаление пользователя
@@ -115,7 +116,7 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('tariffs', 'activeTab'));
     }
 
-    // Создание тарифа
+    // Создание тарифа(представление)
     public function createTariff()
     {
         return view('admin.tariffs.create');
@@ -131,6 +132,7 @@ class AdminController extends Controller
             'image' => 'nullable|image|max:2048',
         ]);
 
+        // Создание тарифа
         $tariff = new Tariff();
         $tariff->name = $validated['name'];
         $tariff->price_per_hour = $validated['price_per_hour'];
@@ -139,11 +141,11 @@ class AdminController extends Controller
         // Обработка загрузки изображения
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('/img/tariffs'), $imageName);
+            $imageName = time() . '.' . $image->getClientOriginalExtension(); // Название файла для картинки через time - счет по секундам с 1 января 1970 года, и указание типа картинки через функцию
+            $image->move(public_path('/img/tariffs'), $imageName); // Перенос картинки в img/tariffs
             $tariff->image = '/img/tariffs/' . $imageName;
         } else {
-            $tariff->image = '/img/tariffs/default.png';
+            $tariff->image = '/img/tariffs/pc2.png'; // если картинка не загружена берется стандартная картинка
         }
 
         $tariff->save();
@@ -151,7 +153,7 @@ class AdminController extends Controller
         return redirect()->route('admin.tariffs')->with('success', 'Тариф успешно создан');
     }
 
-    // Редактирование тарифа
+    // Редактирование тарифа(представление)
     public function editTariff($id)
     {
         $tariff = Tariff::findOrFail($id);
@@ -178,7 +180,7 @@ class AdminController extends Controller
         if ($request->hasFile('image')) {
             // Удаляем старое изображение, если оно не дефолтное
             if ($tariff->image != 'img/tariffs/default.png' && file_exists(public_path($tariff->image))) {
-                unlink(public_path($tariff->image));
+                unlink(public_path($tariff->image)); // удаление файла с сервера через unlink по пути
             }
 
             $image = $request->file('image');
@@ -189,8 +191,7 @@ class AdminController extends Controller
 
         $tariff->save();
 
-        return redirect()->route('admin.tariffs')
-            ->with('success', 'Данные тарифа обновлены');
+        return redirect()->route('admin.tariffs')->with('success', 'Данные тарифа обновлены');
     }
 
     // Удаление тарифа
@@ -205,8 +206,7 @@ class AdminController extends Controller
 
         $tariff->delete();
 
-        return redirect()->route('admin.tariffs')
-            ->with('success', 'Тариф удален');
+        return redirect()->route('admin.tariffs')->with('success', 'Тариф удален');
     }
 
     // Список рабочих мест
@@ -218,14 +218,14 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('workstations', 'activeTab'));
     }
 
-    // Создание рабочих мест
+    // Создание рабочих мест(представление)
     public function createWorkstation()
     {
         $tariffs = Tariff::all();
         return view('admin.workstations.create', compact('tariffs'));
     }
 
-    // Создание+сохранение рабочего места
+    // Сохранение рабочего места
     public function storeWorkstation(Request $request)
     {
         $validated = $request->validate([
@@ -234,9 +234,11 @@ class AdminController extends Controller
             'status' => 'required|in:Свободно,Занято,Не работает',
         ]);
 
+        // Проверка по типу VIP, если да, то проверка на кол-во рабочих мест данного типа
         if ($validated['type'] === 'VIP') {
             $vipCount = Workstation::where('type', 'VIP')->count();
 
+            // Сохранение введеных данных в представлении(сессии) и выводом ошибки 
             if ($vipCount >= 5) {
                 return back()->withInput()->withErrors([
                     'type' => 'Нельзя создать более 5 рабочих мест типа VIP'
@@ -272,9 +274,11 @@ class AdminController extends Controller
             'status' => 'required|in:Свободно,Занято',
         ]);
 
+        // Проверка по типу VIP, если да, то проверка на кол-во рабочих мест данного типа
         if ($validated['type'] === 'VIP') {
             $vipCount = Workstation::where('type', 'VIP')->count();
 
+            // Сохранение введеных данных в представлении(сессии) и выводом ошибки 
             if ($vipCount >= 5) {
                 return back()->withInput()->withErrors([
                     'type' => 'Нельзя создать более 5 рабочих мест типа VIP'
@@ -312,16 +316,7 @@ class AdminController extends Controller
     public function createBooking()
     {
         $users = User::all();
-
         $tariffs = Tariff::all();
-
-        // // Доступные рабочие мест для выбранного тарифа
-        // foreach ($tariffs as $tariff) {
-        //     $availableSpots = Workstation::where('type', $tariff->name === 'VIP')
-        //         ->where('status', 'Свободно')
-        //         ->count();
-        // }
-
 
         return view('admin.bookings.create', compact('users', 'tariffs', /*'availableSpots'*/));
     }
@@ -347,6 +342,7 @@ class AdminController extends Controller
             $totalPrice = $tariff->price_per_hour * $validated['hours'] * $validated['people'];
         }
 
+        // Создание бронирования
         $booking = new Booking();
         $booking->user_id = $validated['user_id'];
         $booking->tariff_id = $validated['tariff_id'];
@@ -388,8 +384,8 @@ class AdminController extends Controller
             'status' => 'required|in:active,completed,cancelled',
         ]);
 
-        $oldStatus = $booking->status;
-        $newStatus = $validated['status'];
+        $oldStatus = $booking->status; // Получение статуса из бронирования
+        $newStatus = $validated['status']; // Присвоение нового статуса
 
         $tariff = Tariff::findOrFail($validated['tariff_id']);
 
@@ -412,6 +408,7 @@ class AdminController extends Controller
         // Обработка изменения статуса
         if ($oldStatus !== $newStatus) {
             // Если новый статус "completed" или "cancelled", освобождаем рабочие места
+            // Проверка, есть ли данное значение в массиве
             if (in_array($newStatus, ['completed', 'cancelled'])) {
                 $this->releaseWorkstations($booking);
             }
@@ -421,8 +418,7 @@ class AdminController extends Controller
             }
         }
 
-        return redirect()->route('admin.bookings')
-            ->with('success', 'Данные бронирования обновлены');
+        return redirect()->route('admin.bookings')->with('success', 'Данные бронирования обновлены');
     }
 
     // Удаление бронирования

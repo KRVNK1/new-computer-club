@@ -8,9 +8,7 @@ use App\Models\User;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    // Создание админа
     public function run(): void
     {
         User::create([

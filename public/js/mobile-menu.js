@@ -1,7 +1,7 @@
 const menuToggle = document.querySelector('.nav-menu-toggle');
 const navigation = document.querySelector('.navigation');
 
-
+// Клик на мобильное меню
 menuToggle.addEventListener('click', function () {
 
     navigation.classList.toggle('active');
@@ -38,7 +38,7 @@ navLinks.forEach(link => {
     });
 });
 
-// Закрываем меню при изменении размера окна (если оно становится больше 991px)
+// Закрытие меню при изменении размера окна (если оно становится больше 991px)
 window.addEventListener('resize', function () {
     if (window.innerWidth > 991) {
         navigation.classList.remove('active');

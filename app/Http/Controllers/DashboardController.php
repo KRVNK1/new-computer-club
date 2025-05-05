@@ -8,6 +8,7 @@ use App\Models\Booking;
 
 class DashboardController extends Controller
 {
+    // Личный кабинет
     public function index()
     {
         $user = Auth::user();

@@ -8,9 +8,7 @@ use App\Models\Tariff;
 
 class TariffSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+    // Создание тарифов
     public function run(): void
     {
         Tariff::create([

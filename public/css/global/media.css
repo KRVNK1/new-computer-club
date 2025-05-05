@@ -571,6 +571,7 @@
     }
 
     .pricing-grid {
+        flex-wrap: nowrap;
         justify-content: center;
     }
 

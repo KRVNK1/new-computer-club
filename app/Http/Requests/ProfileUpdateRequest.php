@@ -14,11 +14,8 @@ class ProfileUpdateRequest extends FormRequest
     {
         return true;
     }
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
+    
+    // Правила для изменения личных данных
     public function rules(): array
     {
         $user = Auth::user();
@@ -37,6 +34,7 @@ class ProfileUpdateRequest extends FormRequest
         ];
     }
 
+    // Ошибки для неверных данных
     public function messages()
     {
         return [

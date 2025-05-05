@@ -123,7 +123,6 @@
                         
                         <div class="form-group">
                             <label for="people">Количество человек</label>
-                            <!-- <span></span> $availablespots -->
                             <input type="number" id="people" name="people" class="form-control" min="1" max="{{ $maxPeople ?? 5 }}" required>
                         </div>
                         

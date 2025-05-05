@@ -12,6 +12,7 @@ use Blaspsoft\Blasp\Facades\Blasp;
 
 class BookingController extends Controller
 {
+    // Страница бронирования
     public function show($tariffId)
     {
         $tariff = Tariff::findOrFail($tariffId);
@@ -35,6 +36,7 @@ class BookingController extends Controller
         return view('booking.show', compact('tariff', 'tariffs', 'availableSpots', 'maxPeople'));
     }
 
+    // Сохранение бронирования
     public function store(Request $request, $tariffId)
     {
         $validated = $request->validate([
@@ -101,10 +103,10 @@ class BookingController extends Controller
             $booking->save();
         }
        
-        return redirect()->route('booking.confirmation', $booking->id)
-            ->with('success', 'Бронирование успешно создано!');
+        return redirect()->route('booking.confirmation', $booking->id)->with('success', 'Бронирование успешно создано!');
     }
 
+    // Страница подтверждения
     public function confirmation($bookingId)
     {
         $booking = Booking::with(['tariff', 'workstations', 'user'])->findOrFail($bookingId);
