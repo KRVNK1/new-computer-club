@@ -138,6 +138,7 @@ html {
     text-decoration: none;
     color: inherit;
     font-family: inherit;
+    font-weight: 600;
 }
 
 .nav-menu-toggle {

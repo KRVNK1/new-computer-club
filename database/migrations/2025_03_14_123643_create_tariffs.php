@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('price_per_hour');
             $table->boolean('is_room'); // true для VIP (бронируется целиком)
             $table->string('image')->nullable();
-            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

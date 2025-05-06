@@ -53,6 +53,7 @@ body {
 }
 
 .nav-item i {
+    display: flex;
     margin-right: 15px;
     font-size: 18px;
 }
@@ -136,6 +137,8 @@ body {
 
 /* Таблица */
 .table-responsive {
+    background-color: white;
+    border-radius: 10px;
     overflow-x: auto;
     margin-bottom: 20px;
 }
@@ -149,6 +152,7 @@ body {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
 }
 
 .admin-table th {
@@ -251,7 +255,7 @@ body {
 .pagination {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 /* Пагинация */
@@ -274,7 +278,7 @@ body {
     border-radius: 8px;
     background-color: rgb(255, 255, 255);
     color: #000000;
-    border: 1px solid black;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
     font-weight: 600;
     font-size: 0.95rem;
     margin: 0;

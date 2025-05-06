@@ -306,7 +306,7 @@
 
                                 <div class="form-group">
                                     <label for="current_password">Текущий пароль</label>
-                                    <input type="password" id="current_password" name="current_password" class="form-control">
+                                    <input type="password" id="current_password" name="current_password" autocomplete="new-password" class="form-control">
                                 </div>
 
                                 <div class="form-group">

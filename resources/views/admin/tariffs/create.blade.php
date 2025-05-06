@@ -14,37 +14,49 @@
             <div class="sidebar-header">
                 <h1>COMPUTER CLUB</h1>
             </div>
-            
+
             <nav class="sidebar-nav">
                 <a href="{{ route('admin.users') }}" class="nav-item">
-                    <i class="fas fa-users"></i>
+                    <i class="icon-user">
+                        <img src="{{ asset('img/admin/Users.svg') }}" alt="Пользователи">
+                    </i>
                     <span>ПОЛЬЗОВАТЕЛИ</span>
                 </a>
-                
+
                 <a href="{{ route('admin.tariffs') }}" class="nav-item active">
-                    <i class="fas fa-tags"></i>
+                    <i class="icon-tariffs">
+                        <img src="{{ asset('img/admin/Tariffs.svg') }}" alt="Тарифы">
+                    </i>
                     <span>ТАРИФЫ</span>
                 </a>
-                
+
                 <a href="{{ route('admin.workstations') }}" class="nav-item">
-                    <i class="fas fa-desktop"></i>
+                    <i class="icon-tariffs">
+                        <img src="{{ asset('img/admin/WorkStations.svg') }}" alt="Рабочие места">
+                    </i>
                     <span>РАБОЧИЕ МЕСТА</span>
                 </a>
-                
+
                 <a href="{{ route('admin.bookings') }}" class="nav-item">
-                    <i class="fas fa-calendar-check"></i>
+                    <i class="icon-booking">
+                        <img src="{{ asset('img/admin/Booking.svg') }}" alt="Бронирование">
+                    </i>
                     <span>БРОНИРОВАНИЯ</span>
                 </a>
             </nav>
-            
+
             <div class="sidebar-footer">
                 <a href="{{ route('index') }}" class="nav-item">
-                    <i class="fas fa-home"></i>
+                    <i class="icon-home">
+                        <img src="{{ asset('img/admin/Home.svg') }}" alt="Бронирование">
+                    </i>
                     <span>На сайт</span>
                 </a>
-                
+
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-item">
-                    <i class="fas fa-sign-out-alt"></i>
+                    <i class="icon-logout">
+                        <img src="{{ asset('img/admin/Logout.svg') }}" alt="Бронирование">
+                    </i>
                     <span>Выход</span>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

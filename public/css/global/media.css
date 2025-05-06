@@ -389,6 +389,10 @@
 
     /* Страница бронирования */
 
+    input[type = number] {
+        padding-left: 0px;
+    }
+
     .booking-container {
         flex-direction: column;
     }
