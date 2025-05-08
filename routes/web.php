@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TariffController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', [TariffController::class, 'index'])->name('home');
 
@@ -25,39 +26,39 @@ Route::middleware(['auth'])->group(function () {
 // prefix - для пути в адресной строке, name для названия представления
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     // Главная страница админ-панели
-    Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('index');
+    Route::get('/', [AdminController::class, 'index'])->name('index');
 
     // Управление пользователями
-    Route::get('/users', [App\Http\Controllers\AdminController::class, 'users'])->name('users');
-    Route::get('/users/create', [App\Http\Controllers\AdminController::class, 'createUser'])->name('users.create');
-    Route::post('/users', [App\Http\Controllers\AdminController::class, 'storeUser'])->name('users.store');
-    Route::get('/users/{id}/edit', [App\Http\Controllers\AdminController::class, 'editUser'])->name('users.edit');
-    Route::put('/users/{id}', [App\Http\Controllers\AdminController::class, 'updateUser'])->name('users.update');
-    Route::delete('/users/{id}', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('users.delete');
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/users/create', [AdminController::class, 'createUser'])->name('users.create');
+    Route::post('/users', [AdminController::class, 'storeUser'])->name('users.store');
+    Route::get('/users/{id}/edit', [AdminController::class, 'editUser'])->name('users.edit');
+    Route::put('/users/{id}', [AdminController::class, 'updateUser'])->name('users.update');
+    Route::delete('/users/{id}', [AdminController::class, 'deleteUser'])->name('users.delete');
 
     // Управление тарифами
-    Route::get('/tariffs', [App\Http\Controllers\AdminController::class, 'tariffs'])->name('tariffs');
-    Route::get('/tariffs/create', [App\Http\Controllers\AdminController::class, 'createTariff'])->name('tariffs.create');
-    Route::post('/tariffs', [App\Http\Controllers\AdminController::class, 'storeTariff'])->name('tariffs.store');
-    Route::get('/tariffs/{id}/edit', [App\Http\Controllers\AdminController::class, 'editTariff'])->name('tariffs.edit');
-    Route::put('/tariffs/{id}', [App\Http\Controllers\AdminController::class, 'updateTariff'])->name('tariffs.update');
-    Route::delete('/tariffs/{id}', [App\Http\Controllers\AdminController::class, 'deleteTariff'])->name('tariffs.delete');
+    Route::get('/tariffs', [AdminController::class, 'tariffs'])->name('tariffs');
+    Route::get('/tariffs/create', [AdminController::class, 'createTariff'])->name('tariffs.create');
+    Route::post('/tariffs', [AdminController::class, 'storeTariff'])->name('tariffs.store');
+    Route::get('/tariffs/{id}/edit', [AdminController::class, 'editTariff'])->name('tariffs.edit');
+    Route::put('/tariffs/{id}', [AdminController::class, 'updateTariff'])->name('tariffs.update');
+    Route::delete('/tariffs/{id}', [AdminController::class, 'deleteTariff'])->name('tariffs.delete');
 
     // Управление рабочими местами
-    Route::get('/workstations', [App\Http\Controllers\AdminController::class, 'workstations'])->name('workstations');
-    Route::get('/workstations/create', [App\Http\Controllers\AdminController::class, 'createWorkstation'])->name('workstations.create');
-    Route::post('/workstations', [App\Http\Controllers\AdminController::class, 'storeWorkstation'])->name('workstations.store');
-    Route::get('/workstations/{id}/edit', [App\Http\Controllers\AdminController::class, 'editWorkstation'])->name('workstations.edit');
-    Route::put('/workstations/{id}', [App\Http\Controllers\AdminController::class, 'updateWorkstation'])->name('workstations.update');
-    Route::delete('/workstations/{id}', [App\Http\Controllers\AdminController::class, 'deleteWorkstation'])->name('workstations.delete');
+    Route::get('/workstations', [AdminController::class, 'workstations'])->name('workstations');
+    Route::get('/workstations/create', [AdminController::class, 'createWorkstation'])->name('workstations.create');
+    Route::post('/workstations', [AdminController::class, 'storeWorkstation'])->name('workstations.store');
+    Route::get('/workstations/{id}/edit', [AdminController::class, 'editWorkstation'])->name('workstations.edit');
+    Route::put('/workstations/{id}', [AdminController::class, 'updateWorkstation'])->name('workstations.update');
+    Route::delete('/workstations/{id}', [AdminController::class, 'deleteWorkstation'])->name('workstations.delete');
 
     // Управление бронированиями
-    Route::get('/bookings', [App\Http\Controllers\AdminController::class, 'bookings'])->name('bookings');
-    Route::get('/bookings/create', [App\Http\Controllers\AdminController::class, 'createBooking'])->name('bookings.create');
-    Route::post('/bookings', [App\Http\Controllers\AdminController::class, 'storeBooking'])->name('bookings.store');
-    Route::get('/bookings/{id}/edit', [App\Http\Controllers\AdminController::class, 'editBooking'])->name('bookings.edit');
-    Route::put('/bookings/{id}', [App\Http\Controllers\AdminController::class, 'updateBooking'])->name('bookings.update');
-    Route::delete('/bookings/{id}', [App\Http\Controllers\AdminController::class, 'deleteBooking'])->name('bookings.delete');
+    Route::get('/bookings', [AdminController::class, 'bookings'])->name('bookings');
+    Route::get('/bookings/create', [AdminController::class, 'createBooking'])->name('bookings.create');
+    Route::post('/bookings', [AdminController::class, 'storeBooking'])->name('bookings.store');
+    Route::get('/bookings/{id}/edit', [AdminController::class, 'editBooking'])->name('bookings.edit');
+    Route::put('/bookings/{id}', [AdminController::class, 'updateBooking'])->name('bookings.update');
+    Route::delete('/bookings/{id}', [AdminController::class, 'deleteBooking'])->name('bookings.delete');
 });
 
 require __DIR__ . '/auth.php';
