@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id(); 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('tariff_id')->constrained()->onDelete('cascade');
-            $table->integer('hours')->nullable();
-            $table->integer('people')->nullable();
+            $table->integer('hours');
+            $table->integer('people');
             $table->string('comment');
             $table->decimal('total_price', 10, 2);
             $table->enum('status', ['active', 'completed', 'cancelled'])->default('active');
