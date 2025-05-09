@@ -27,28 +27,28 @@ dashboardTabs.forEach((button, index) => {
 // Скрытие уведомлений об ошибках
 hideErrors();
 
+// Для кнопок в личном кабинете "Все бронирования" и "Редактировать"
+function switchTab(id) {
 
-// function switchTab(id) {
+    tabContents.forEach(content => {
+        content.classList.remove('active');
+    });
 
-//     tabContents.forEach(content => {
-//         content.classList.remove('active');
-//     });
+    dashboardTabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
 
-//     dashboardTabs.forEach(tab => {
-//         tab.classList.remove('active');
-//     });
+    const targetTab = document.getElementById(id);
+    if (targetTab) {
+        targetTab.classList.add('active');
+    }
 
-//     const targetTab = document.getElementById(id);
-//     if (targetTab) {
-//         targetTab.classList.add('active');
-//     }
-
-//     dashboardTabs.forEach(tab => {
-//         if (tab.dataset.tab === id) {
-//             tab.classList.add('active');
-//         }
-//     });
-// }
+    dashboardTabs.forEach(tab => {
+        if (tab.dataset.tab === id) {
+            tab.classList.add('active');
+        }
+    });
+}
 
 
 

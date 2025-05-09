@@ -16,6 +16,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        // return redirect()->route('index')->with('error', 'У вас нет прав для доступа к этой странице.');
+        return redirect()->route('index')->with('error', 'У вас нет прав для доступа к этой странице.');
     }
 }
