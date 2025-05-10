@@ -41,8 +41,7 @@
         </header>
 
         <section class="hero-section fade-in">
-            <img src="{{ asset ('/img/background/background-main.png') }} "
-                class="background-image" alt="Hero Background">
+            <img src="{{ asset ('/img/background/background-main.png') }}" class="background-image" alt="Hero Background">
             <div class="hero-content">
                 <div class="hero-text">
                     <h2 class="hero-subtitle">
@@ -66,21 +65,17 @@
         </section>
 
         <section id="gallery" class="gallery-section fade-in">
-            <img src="{{ asset ('/img/background/background-photo.png') }}"
-                class="background-image" alt="Gallery Background">
+            <img src="{{ asset ('/img/background/background-photo.png') }}" class="background-image" alt="Gallery Background">
             <div class="gallery-content" data-el="div-2">
                 <div class="gallery-container">
                     <div class="gallery-item">
-                        <img src="{{ asset ('/img/gallery/item1.png') }}"
-                            class="gallery-image" alt="Gaming Setup 1">
+                        <img src="{{ asset ('/img/gallery/item1.png') }}" class="gallery-image" alt="Gaming Setup 1">
                     </div>
                     <div class="gallery-item">
-                        <img src="{{ asset ('/img/gallery/item3.png') }}"
-                            class="gallery-image" alt="Gaming Setup 3">
+                        <img src="{{ asset ('/img/gallery/item3.png') }}" class="gallery-image" alt="Gaming Setup 3">
                     </div>
                     <div class="gallery-item">
-                        <img src="{{ asset ('/img/gallery/item2.png') }}"
-                            class="gallery-image" alt="Gaming Setup 2">
+                        <img src="{{ asset ('/img/gallery/item2.png') }}" class="gallery-image" alt="Gaming Setup 2">
                     </div>
 
                 </div>
@@ -88,24 +83,21 @@
         </section>
 
         <section id="tariffs" class="tariff-section fade-in">
-            <img src="{{ asset ('/img/background/background-tariffs.png') }}"
-                class="background-image" alt="Hero Background">
+            <img src="{{ asset ('/img/background/background-tariffs.png') }}" class="background-image" alt="Hero Background">
             <div class="tariff-content">
                 <div class="section-tariff-header">
                     <h2 class="section-title-highlight">ТАРИФЫ</h2>
                 </div>
                 <div class="pricing-grid">
+
                     @foreach($tariffs as $tariff)
                     <article class="pricing-card">
                         <div class="card-image-container">
-                            <img
-                                src="{{ asset($tariff->image) }}"
-                                alt="{{ $tariff->name }} Plan"
-                                class="card-image" />
+                            <img src="{{ asset($tariff->image) }}" alt="{{ $tariff->name }} Plan" class="card-image" />
                         </div>
                         <div class="card-content">
                             <div class="card-info">
-                                <h2 class="plan-name">{{ strtoupper($tariff->name) }}</h2>
+                                <h2 class="plan-name">{{ ($tariff->name) }}</h2>
                                 <p class="plan-price">{{ $tariff->price_per_hour * 24 }} руб/сутки</p>
                                 <p class="plan-price">{{ $tariff->price_per_hour }} руб/час</p>
                             </div>
@@ -118,12 +110,10 @@
 
                 </div>
             </div>
-
         </section>
 
         <section id="specs" class="specs-section fade-in">
-            <img src="{{ asset ('/img/background/background-specs.png') }}"
-                class="background-image" alt="Specs Background">
+            <img src="{{ asset ('/img/background/background-specs.png') }}" class="background-image" alt="Specs Background">
             <div class="specs-content">
                 <div class="section-title-container">
                     <h2 class="specs-title" data-text="КОМПЛЕКТУЮЩИЕ">КОМПЛЕКТУЮЩИЕ</h2>
@@ -218,7 +208,7 @@
                         </div>
                     </div>
                 </div>
-              
+
                 <div class="specs-columns fade-in">
                     <div class="specs-column">
                         <div class="specs-card">
@@ -309,15 +299,13 @@
         </section>
 
         <section class="map-section fade-in" id="map">
-            <img src="{{ asset ('/img/background/background-map.png') }}"
-                class="background-image" alt="Map Background">
+            <img src="{{ asset ('/img/background/background-map.png') }}" class="background-image" alt="Map Background">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.286145079853!2d104.33602099191262!3d52.25634870326969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5da83c78d0d719df%3A0xa314048ed68d1175!2z0JHQsNC50LrQsNC70YzRgdC60LDRjyDRg9C7Liwg0JjRgNC60YPRgtGB0LosINCY0YDQutGD0YLRgdC60LDRjyDQvtCx0LsuLCA2NjQwNzU!5e0!3m2!1sru!2sru!4v1742996734020!5m2!1sru!2sru"
                 width="1080" height="770" style="border:1px solid; z-index: 10; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
 
         <footer class="footer">
-            <img src="{{ asset ('/img/background/background-footer.png') }}"
-                class="background-image" alt="Footer Background">
+            <img src="{{ asset ('/img/background/background-footer.png') }}" class="background-image" alt="Footer Background">
             <div class="footer-content">
                 <div class="footer-logo-container">
                     <a href="#">

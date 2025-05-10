@@ -139,22 +139,20 @@
     <script>
         const basePrice = "{{ $tariff -> price_per_hour }}";
         const isRoom = "{{ $tariff -> is_room ? 'true' : 'false' }}";
-
         const type = "{{ $tariff -> name }}";
 
         const currentPeople = document.getElementById("people");
         const hoursInput = document.getElementById("hours");
-        if (type == 'VIP') {
-            document.querySelector('#people-field').style = 'display:none;'
-        }
-
         const maxPeople = Number.parseInt(document.getElementById("people").getAttribute("max"));
 
         const btnMinusPeople = document.querySelector("#btn-minus-people");
         const btnPlusPeople = document.querySelector("#btn-plus-people");
-
         const btnMinusHours = document.querySelector("#btn-minus-hours");
         const btnPlusHours = document.querySelector("#btn-plus-hours");
+
+        if (type == 'VIP') {
+            document.querySelector('#people-field').style = 'display:none;'
+        }
 
         btnMinusPeople.addEventListener('click', () => {
             decrementPeople();
@@ -172,6 +170,7 @@
             incrementHours();
         })
 
+        // Увеличение кол-ва человек
         function incrementPeople() {
             const currentPeopleValue = parseInt(currentPeople.value);
             if (currentPeopleValue < maxPeople) {
@@ -180,6 +179,7 @@
             }
         }
 
+        // Уменьшение кол-ва человек
         function decrementPeople() {
             const currentPeopleValue = parseInt(currentPeople.value);
             if (currentPeopleValue > 1) {
@@ -188,6 +188,7 @@
             }
         }
 
+        // Увеличение кол-ва часов
         function incrementHours() {
             const currentHoursValue = Number.parseInt(hoursInput.value)
             if (currentHoursValue < 24) {
@@ -196,6 +197,7 @@
             }
         }
 
+        // Уменьшение кол-ва часов
         function decrementHours() {
             const currentHoursValue = Number.parseInt(hoursInput.value)
             if (currentHoursValue > 1) {
