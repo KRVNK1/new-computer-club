@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\Tariff;
 use App\Models\Workstation;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -63,13 +64,15 @@ class AdminController extends Controller
     public function editUser($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.users.edit', compact('user'));
+        $isCurrentUser = Auth::id() == $user->id;
+        return view('admin.users.edit', compact('user', 'isCurrentUser'));
     }
 
     // Обновление данных пользователя
     public function updateUser(Request $request, $id)
     {
         $user = User::findOrFail($id);
+        $isCurrentUser = Auth::id() == $user->id;
 
         $validated = $request->validate([
             'first_name' => 'required|string|max:45',

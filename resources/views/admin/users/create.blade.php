@@ -37,7 +37,7 @@
                     <span>РАБОЧИЕ МЕСТА</span>
                 </a>
 
-                <a href="{{ route('admin.bookings') }}" class="nav-item active">
+                <a href="{{ route('admin.bookings') }}" class="nav-item">
                     <i class="icon-booking">
                         <img src="{{ asset('img/admin/Booking.svg') }}" alt="Бронирование">
                     </i>
