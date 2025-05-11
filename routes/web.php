@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/booking/confirmation/{booking}', [BookingController::class, 'confirmation'])->name('booking.confirmation');
 
     // Личный кабинет
-    Route::get('/profile', [DashboardController::class, 'index'])->name('profile');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 });
