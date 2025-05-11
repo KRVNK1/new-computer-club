@@ -72,13 +72,20 @@ class BookingController extends Controller
             $totalPrice = $tariff->price_per_hour * $hours * $validated['people'];
         }
 
+         // Проверка на маты
+         $comment = $validated['comment'] ?? '';
+         if (!empty($comment)) {
+             $blasp = Blasp::check($comment);
+             $comment = $blasp->getCleanString();
+         }
+
         // Создание бронирования
         $booking = new Booking();
         $booking->user_id = Auth::id();
         $booking->tariff_id = $tariff->id;
         $booking->hours = $validated['hours'];
         $booking->people = $validated['people'];
-        $booking->comment = $validated['comment'] ?? '';
+        $booking->comment = $comment;
         $booking->total_price = $totalPrice;
         $booking->save();
 
@@ -89,17 +96,6 @@ class BookingController extends Controller
             $booking->workstations()->attach($workstation->id);
         }
 
-        // Проверка на маты
-        $sentence = $validated['comment'] ?? '';
-        if(!empty($sentence)) {
-            $blasp = Blasp::check($sentence);
-            $cleaned = $blasp->getCleanString();
-            $booking->comment = $cleaned;
-            $booking->save();
-        } else {
-            $booking->save();
-        }
-       
         return redirect()->route('booking.confirmation', $booking->id)->with('success', 'Бронирование успешно создано!');
     }
 
