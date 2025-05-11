@@ -11,7 +11,7 @@ class WorkstationSeeder extends Seeder
     // Создание рабочих мест
     public function run()
     {
-        // Создаем 5 станций типа Standart
+        // Создаем 10 рабочих мест типа Standart
         for ($i = 1; $i <= 10; $i++) {
             Workstation::create([
                 'number' => $i,
@@ -20,7 +20,7 @@ class WorkstationSeeder extends Seeder
             ]);
         }
            
-        // Создаем 5 станции типа VIP
+        // Создаем 5 рабочих мест типа VIP
         for ($i = 11; $i <= 15; $i++) {
             Workstation::create([
                 'number' => $i,
