@@ -16,8 +16,6 @@ class BookingController extends Controller
     {
         $tariff = Tariff::findOrFail($tariffId);
 
-        $tariffs = Tariff::all();
-
         // Доступные рабочие мест для выбранного тарифа
         if ($tariff->is_room) {
             $availableSpots =  Workstation::where('type', 'VIP')
@@ -32,7 +30,7 @@ class BookingController extends Controller
         // Количество доступных мест
         $maxPeople = $tariff->is_room ? 5 : $availableSpots;
 
-        return view('booking.show', compact('tariff', 'tariffs', 'availableSpots', 'maxPeople'));
+        return view('booking.show', compact('tariff', 'availableSpots', 'maxPeople'));
     }
 
     // Сохранение бронирования

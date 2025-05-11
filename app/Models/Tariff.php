@@ -12,7 +12,6 @@ class Tariff extends Model
         'price_per_hour',
         'is_room',
         'image',
-        'description',
     ];
     
     public function bookings()
