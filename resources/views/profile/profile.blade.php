@@ -205,7 +205,7 @@
                                         <div class="booking-meta">
                                             <span>
                                                 <i class="icon-clock"></i>
-                                                {{ $totalHours }} часов
+                                                {{ $booking->hours }} часов
                                             </span>
                                             <span>
                                                 <i class="icon-users"></i>
