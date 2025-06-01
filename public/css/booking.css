@@ -1,4 +1,4 @@
-input[type = number] {
+input[type=number] {
     padding-left: 15px;
 }
 
@@ -97,7 +97,8 @@ input[type = number] {
     border: 1px solid;
 }
 
-.btn-plus, .btn-minus {
+.btn-plus,
+.btn-minus {
     width: 40px;
     height: 40px;
     background-color: #F4EBFF;
@@ -254,7 +255,8 @@ input[type = number] {
     margin-top: 30px;
 }
 
-.btn-home, .btn-dashboard {
+.btn-home,
+.btn-dashboard {
     display: inline-block;
     padding: 12px 25px;
     background-color: #4a7bff;
@@ -265,6 +267,7 @@ input[type = number] {
     transition: background-color 0.3s;
 }
 
-.btn-home:hover, .btn-dashboard:hover {
+.btn-home:hover,
+.btn-dashboard:hover {
     background-color: #3a6ae6;
 }

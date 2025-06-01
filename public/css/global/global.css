@@ -56,6 +56,18 @@ html {
     object-position: center;
 }
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Шапка */
 
 .header {
@@ -94,12 +106,10 @@ html {
 }
 
 .logo {
-    aspect-ratio: 1.14;
     object-fit: contain;
     object-position: center;
     width: 105px;
     border-radius: 5px;
-    flex-shrink: 0;
     max-width: 100%;
 }
 
@@ -110,7 +120,6 @@ html {
     align-items: center;
     gap: 40px 81px;
     flex-wrap: wrap;
-
     transition: all 0.3s ease;
 }
 
@@ -119,20 +128,7 @@ html {
     animation: slideDown 0.3s forwards;
 }
 
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .nav-link {
-    align-self: stretch;
     margin-top: auto;
     margin-bottom: auto;
     text-decoration: none;
@@ -169,7 +165,6 @@ html {
     text-decoration: none;
     color: inherit;
     transition: background-color 0.2s ease-in;
-
 }
 
 .login-button:hover {
@@ -177,7 +172,7 @@ html {
     color: white;
 }
 
-/* Footer styles */
+/* Подвал */
 .footer {
     display: flex;
     flex-direction: column;

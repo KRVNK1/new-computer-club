@@ -75,7 +75,7 @@
                     <button class="dashboard-tab" data-tab="profile">Личные данные</button>
                     <button class="dashboard-tab" data-tab="security">Безопасность</button>
                     @if (auth()->user()->role === 'admin')
-                    <button class="dashboard-tab" data-tab="security">Админ-панель</button>
+                    <button class="dashboard-tab">Админ-панель</button>
                     @endif
                 </div>
 
@@ -348,6 +348,7 @@
                         </div>
                     </div>
 
+                    <!-- Вкладка Админ-панель -->
                     <div class="tab-content">
                         <a href="{{ route('admin.users') }}" class="admin-button">Админ-панель</a>
                     </div>

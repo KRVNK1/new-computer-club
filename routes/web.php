@@ -4,7 +4,6 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TariffController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', [TariffController::class, 'index'])->name('home');

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Booking;
 
 class ProfileController extends Controller
@@ -44,7 +43,7 @@ class ProfileController extends Controller
         
         // Обновляем пароль, если он был предоставлен
         if ($request->filled('new_password')) {
-            $user->password = Hash::make($validated['new_password']);
+            $user->password = $validated['new_password'];
         }
         
         $user->save();
@@ -61,7 +60,7 @@ class ProfileController extends Controller
         ]);
 
         $user = Auth::user();
-        $user->password = Hash::make($validated['password']);
+        $user->password = $validated['password'];
         $user->save();
 
         return back()->with('status', 'Пароль успешно изменен');

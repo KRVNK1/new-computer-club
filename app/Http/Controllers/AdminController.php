@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Booking;
 use App\Models\Tariff;
 use App\Models\Workstation;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -72,7 +72,7 @@ class AdminController extends Controller
     public function updateUser(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $isCurrentUser = Auth::id() == $user->id;
+        // $isCurrentUser = Auth::id() == $user->id; 
 
         $validated = $request->validate([
             'first_name' => 'required|string|max:45',
@@ -105,6 +105,11 @@ class AdminController extends Controller
     public function deleteUser($id)
     {
         $user = User::findOrFail($id);
+
+        if (Auth::id() === $user->id) {
+            return redirect()->route('admin.users')->with('error', 'Вы не можете удалить свой собственный аккаунт');
+        }
+
         $user->delete();
 
         return redirect()->route('admin.users')->with('success', 'Пользователь удален');
@@ -277,11 +282,11 @@ class AdminController extends Controller
             'status' => 'required|in:Свободно,Занято',
         ]);
 
-        // Проверка по типу VIP, если да, то проверка на кол-во рабочих мест данного типа
+        // Проверка по типу VIP, проверка на кол-во рабочих мест випки
         if ($validated['type'] === 'VIP') {
             $vipCount = Workstation::where('type', 'VIP')->count();
 
-            // Сохранение введеных данных в представлении(сессии) и выводом ошибки 
+            // Возврат назад в представление с ошибкой 
             if ($vipCount >= 5) {
                 return back()->withInput()->withErrors([
                     'type' => 'Нельзя создать более 5 рабочих мест типа VIP'
@@ -413,7 +418,7 @@ class AdminController extends Controller
             // Если новый статус "completed" или "cancelled", освобождаем рабочие места
             // Проверка, есть ли данное значение в массиве
             if (in_array($newStatus, ['completed', 'cancelled'])) {
-                $this->releaseWorkstations($booking);
+                $this->releaseWorkstations($booking); // this - обращение к контроллеру(если точнее к экземпляру класса)
             }
             // Если новый статус "active", а старый был не активным, занимаем рабочие места
             elseif ($newStatus === 'active' && $oldStatus !== 'active') {

@@ -140,10 +140,6 @@
         max-width: 100%;
     }
 
-    .navigation.active {
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
     .nav-link,
     .login-button {
         width: 100%;
@@ -389,7 +385,7 @@
 
     /* Страница бронирования */
 
-    input[type = number] {
+    input[type=number] {
         padding-left: 0px;
     }
 

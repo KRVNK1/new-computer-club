@@ -300,13 +300,6 @@ body {
     border: none;
 }
 
-/* Неактивные элементы (Previous/Next когда они недоступны) */
-.ui.pagination.menu .disabled.item {
-    color: rgba(255, 255, 255, 0.2);
-    cursor: not-allowed;
-    opacity: 0.5;
-}
-
 /* Иконки в пагинации */
 .ui.pagination.menu .item i.icon {
     width: 16px;
@@ -315,103 +308,117 @@ body {
     opacity: 0.5;
 }
 
-.ui.pagination.menu .item i.left {
-    background-image: url(../img/svg/icons/icon-arrow-left.svg);
-}
-
-.ui.pagination.menu .item i.right {
-    background-image: url(../img/svg/icons/icon-arrow-right.svg);
-}
-
-/* Стили для мобильных устройств */
-@media (max-width: 640px) {
-    .ui.pagination.menu {
-        gap: 5px;
+/* Медиа-запросы для мобильной боковой панели внизу */
+@media (max-width: 768px) {
+    .admin-container {
+        flex-direction: column;
     }
 
-    .ui.pagination.menu .item {
-        min-width: 35px;
-        height: 35px;
-        padding: 0 8px;
-        font-size: 0.85rem;
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 120px;
+        z-index: 100;
+        overflow-y: visible;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .ui.pagination.menu .item.active,
-    .ui.pagination.menu .item.prev,
-    .ui.pagination.menu .item.next {
+    .sidebar-header {
+        display: none;
+    }
+
+    .sidebar-nav {
+        padding: 0;
         display: flex;
-    }
-}
-
-.ui.pagination.menu .item {
-    transition: transform 0.2s, background-color 0.3s, color 0.3s;
-}
-
-.ui.pagination.menu .item:active {
-    transform: scale(0.95);
-}
-
-@media (min-width: 768px) {
-    .pagination-container {
-        flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
     }
 
-    .pagination-info {
-        margin-bottom: 0;
-        text-align: left;
-    }
-}
-
-/* Адаптивность */
-@media (max-width: 991px) {
-    .sidebar {
-        width: 70px;
+    .nav-item {
+        flex-direction: column;
+        padding: 8px 12px;
+        text-align: center;
+        flex: 1;
+        border-left: none;
+        border-bottom: 4px solid transparent;
     }
 
-    .sidebar-header h1 {
-        display: none;
-    }
-
-    .nav-item span {
-        display: none;
+    .nav-item:hover,
+    .nav-item.active {
+        background-color: #2a2a3c;
+        border-left: none;
+        border-bottom: 4px solid #4169e1;
     }
 
     .nav-item i {
         margin-right: 0;
-        font-size: 20px;
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+
+    .nav-item span {
+        font-size: 10px;
+        line-height: 1;
+    }
+
+    .sidebar-footer {
+        display: flex;
     }
 
     .main-content {
-        margin-left: 70px;
-    }
-}
-
-@media (max-width: 768px) {
-    .content-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        margin-left: 0;
+        padding-bottom: 70px;
     }
 
     .admin-header {
-        flex-direction: column;
-        height: auto;
-        padding: 15px;
+        padding: 10px 15px;
     }
 
-    .header-title {
-        margin-bottom: 10px;
+    .content-wrapper {
+        padding: 20px 15px 90px;
     }
 }
 
 @media (max-width: 480px) {
-    .content-wrapper {
-        padding: 15px;
+    .sidebar {
+        height: 100px;
     }
-}
 
-.content-header .btn-primary i.fas.fa-plus {
-    margin-right: 5px;
+    .nav-item {
+        padding: 6px 8px;
+    }
+
+    .nav-item i {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+    .nav-item span {
+        font-size: 9px;
+    }
+
+    .main-content {
+        padding-bottom: 60px;
+    }
+
+    .content-wrapper {
+        padding: 15px 10px 80px;
+    }
+
+    /* Скрытие текста у кнопок */
+    .nav-item span {
+        display: none;
+    }
+
+    .nav-item {
+        padding: 10px 8px;
+    }
+
+    .nav-item i {
+        margin-bottom: 0;
+        font-size: 18px;
+    }
 }

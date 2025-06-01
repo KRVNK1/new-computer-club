@@ -82,7 +82,7 @@
                         <span class="detail-label">Рабочее место:</span>
                         <span class="detail-value">
                             @foreach($booking->workstations as $workstation)
-                            {{ $workstation->number }} @if(!$loop->last),@endif
+                            {{ $workstation->number }}@if(!$loop->last),@endif
                             @endforeach
                         </span>
                     </div>
