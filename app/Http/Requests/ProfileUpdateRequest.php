@@ -14,7 +14,7 @@ class ProfileUpdateRequest extends FormRequest
     {
         return true;
     }
-    
+
     // Правила для изменения личных данных
     public function rules(): array
     {
@@ -27,7 +27,7 @@ class ProfileUpdateRequest extends FormRequest
             'phone' => ['required', 'string', 'max:11', 'min:11'],
             'current_password' => ['nullable', 'required_with:new_password', function ($value, $fail) use ($user) {
                 if (!Hash::check($value, $user->password)) {
-                    $fail('Текущий пароль указан неверно.'); 
+                    $fail('Текущий пароль указан неверно.');
                 }
             }],
             'new_password' => ['nullable', 'min:8', 'confirmed'],

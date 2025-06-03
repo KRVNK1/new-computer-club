@@ -39,7 +39,7 @@
     </header>
 
     <section class="auth-container">
-        <div class="auth-form" style="width: 500px;">
+        <div class="auth-form" style="width: 500px; height:100%">
 
 
             <h1 class="auth-title">Вход в аккаунт</h1>
