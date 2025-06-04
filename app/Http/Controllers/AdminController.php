@@ -21,7 +21,7 @@ class AdminController extends Controller
     // Список пользователей
     public function users(Request $request)
     {
-        $users = User::paginate(7);
+        $users = User::paginate(6);
         $activeTab = 'users';
 
         return view('admin.dashboard', compact('users', 'activeTab'));
@@ -118,7 +118,7 @@ class AdminController extends Controller
     // Список тарифов
     public function tariffs()
     {
-        $tariffs = Tariff::paginate(7);
+        $tariffs = Tariff::paginate(6);
         $activeTab = 'tariffs';
 
         return view('admin.dashboard', compact('tariffs', 'activeTab'));
@@ -220,7 +220,7 @@ class AdminController extends Controller
     // Список рабочих мест
     public function workstations()
     {
-        $workstations = Workstation::paginate(7);
+        $workstations = Workstation::paginate(6);
         $activeTab = 'workstations';
 
         return view('admin.dashboard', compact('workstations', 'activeTab'));
@@ -314,7 +314,7 @@ class AdminController extends Controller
     // Список бронирований
     public function bookings()
     {
-        $bookings = Booking::with(['user', 'tariff'])->paginate(7);
+        $bookings = Booking::with(['user', 'tariff'])->paginate(6);
         $activeTab = 'bookings';
 
         return view('admin.dashboard', compact('bookings', 'activeTab'));
