@@ -38,64 +38,75 @@
         </div>
     </header>
 
+
+
     <section class="booking-container">
 
-        <div class="booking-left">
-            <div class="tariff-header">
-                <div class="tariff-image">
-                    <img src="{{ asset($tariff->image) }}" alt="{{ $tariff->name }}">
+        @if ($errors->has('comment'))
+        <div class="alert alert-danger">
+            {{ $errors->first('comment') }}
+        </div>
+        @endif
+
+        <div class="booking-sides">
+            <div class="booking-left">
+                <div class="tariff-header">
+                    <div class="tariff-image">
+                        <img src="{{ asset($tariff->image) }}" alt="{{ $tariff->name }}">
+                    </div>
+                    <div class="tariff-title">
+                        <h1>{{ $tariff->name }}</h1>
+                        <p>КОЛИЧЕСТВО СВОБОДНЫХ МЕСТ: {{ $availableSpots }}</p>
+                    </div>
                 </div>
-                <div class="tariff-title">
-                    <h1>{{ $tariff->name }}</h1>
-                    <p>КОЛИЧЕСТВО СВОБОДНЫХ МЕСТ: {{ $availableSpots }}</p>
-                </div>
+
+                <form action="{{ route('booking.store', $tariff->id) }}" method="POST" id="bookingForm">
+                    @csrf
+                    <div class="booking-details">
+                        <div class="price-info">
+                            <h2>ЦЕНА ЗА ЧАС: {{ $tariff->price_per_hour }} РУБ.
+                                @if($tariff->is_room)
+                                (ЗА ВСЮ КОМНАТУ)
+                                @else
+                                (С 1 ЧЕЛ)
+                                @endif
+                            </h2>
+                        </div>
+
+                        <div class="booking-control">
+                            <label>КОЛИЧЕСТВО ЧАСОВ</label>
+                            <div class="quantity-control">
+                                <button type="button" class="btn-minus" id="btn-minus-hours">-</button>
+                                <input type="number" name="hours" id="hours" value="1" min="1" max="24" readonly>
+                                <button type="button" class="btn-plus" id="btn-plus-hours">+</button>
+                            </div>
+                        </div>
+
+                        <div class="booking-control" id="people-field">
+                            <label>КОЛИЧЕСТВО ЧЕЛОВЕК</label>
+                            <div class="quantity-control">
+                                <button type="button" class="btn-minus" id="btn-minus-people">-</button>
+                                <input type="number" name="people" id="people" value="1" min="1" max="{{ $maxPeople ?? 5 }}" readonly>
+                                <button type="button" class="btn-plus" id="btn-plus-people">+</button>
+                            </div>
+                        </div>
+
+                        <div class="total-price">
+                            <h2>ОБЩАЯ СТОИМОСТЬ: <span id="totalPrice">{{ $tariff->price_per_hour }}</span> РУБ.</h2>
+                        </div>
+
+                        <button type="submit" class="btn-order">ОФОРМИТЬ ЗАКАЗ</button>
+                    </div>
+                </form>
             </div>
 
-            <form action="{{ route('booking.store', $tariff->id) }}" method="POST" id="bookingForm">
-                @csrf
-                <div class="booking-details">
-                    <div class="price-info">
-                        <h2>ЦЕНА ЗА ЧАС: {{ $tariff->price_per_hour }} РУБ.
-                            @if($tariff->is_room)
-                            (ЗА ВСЮ КОМНАТУ)
-                            @else
-                            (С 1 ЧЕЛ)
-                            @endif
-                        </h2>
-                    </div>
-
-                    <div class="booking-control">
-                        <label>КОЛИЧЕСТВО ЧАСОВ</label>
-                        <div class="quantity-control">
-                            <button type="button" class="btn-minus" id="btn-minus-hours">-</button>
-                            <input type="number" name="hours" id="hours" value="1" min="1" max="24" readonly>
-                            <button type="button" class="btn-plus" id="btn-plus-hours">+</button>
-                        </div>
-                    </div>
-
-                    <div class="booking-control" id="people-field">
-                        <label>КОЛИЧЕСТВО ЧЕЛОВЕК</label>
-                        <div class="quantity-control">
-                            <button type="button" class="btn-minus" id="btn-minus-people">-</button>
-                            <input type="number" name="people" id="people" value="1" min="1" max="{{ $maxPeople ?? 5 }}" readonly>
-                            <button type="button" class="btn-plus" id="btn-plus-people">+</button>
-                        </div>
-                    </div>
-
-                    <div class="total-price">
-                        <h2>ОБЩАЯ СТОИМОСТЬ: <span id="totalPrice">{{ $tariff->price_per_hour }}</span> РУБ.</h2>
-                    </div>
-
-                    <button type="submit" class="btn-order">ОФОРМИТЬ ЗАКАЗ</button>
-                </div>
-            </form>
+            <div class="booking-right">
+                <h2>ОСТАВИТЬ КОММЕНТАРИЙ</h2>
+                <textarea name="comment" form="bookingForm" class="comment-area" placeholder="Ваш комментарий..."></textarea>
+                <button type="button" class="btn-quick-book" onclick="quickBook()">БРОНЬ НА 4 ЧАСА</button>
+            </div>
         </div>
 
-        <div class="booking-right">
-            <h2>ОСТАВИТЬ КОММЕНТАРИЙ</h2>
-            <textarea name="comment" form="bookingForm" class="comment-area" placeholder="Ваш комментарий..."></textarea>
-            <button type="button" class="btn-quick-book" onclick="quickBook()">БРОНЬ НА 4 ЧАСА</button>
-        </div>
     </section>
 
     <footer class="footer">
@@ -234,7 +245,7 @@
                 totalPrice = basePrice * hours * currentPeopleValue
             }
 
-            document.getElementById("totalPrice").textContent = totalPrice
+                document.getElementById("totalPrice").textContent = totalPrice
         }
         updateTotalPrice()
     </script>

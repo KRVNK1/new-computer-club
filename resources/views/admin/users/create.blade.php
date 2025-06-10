@@ -149,10 +149,10 @@
                         
                         <div class="form-actions">
                             <button type="submit" class="btn-primary">
-                                <i class="fas fa-save"></i> Создать пользователя
+                                Создать пользователя
                             </button>
                             <a href="{{ route('admin.users') }}" class="btn-secondary">
-                                <i class="fas fa-times"></i> Отмена
+                                Отмена
                             </a>
                         </div>
                     </form>

@@ -30,12 +30,17 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:45'],
+            'last_name' => ['required', 'string', 'max:45'],
             'login' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'phone' => ['required', 'string', 'max:11'],
+            'email' => ['required', 'string', 'lowercase', 'email:rfc,dns', 'max:255', 'unique:'.User::class],
+            'phone' => ['required', 'string', 'min:11' ,'max:11'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ], [
+            'email.unique' => 'Этот email уже используется.',
+            'email.rfc,dns' => 'Введите корректный домен email.',
+            'phone.min' => 'Номер телефона должен содержать 11 цифр.',
+            'password.confirmed' => 'Пароли не совпадают.',
         ]);
 
         $user = User::create([
@@ -53,4 +58,5 @@ class RegisteredUserController extends Controller
 
         return redirect(route('profile', absolute: false));
     }
+
 }

@@ -46,7 +46,7 @@
             <div class="dashboard-container">
                 <div class="dashboard-header">
                     <div class="dashboard-welcome">
-                        <h1>Привет, {{ Auth::user()->first_name ?? 'Пользователь' }}!</h1>
+                        <h1>Привет, {{ Auth::user()->login ?? 'Пользователь' }}!</h1>
                         <p>Добро пожаловать в личный кабинет</p>
                     </div>
                 </div>
@@ -350,7 +350,9 @@
 
                     <!-- Вкладка Админ-панель -->
                     <div class="tab-content">
-                        <a href="{{ route('admin.users') }}" class="admin-button">Админ-панель</a>
+                        <div class="dashboard-card">
+                            <a href="{{ route('admin.users') }}" class="btn btn-primary admin-button">Админ-панель</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -393,6 +395,7 @@
             </div>
         </footer>
 
+        <script src="{{ asset('js/animations.js') }}"></script>
         <script src="{{ asset('js/mobile-menu.js') }}"></script>
         <script src="{{ asset('js/dashboard.js') }}"></script>
     </div>

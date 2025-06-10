@@ -306,6 +306,10 @@
     background-color: rgba(239, 68, 68, 0.3);
 }
 
+.admin-button {
+    width: 200px;
+}
+
 /* Формы */
 .form-group {
     margin-bottom: 20px;

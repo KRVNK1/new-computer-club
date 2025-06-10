@@ -154,10 +154,10 @@
                         
                         <div class="form-actions">
                             <button type="submit" class="btn-primary">
-                                <i class="fas fa-save"></i> Создать бронирование
+                                Создать бронирование
                             </button>
                             <a href="{{ route('admin.bookings') }}" class="btn-secondary">
-                                <i class="fas fa-times"></i> Отмена
+                                Отмена
                             </a>
                         </div>
                     </form>

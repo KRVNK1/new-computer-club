@@ -111,7 +111,7 @@
                         
                         <div class="form-group">
                             <label for="price_per_hour">Цена за час</label>
-                            <input type="number" id="price_per_hour" name="price_per_hour" class="form-control" value="{{ old('price_per_hour') }}" step="20" min="0" required>
+                            <input type="number" id="price_per_hour" name="price_per_hour" class="form-control" value="{{ old('price_per_hour') }}" step="10" min="0" required>
                         </div>
                         
                         <div class="form-group">
@@ -128,10 +128,10 @@
                         
                         <div class="form-actions">
                             <button type="submit" class="btn-primary">
-                                <i class="fas fa-save"></i> Создать тариф
+                                Создать тариф
                             </button>
                             <a href="{{ route('admin.tariffs') }}" class="btn-secondary">
-                                <i class="fas fa-times"></i> Отмена
+                                Отмена
                             </a>
                         </div>
                     </form>

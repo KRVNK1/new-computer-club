@@ -111,7 +111,7 @@
                         
                         <div class="form-group">
                             <label for="type">Тип</label>
-                            <select name="type" id="type">
+                            <select name="type" id="type" class="form-control">
                                 @foreach ($tariffs as $tariff)
                                 <option value="{{ $tariff->name }}">{{ $tariff->name }}</option>
                                 @endforeach
@@ -128,10 +128,10 @@
                         
                         <div class="form-actions">
                             <button type="submit" class="btn-primary">
-                                <i class="fas fa-save"></i> Создать рабочее место
+                                Создать рабочее место
                             </button>
                             <a href="{{ route('admin.workstations') }}" class="btn-secondary">
-                                <i class="fas fa-times"></i> Отмена
+                                Отмена
                             </a>
                         </div>
                     </form>

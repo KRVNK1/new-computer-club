@@ -1,4 +1,15 @@
 const fadeElements = document.querySelectorAll('.fade-in');
+const alerts = document.querySelectorAll(".alert");
+
+function hideErrors() {
+    if (alerts.length > 0) {
+        setTimeout(() => {
+            alerts.forEach((alert) => {
+                alert.style.display = "none";
+            });
+        }, 5000);
+    }
+}
 
 const fadeInOnScroll = function () {
     fadeElements.forEach(element => {
@@ -11,5 +22,6 @@ const fadeInOnScroll = function () {
     });
 };
 
+hideErrors();
 fadeInOnScroll();
 window.addEventListener('scroll', fadeInOnScroll);

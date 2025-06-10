@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\Tariff;
 use App\Models\Workstation;
-use Blaspsoft\Blasp\Facades\Blasp;
 
 class BookingController extends Controller
 {
@@ -44,6 +43,7 @@ class BookingController extends Controller
 
         $tariff = Tariff::findOrFail($tariffId);
         $hours = $validated['hours'];
+        $people = $validated['people'];
 
         // нахождение рабочего места по типу(тариф) и статусу
         if ($tariff->is_room) {
@@ -62,30 +62,37 @@ class BookingController extends Controller
             // Для общего зала
             $workstations = Workstation::where('type', $tariff->name)
                 ->where('status', 'Свободно')
-                ->take($validated['people'])
+                ->take($people)
                 ->get();
 
-            if ($workstations->count() < $validated['people']) {
+            if ($workstations->count() < $people) {
                 return back()->with('error', 'Недостаточно свободных мест');
             }
 
-            $totalPrice = $tariff->price_per_hour * $hours * $validated['people'];
+            $totalPrice = $tariff->price_per_hour * $hours * $people;
         }
 
-         // Проверка на маты
-         $comment = $validated['comment'] ?? '';
-         if (!empty($comment)) {
-             $blasp = Blasp::check($comment);
-             $comment = $blasp->getCleanString();
-         }
+        // Проверка на маты
+        $comment = $validated['comment'] ?? '';
+        $showComment = $comment;
+
+        if ($comment) {
+            $originalComment = $comment;
+            $showComment = app('profanityFilter')->filter($comment);
+
+            // Если комментарий изменился после фильтрации, значит был мат
+            if ($originalComment !== $showComment) {
+                return back()->withErrors(['comment' => 'Комментарий содержит недопустимые слова. Пожалуйста, измените текст.']);
+            }
+        }
 
         // Создание бронирования
         $booking = new Booking();
         $booking->user_id = Auth::id();
         $booking->tariff_id = $tariff->id;
-        $booking->hours = $validated['hours'];
-        $booking->people = $validated['people'];
-        $booking->comment = $comment;
+        $booking->hours = $hours;
+        $booking->people = $people;
+        $booking->comment = $showComment;
         $booking->total_price = $totalPrice;
         $booking->save();
 
@@ -106,7 +113,7 @@ class BookingController extends Controller
         $hours = $booking->hours;
         // Проверка, принадлежит ли бронирование текущему пользователю
         if ($booking->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
-            abort(403, 'Unauthorized action.');
+            abort(403);
         }
 
         return view('booking.confirmation', compact('booking', 'hours'));

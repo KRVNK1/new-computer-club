@@ -138,7 +138,7 @@
                                 <i class="fas fa-save"></i> Сохранить изменения
                             </button>
                             <a href="{{ route('admin.tariffs') }}" class="btn-secondary">
-                                <i class="fas fa-times"></i> Отмена
+                                Отмена
                             </a>
                         </div>
                     </form>

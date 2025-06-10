@@ -53,6 +53,11 @@
         padding: 80px 80px;
     }
 
+    .card-image {
+        width: 280px;
+        height: 280px;
+    }
+
     .pricing-card {
         width: 280px;
     }
@@ -247,6 +252,13 @@
         max-width: 100%;
     }
 
+    /* ТАРИФЫ */
+
+    .card-image {
+        width: 280px;
+        height: 280px;
+    }
+
     /* КОМПЛЕКТУЮЩИЕ */
 
     .specs-section {
@@ -390,6 +402,10 @@
     }
 
     .booking-container {
+        flex-direction: column;
+    }
+
+    .booking-sides {
         flex-direction: column;
     }
 

@@ -54,7 +54,7 @@ class AdminController extends Controller
         $user->email = $validated['email'];
         $user->phone = $validated['phone'];
         $user->role = $validated['role'];
-        $user->password = Hash::make($validated['password']);
+        $user->password = $validated['password'];
         $user->save();
 
         return redirect()->route('admin.users')->with('success', 'Пользователь успешно создан');
@@ -92,8 +92,8 @@ class AdminController extends Controller
         $user->role = $validated['role'];
 
         // Если пароль указан, то создается новый пароль
-        if (!empty($validated['password'])) {
-            $user->password = Hash::make($validated['password']);
+        if ($validated['password']) {
+            $user->password = $validated['password'];
         }
 
         $user->save();
@@ -149,7 +149,7 @@ class AdminController extends Controller
         // Обработка загрузки изображения
         if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension(); // Название файла для картинки через time - счет по секундам с 1 января 1970 года, и указание типа картинки через функцию
+            $imageName = time() . '.' . $image->getClientOriginalExtension(); // getClientOriginalExtension - Указание типа файла 
             $image->move(public_path('/img/tariffs'), $imageName); // Перенос картинки в img/tariffs
             $tariff->image = '/img/tariffs/' . $imageName;
         } else {
@@ -186,11 +186,6 @@ class AdminController extends Controller
 
         // Обработка загрузки изображения
         if ($request->hasFile('image')) {
-            // Удаляем старое изображение, если оно не дефолтное
-            if ($tariff->image != 'img/tariffs/default.png' && file_exists(public_path($tariff->image))) {
-                unlink(public_path($tariff->image)); // удаление файла с сервера через unlink по пути
-            }
-
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('img/tariffs'), $imageName);
@@ -206,11 +201,6 @@ class AdminController extends Controller
     public function deleteTariff($id)
     {
         $tariff = Tariff::findOrFail($id);
-
-        // Удаляем изображение, если оно не дефолтное
-        if ($tariff->image != 'img/tariffs/default.png' && file_exists(public_path($tariff->image))) {
-            unlink(public_path($tariff->image));
-        }
 
         $tariff->delete();
 
@@ -239,7 +229,7 @@ class AdminController extends Controller
         $validated = $request->validate([
             'number' => 'required|string|max:255|unique:workstations',
             'type' => 'required|string|max:255',
-            'status' => 'required|in:Свободно,Занято,Не работает',
+            'status' => 'required|in:Свободно,Занято',
         ]);
 
         $workstation = new Workstation();
@@ -314,7 +304,7 @@ class AdminController extends Controller
         $users = User::all();
         $tariffs = Tariff::all();
 
-        return view('admin.bookings.create', compact('users', 'tariffs', /*'availableSpots'*/));
+        return view('admin.bookings.create', compact('users', 'tariffs'));
     }
 
     // Сохранение бронирования
@@ -326,7 +316,7 @@ class AdminController extends Controller
             'hours' => 'required|integer|min:1|max:24',
             'people' => 'required|integer|min:1',
             'comment' => 'nullable|string',
-            'status' => 'required|in:pending,active,completed,cancelled',
+            'status' => 'required|in:active,completed,cancelled',
         ]);
 
         $tariff = Tariff::findOrFail($validated['tariff_id']);

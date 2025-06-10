@@ -4,11 +4,15 @@ input[type=number] {
 
 /* Стили для страницы бронирования */
 .booking-container {
-    display: flex;
-    gap: 30px;
+    display: column;
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 15px;
+}
+
+.booking-sides {
+    display: flex;
+    gap: 30px;
 }
 
 .booking-left {
