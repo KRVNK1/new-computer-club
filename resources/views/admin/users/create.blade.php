@@ -116,12 +116,12 @@
                         
                         <div class="form-group">
                             <label for="login">Логин</label>
-                            <input type="text" id="login" name="login" class="form-control" required>
+                            <input type="text" id="login" name="login" autocomplete="login" class="form-control" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
+                            <input type="email" id="email" name="email" autocomplete="email" class="form-control" required>
                         </div>
                         
                         <div class="form-group">

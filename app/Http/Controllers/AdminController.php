@@ -242,18 +242,6 @@ class AdminController extends Controller
             'status' => 'required|in:Свободно,Занято,Не работает',
         ]);
 
-        // Проверка по типу VIP, если да, то проверка на кол-во рабочих мест данного типа
-        if ($validated['type'] === 'VIP') {
-            $vipCount = Workstation::where('type', 'VIP')->count();
-
-            // Сохранение введеных данных в представлении(сессии) и выводом ошибки 
-            if ($vipCount >= 5) {
-                return back()->withInput()->withErrors([
-                    'type' => 'Нельзя создать более 5 рабочих мест типа VIP'
-                ]);
-            }
-        }
-
         $workstation = new Workstation();
         $workstation->number = $validated['number'];
         $workstation->type = $validated['type'];

@@ -78,7 +78,33 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Шапка */
+.form-container {
+    border: 1px solid black;
+    gap:10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px;
+}
+
+.form-control {
+    width: 300px;
+    border: 1px solid rgba(255, 255, 255,);
+    border-radius: 5px;
+    padding: 12px 10px;
+    color: black;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #4a7bff;
+}
+
+/* Шапка */ 
 .admin-header {
     height: 70px;
     background-color: white;

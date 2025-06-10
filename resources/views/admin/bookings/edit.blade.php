@@ -109,6 +109,10 @@
 
                         <div class="form-group">
                             <label for="user_id">Пользователь</label>
+                            <!-- @foreach ( $users as $user )
+                            <input type="text" id="user_id" class="form-control" value=" {{ $user->first_name }} {{ $user->last_name }} ({{ $user->email }}) }}">
+                            @endforeach -->
+                            
                             <select id="user_id" name="user_id" class="form-control" required>
                                 <option value="">Выберите пользователя</option>
                                 @foreach($users as $user)
