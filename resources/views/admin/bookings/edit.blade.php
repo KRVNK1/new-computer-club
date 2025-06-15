@@ -103,93 +103,108 @@
                 @endif
 
                 <div class="form-container">
-                    <form action="{{ route('admin.bookings.update', $booking->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
+                    <div class="info-section">
+                        <h3>Информация о бронировании</h3>
 
-                        <div class="form-group">
-                            <label for="user_id">Пользователь</label>
-                            <!-- @foreach ( $users as $user )
-                            <input type="text" id="user_id" class="form-control" value=" {{ $user->first_name }} {{ $user->last_name }} ({{ $user->email }}) }}">
-                            @endforeach -->
-                            
-                            <select id="user_id" name="user_id" class="form-control" required>
-                                <option value="">Выберите пользователя</option>
-                                @foreach($users as $user)
-                                <option value="{{ $user->id }}">
-                                    {{ $user->first_name }} {{ $user->last_name }} ({{ $user->email }})
-                                </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tariff_id">Тариф</label>
-                            <select id="tariff_id" name="tariff_id" class="form-control" required>
-                                <option value="">Выберите тариф</option>
-                                @foreach($tariffs as $tariff)
-                                <option value="{{ $tariff->id }}">
-                                    {{ $tariff->name }} ({{ $tariff->price_per_hour }} руб/час, {{ $tariff->is_room ? 'Комната' : 'Общий зал' }})
-                                </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="hours">Количество часов</label>
-                            <input type="number" id="hours" name="hours" class="form-control" value="{{ old('hours', $booking->hours) }}" min="1" max="24" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="people">Количество человек</label>
-                            <input type="number" id="people" name="people" class="form-control" value="{{ old('people', $booking->people) }}" min="1" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="comment">Комментарий</label>
-                            <textarea id="comment" name="comment" class="form-control" rows="3" value="{{ old('comment', $booking->comment) }}"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="status">Статус</label>
-                            <select id="status" name="status" class="form-control" required>
-                                <option value="active">Активно</option>
-                                <option value="completed">Завершено</option>
-                                <option value="cancelled">Отменено</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Рабочие места</label>
-                            <div class="workstations-list">
-                                @if($booking->workstations->count() > 0)
-                                <ul class="list-group">
-                                    @foreach($booking->workstations as $workstation)
-                                    <li class="list-group-item">
-                                        №{{ $workstation->number }} ({{ $workstation->type }})
-                                    </li>
-                                    @endforeach
-                                </ul>
-                                @else
-                                <p class="text-muted">Нет назначенных рабочих мест</p>
-                                @endif
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Тариф:</label>
+                                <span class="info-value">
+                                    {{ $booking->tariff->name }}
+                                    ({{ $booking->tariff->price_per_hour }} руб/час,
+                                    {{ $booking->tariff->is_room ? 'Комната' : 'Общий зал' }})
+                                </span>
                             </div>
-                            <small class="help-text">Рабочие места будут назначены автоматически при активации бронирования.</small>
+
+                            <div class="info-item">
+                                <label>Количество человек:</label>
+                                <span class="info-value">{{ $booking->people }}</span>
+                            </div>
+
+                            <div class="info-item">
+                                <label>Комментарий:</label>
+                                <span class="info-value">{{ $booking->comment ?: 'Не указан' }}</span>
+                            </div>
+
+                            <div class="info-item">
+                                <label>Текущая стоимость:</label>
+                                <span class="info-value price">{{ $booking->total_price }} руб</span>
+                            </div>
                         </div>
 
-                        <div class="form-actions">
-                            <button type="submit" class="btn-primary">
-                                <i class="fas fa-save"></i> Сохранить изменения
-                            </button>
-                            <a href="{{ route('admin.bookings') }}" class="btn-secondary">
-                                Отмена
-                            </a>
+                        <!-- Рабочие места -->
+                        <div class="workstations-info">
+                            <label>Назначенные рабочие места:</label>
+                            @if($booking->workstations->count() > 0)
+                            <div class="workstations-list">
+                                @foreach($booking->workstations as $workstation)
+                                <span class="workstation-badge">
+                                    №{{ $workstation->number }} ({{ $workstation->type }})
+                                </span>
+                                @endforeach
+                            </div>
+                            @else
+                            <span class="info-value text-muted">Нет назначенных рабочих мест</span>
+                            @endif
                         </div>
-                    </form>
+                    </div>
+
+                    <div class="edit-section">
+                        <h3>Редактируемые поля</h3>
+
+                        <form action="{{ route('admin.bookings.update', $booking->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="form-group">
+                                <label for="user_id">Пользователь <span class="required">*</span></label>
+                                <select id="user_id" name="user_id" class="form-control" required>
+                                    <option value="">Выберите пользователя</option>
+                                    @foreach($users as $user)
+                                    <option value="{{ $user->id }}" {{ $booking->user_id == $user->id ? 'selected' : '' }}>
+                                        {{ $user->first_name }} {{ $user->last_name }} ({{ $user->email }})
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="hours">Количество часов</label>
+                                <input type="number" id="hours" name="hours" class="form-control" value="{{ old('hours', $booking->hours) }}" min="1" max="24" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">Статус</label>
+                                <select id="status" name="status" class="form-control" required>
+                                    <option value="active" {{ $booking->status == 'active' ? 'selected' : '' }}>
+                                        Активно
+                                    </option>
+                                    <option value="completed" {{ $booking->status == 'completed' ? 'selected' : '' }}>
+                                        Завершено
+                                    </option>
+                                    <option value="cancelled" {{ $booking->status == 'cancelled' ? 'selected' : '' }}>
+                                        Отменено
+                                    </option>
+                                </select>
+                             
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary">
+                                    Сохранить изменения
+                                </button>
+                                <a href="{{ route('admin.bookings') }}" class="btn-secondary">
+                                    Отмена
+                                </a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
+
+    <style></style>
 
 </body>
 

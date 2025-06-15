@@ -119,11 +119,7 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="status">Статус</label>
-                            <select id="status" name="status" class="form-control" required>
-                                <option value="Свободно">Свободно</option>
-                                <option value="Занято">Занято</option>
-                            </select>
+                            <input type="hidden" id="status" name="status" value="Свободно">
                         </div>
                         
                         <div class="form-actions">

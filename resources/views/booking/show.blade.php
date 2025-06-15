@@ -102,7 +102,7 @@
 
             <div class="booking-right">
                 <h2>ОСТАВИТЬ КОММЕНТАРИЙ</h2>
-                <textarea name="comment" form="bookingForm" class="comment-area" placeholder="Ваш комментарий..."></textarea>
+                <textarea name="comment" form="bookingForm" class="comment-area" placeholder="Ваш комментарий (ограничение 100 символов)"></textarea>
                 <button type="button" class="btn-quick-book" onclick="quickBook()">БРОНЬ НА 4 ЧАСА</button>
             </div>
         </div>

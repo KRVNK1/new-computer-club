@@ -21,7 +21,22 @@ class AdminController extends Controller
     // Список пользователей
     public function users(Request $request)
     {
-        $users = User::paginate(6);
+        $query = User::query();
+        $search = null;
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($qb) use ($search) {
+                $qb->where('first_name', 'like', "%{$search}%")
+                    ->orWhere('last_name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhere('phone', 'like', "%{$search}%")
+                    ->orWhere('role', 'like', "%{$search}%");
+            });
+        }
+
+        $users = $query->paginate(6)->appends(request()->query());
+
         $activeTab = 'users';
 
         return view('admin.dashboard', compact('users', 'activeTab'));
@@ -40,8 +55,8 @@ class AdminController extends Controller
             'first_name' => 'required|string|max:45',
             'last_name' => 'required|string|max:45',
             'login' => 'required|string|max:45',
-            'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|string|max:20',
+            'email' => 'required|string|email:rfc,dns|max:255|unique:users',
+            'phone' => 'required|string|min:11|max:11',
             'role' => 'required|in:client,admin',
             'password' => 'required|string|min:8|confirmed',
         ]);
@@ -72,13 +87,12 @@ class AdminController extends Controller
     public function updateUser(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        // $isCurrentUser = Auth::id() == $user->id; 
 
         $validated = $request->validate([
             'first_name' => 'required|string|max:45',
             'last_name' => 'required|string|max:45',
             'login' => 'required|string|max:45',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'email' => 'required|string|email:rfc,dns|max:255|unique:users,email,' . $id,
             'phone' => 'required|string|max:11|min:11',
             'role' => 'required|in:client,admin',
             'password' => 'nullable|string|min:8|confirmed',
@@ -110,6 +124,16 @@ class AdminController extends Controller
             return redirect()->route('admin.users')->with('error', 'Вы не можете удалить свой собственный аккаунт');
         }
 
+        $activeBookings = Booking::where('user_id', $id)
+            ->where('status', 'active')
+            ->with('workstations')
+            ->get();
+
+        // Освобождаем рабочие места для каждого активного бронирования
+        foreach ($activeBookings as $booking) {
+            $this->releaseWorkstations($booking);
+        }
+
         $user->delete();
 
         return redirect()->route('admin.users')->with('success', 'Пользователь удален');
@@ -137,7 +161,7 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'price_per_hour' => 'required|numeric|min:0',
             'is_room' => 'boolean',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|max:255',
         ]);
 
         // Создание тарифа
@@ -177,7 +201,7 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'price_per_hour' => 'required|numeric|min:0',
             'is_room' => 'boolean',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|max:255',
         ]);
 
         $tariff->name = $validated['name'];
@@ -260,18 +284,6 @@ class AdminController extends Controller
             'status' => 'required|in:Свободно,Занято',
         ]);
 
-        // Проверка по типу VIP, проверка на кол-во рабочих мест випки
-        if ($validated['type'] === 'VIP') {
-            $vipCount = Workstation::where('type', 'VIP')->count();
-
-            // Возврат назад в представление с ошибкой 
-            if ($vipCount >= 5) {
-                return back()->withInput()->withErrors([
-                    'type' => 'Нельзя создать более 5 рабочих мест типа VIP'
-                ]);
-            }
-        }
-
         $workstation->number = $validated['number'];
         $workstation->type = $validated['type'];
         $workstation->status = $validated['status'];
@@ -290,9 +302,27 @@ class AdminController extends Controller
     }
 
     // Список бронирований
-    public function bookings()
+    public function bookings(Request $request)
     {
-        $bookings = Booking::with(['user', 'tariff'])->paginate(6);
+        $query = Booking::with(['user', 'tariff']);
+        $search = null;
+
+        if ($request->has('search')) {
+            $search = $request->input('search'); // Standart
+            $query->where(function ($qb) use ($search) {
+                $qb->where('total_price', 'like', "%{$search}%")
+                    ->orWhereHas('user', function ($userQuery) use ($search) {
+                        $userQuery->where('first_name', 'like', "%{$search}%")
+                            ->orWhere('last_name', 'like', "%{$search}%");
+                    })
+                    ->orWhereHas('tariff', function ($tariffQuery) use ($search) {
+                        $tariffQuery->where('name', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        $bookings = $query->paginate(6)->appends(request()->query());
+
         $activeTab = 'bookings';
 
         return view('admin.dashboard', compact('bookings', 'activeTab'));
@@ -359,34 +389,31 @@ class AdminController extends Controller
     // Обновление бронирования
     public function updateBooking(Request $request, $id)
     {
-        $booking = Booking::with('workstations')->findOrFail($id);
+        $booking = Booking::with(['workstations', 'tariff'])->findOrFail($id);
 
+        // Валидация только редактируемых полей
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
-            'tariff_id' => 'required|exists:tariffs,id',
             'hours' => 'required|integer|min:1|max:24',
-            'people' => 'required|integer|min:1',
-            'comment' => 'nullable|string',
             'status' => 'required|in:active,completed,cancelled',
         ]);
 
-        $oldStatus = $booking->status; // Получение статуса из бронирования
-        $newStatus = $validated['status']; // Присвоение нового статуса
+        $oldStatus = $booking->status;
+        $newStatus = $validated['status'];
 
-        $tariff = Tariff::findOrFail($validated['tariff_id']);
+        $newHours = $validated['hours'];
 
-        // Расчет общей стоимости
+        // Пересчет стоимости при изменении часов
+        $tariff = $booking->tariff;
         if ($tariff->is_room) {
-            $totalPrice = $tariff->price_per_hour * $validated['hours'];
+            $totalPrice = $tariff->price_per_hour * $newHours;
         } else {
-            $totalPrice = $tariff->price_per_hour * $validated['hours'] * $validated['people'];
+            $totalPrice = $tariff->price_per_hour * $newHours * $booking->people;
         }
 
+        // Обновляем только редактируемые поля
         $booking->user_id = $validated['user_id'];
-        $booking->tariff_id = $validated['tariff_id'];
-        $booking->hours = $validated['hours'];
-        $booking->people = $validated['people'];
-        $booking->comment = $validated['comment'] ?? '';
+        $booking->hours = $newHours;
         $booking->total_price = $totalPrice;
         $booking->status = $newStatus;
         $booking->save();
@@ -394,9 +421,8 @@ class AdminController extends Controller
         // Обработка изменения статуса
         if ($oldStatus !== $newStatus) {
             // Если новый статус "completed" или "cancelled", освобождаем рабочие места
-            // Проверка, есть ли данное значение в массиве
-            if (in_array($newStatus, ['completed', 'cancelled'])) {
-                $this->releaseWorkstations($booking); // this - обращение к контроллеру(если точнее к экземпляру класса)
+            if ($newStatus == 'completed' || $newStatus == 'cancelled') {
+                $this->releaseWorkstations($booking);
             }
             // Если новый статус "active", а старый был не активным, занимаем рабочие места
             elseif ($newStatus === 'active' && $oldStatus !== 'active') {

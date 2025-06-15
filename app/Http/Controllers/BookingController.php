@@ -38,7 +38,9 @@ class BookingController extends Controller
         $validated = $request->validate([
             'hours' => 'required|integer|min:1|max:24',
             'people' => 'required|integer|min:1',
-            'comment' => 'nullable|string',
+            'comment' => 'nullable|string|max:100',
+        ], [
+            'comment.max' => 'Комментарий не должен превышать 100 символов.',
         ]);
 
         $tariff = Tariff::findOrFail($tariffId);

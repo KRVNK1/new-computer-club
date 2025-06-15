@@ -32,11 +32,12 @@ class RegisteredUserController extends Controller
         $request->validate([
             'first_name' => ['required', 'string', 'max:45'],
             'last_name' => ['required', 'string', 'max:45'],
-            'login' => ['required', 'string', 'max:255'],
+            'login' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email:rfc,dns', 'max:255', 'unique:'.User::class],
             'phone' => ['required', 'string', 'min:11' ,'max:11'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ], [
+            'login.unique' => 'Этот логин уже используется.',
             'email.unique' => 'Этот email уже используется.',
             'email.rfc,dns' => 'Введите корректный домен email.',
             'phone.min' => 'Номер телефона должен содержать 11 цифр.',

@@ -134,7 +134,7 @@
 
                         <div class="form-group">
                             <label for="role">Роль</label>
-                            @if(isset($isCurrentUser) && $isCurrentUser)
+                            @if($isCurrentUser)
                             <input type="text" class="form-control" value="{{ $user->role === 'admin' ? 'Администратор' : 'Пользователь' }}" readonly>
                             <small class="help-text text-warning">Вы не можете изменить свою собственную роль</small>
                             <input type="hidden" name="role" value="{{ $user->role }}">
@@ -159,7 +159,7 @@
 
                         <div class="form-actions">
                             <button type="submit" class="btn-primary">
-                                <i class="fas fa-save"></i> Сохранить изменения
+                                Сохранить изменения
                             </button>
                             <a href="{{ route('admin.users') }}" class="btn-secondary">
                                 Отмена

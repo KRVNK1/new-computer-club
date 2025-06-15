@@ -118,17 +118,9 @@
                             </select>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="status">Статус</label>
-                            <select id="status" name="status" class="form-control" required>
-                                <option value="Свободно">Свободно</option>
-                                <option value="Занято">Занято</option>
-                            </select>
-                        </div>
-                        
                         <div class="form-actions">
                             <button type="submit" class="btn-primary">
-                                <i class="fas fa-save"></i> Сохранить изменения
+                                Сохранить изменения
                             </button>
                             <a href="{{ route('admin.workstations') }}" class="btn-secondary">
                                 Отмена

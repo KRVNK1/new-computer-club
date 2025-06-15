@@ -106,7 +106,32 @@
                 @if($activeTab === 'users')
                 <div class="tab-content active">
                     <div class="content-header">
-                        <h3>Список пользователей</h3>
+
+                        <div class="content-header__title">
+                            <h3>Список пользователей</h3>
+
+                            <div class="search-container">
+                                <form method="GET" action="{{ route('admin.users') }}" class="search-form">
+                                    <div class="search-input-group">
+                                        <input type="text"
+                                            name="search"
+                                            value="{{ request('search') }}"
+                                            placeholder="Поиск по имени, фамилии, email, телефону, роли..."
+                                            class="search-input">
+                                        <button type="submit" class="search-btn">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                    @if(request('search'))
+                                    <div class="search-results-info">
+                                        Результаты поиска для: "<strong>{{ request('search') }}</strong>"
+                                    </div>
+                                    @endif
+                                </form>
+                            </div>
+                        </div>
+
+
                         <a href="{{ route('admin.users.create') }}" class="btn-primary">
                             <i class="fas fa-plus"></i> Добавить пользователя
                         </a>
@@ -273,7 +298,29 @@
                 @if($activeTab === 'bookings')
                 <div class="tab-content active">
                     <div class="content-header">
-                        <h3>Список бронирований</h3>
+                        <div class="content-header__title">
+                            <h3>Список бронирований</h3>
+
+                            <div class="search-container">
+                                <form method="GET" action="{{ route('admin.bookings') }}" class="search-form">
+                                    <div class="search-input-group">
+                                        <input type="text"
+                                            name="search"
+                                            value="{{ request('search') }}"
+                                            placeholder="Поиск по пользователю, тарифу"
+                                            class="search-input">
+                                        <button type="submit" class="search-btn">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                    @if(request('search'))
+                                    <div class="search-results-info">
+                                        Результаты поиска для: "<strong>{{ request('search') }}</strong>"
+                                    </div>
+                                    @endif
+                                </form>
+                            </div>
+                        </div>
                         <a href="{{ route('admin.bookings.create') }}" class="btn-primary">
                             <i class="fas fa-plus"></i> Добавить бронирование
                         </a>
