@@ -127,7 +127,7 @@ class AdminController extends Controller
         $activeBookings = Booking::where('user_id', $id)
             ->where('status', 'active')
             ->with('workstations')
-            ->get();
+            ->get(); 
 
         // Освобождаем рабочие места для каждого активного бронирования
         foreach ($activeBookings as $booking) {
@@ -308,7 +308,7 @@ class AdminController extends Controller
         $search = null;
 
         if ($request->has('search')) {
-            $search = $request->input('search'); // Standart
+            $search = $request->input('search');
             $query->where(function ($qb) use ($search) {
                 $qb->where('total_price', 'like', "%{$search}%")
                     ->orWhereHas('user', function ($userQuery) use ($search) {

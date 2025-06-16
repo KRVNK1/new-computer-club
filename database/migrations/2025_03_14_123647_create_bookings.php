@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('hours');
             $table->integer('people');
             $table->string('comment');
-            $table->decimal('total_price', 10, 2);
+            $table->integer('total_price');
             $table->enum('status', ['active', 'completed', 'cancelled'])->default('active');
             $table->timestamps();
         });
