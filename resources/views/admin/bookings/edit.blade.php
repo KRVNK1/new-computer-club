@@ -157,7 +157,7 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label for="user_id">Пользователь <span class="required">*</span></label>
+                                <label for="user_id">Пользователь</label>
                                 <select id="user_id" name="user_id" class="form-control" required>
                                     <option value="">Выберите пользователя</option>
                                     @foreach($users as $user)
