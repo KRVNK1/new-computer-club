@@ -226,6 +226,12 @@ class AdminController extends Controller
     {
         $tariff = Tariff::findOrFail($id);
 
+        $workstationsCount = Workstation::where('type', $tariff->name)->count(); 
+
+        if ($workstationsCount > 0) {
+            return redirect()->route('admin.tariffs')->with('error', "Нельзя удалить тариф {$tariff->name}, т.к в нем есть рабочие места");
+        }
+
         $tariff->delete();
 
         return redirect()->route('admin.tariffs')->with('success', 'Тариф удален');
@@ -281,12 +287,10 @@ class AdminController extends Controller
         $validated = $request->validate([
             'number' => 'required|string|max:255|unique:workstations,number,' . $id,
             'type' => 'required|string|max:255',
-            'status' => 'required|in:Свободно,Занято',
         ]);
 
         $workstation->number = $validated['number'];
         $workstation->type = $validated['type'];
-        $workstation->status = $validated['status'];
         $workstation->save();
 
         return redirect()->route('admin.workstations')->with('success', 'Данные рабочего места обновлены');
@@ -296,6 +300,11 @@ class AdminController extends Controller
     public function deleteWorkstation($id)
     {
         $workstation = Workstation::findOrFail($id);
+
+        if ($workstation->status == 'Занято') {
+            return redirect()->route('admin.workstations')->with('error', 'Нельзя удалить занятое рабочее место');
+        }
+
         $workstation->delete();
 
         return redirect()->route('admin.workstations')->with('success', 'Рабочее место удалено');

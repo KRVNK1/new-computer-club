@@ -50,7 +50,6 @@
 .hero-title__main {
     position: relative;
     text-shadow: 3px 3px #732FCB;
-    z-index: 10;
 }
 
 .feature-list {
