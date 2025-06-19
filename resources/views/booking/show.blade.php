@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{  asset('css/booking.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/global.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/media.css') }}">
-    <link rel="stylesheet" href="{{  asset('css/global/animations.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
@@ -152,9 +151,9 @@
         const isRoom = "{{ $tariff -> is_room ? 'true' : 'false' }}";
         const type = "{{ $tariff -> name }}";
 
-        const currentPeople = document.getElementById("people");
+        const peopleInput = document.getElementById("people");
         const hoursInput = document.getElementById("hours");
-        const maxPeople = Number.parseInt(document.getElementById("people").getAttribute("max"));
+        const maxPeople = Number(document.getElementById("people").getAttribute("max"));
 
         const btnMinusPeople = document.querySelector("#btn-minus-people");
         const btnPlusPeople = document.querySelector("#btn-plus-people");
@@ -183,25 +182,25 @@
 
         // Увеличение кол-ва человек
         function incrementPeople() {
-            const currentPeopleValue = parseInt(currentPeople.value);
+            const currentPeopleValue = Number(peopleInput.value);
             if (currentPeopleValue < maxPeople) {
-                currentPeople.value = currentPeopleValue + 1;
+                peopleInput.value = currentPeopleValue + 1;
                 updateTotalPrice();
             }
         }
 
         // Уменьшение кол-ва человек
         function decrementPeople() {
-            const currentPeopleValue = parseInt(currentPeople.value);
+            const currentPeopleValue = Number(peopleInput.value);
             if (currentPeopleValue > 1) {
-                currentPeople.value = currentPeopleValue - 1;
+                peopleInput.value = currentPeopleValue - 1;
                 updateTotalPrice();
             }
         }
 
         // Увеличение кол-ва часов
         function incrementHours() {
-            const currentHoursValue = Number.parseInt(hoursInput.value)
+            const currentHoursValue = Number(hoursInput.value)
             if (currentHoursValue < 24) {
                 hoursInput.value = currentHoursValue + 1
                 updateTotalPrice();
@@ -210,7 +209,7 @@
 
         // Уменьшение кол-ва часов
         function decrementHours() {
-            const currentHoursValue = Number.parseInt(hoursInput.value)
+            const currentHoursValue = Number(hoursInput.value)
             if (currentHoursValue > 1) {
                 hoursInput.value = currentHoursValue - 1
                 updateTotalPrice();
@@ -225,8 +224,8 @@
 
         // обновления общей стоимости
         function updateTotalPrice() {
-            const currentPeopleValue = Number.parseInt(currentPeople.value)
-            const hours = Number.parseInt(hoursInput.value)
+            const currentPeopleValue = Number(peopleInput.value)
+            const hours = Number(hoursInput.value)
 
             console.log("updateTotalPrice")
             // Расчет стоимости
@@ -247,7 +246,9 @@
 
                 document.getElementById("totalPrice").textContent = totalPrice
         }
+
         updateTotalPrice()
+
     </script>
 
 </body>

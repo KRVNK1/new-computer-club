@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{  asset('css/index.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/global.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/media.css') }}">
-    <link rel="stylesheet" href="{{  asset('css/global/animations.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
@@ -40,7 +39,7 @@
             </div>
         </header>
 
-        <section class="hero-section fade-in">
+        <section class="hero-section">
             <img src="{{ asset ('/img/background/background-main.png') }}" class="background-image" alt="Hero Background">
             <div class="hero-content">
                 <div class="hero-text">
@@ -64,7 +63,7 @@
             </div>
         </section>
 
-        <section id="gallery" class="gallery-section fade-in">
+        <section id="gallery" class="gallery-section">
             <img src="{{ asset ('/img/background/background-photo.png') }}" class="background-image" alt="Gallery Background">
             <div class="gallery-content" data-el="div-2">
                 <div class="gallery-container">
@@ -82,7 +81,7 @@
             </div>
         </section>
 
-        <section id="tariffs" class="tariff-section fade-in">
+        <section id="tariffs" class="tariff-section">
             <img src="{{ asset ('/img/background/background-tariffs.png') }}" class="background-image" alt="Hero Background">
             <div class="tariff-content">
                 <div class="section-tariff-header">
@@ -112,7 +111,7 @@
             </div>
         </section>
 
-        <section id="specs" class="specs-section fade-in">
+        <section id="specs" class="specs-section">
             <img src="{{ asset ('/img/background/background-specs.png') }}" class="background-image" alt="Specs Background">
             <div class="specs-content">
                 <div class="section-title-container">
@@ -122,7 +121,7 @@
                     <button class="tab-button active">standart</button>
                     <button class="tab-button">Vip</button>
                 </div>
-                <div class="specs-columns active fade-in">
+                <div class="specs-columns active">
                     <div class="specs-column">
                         <div class="specs-card">
                             <h3 class="specs-category">конфигурация</h3>
@@ -209,7 +208,7 @@
                     </div>
                 </div>
 
-                <div class="specs-columns fade-in">
+                <div class="specs-columns">
                     <div class="specs-column">
                         <div class="specs-card">
                             <h3 class="specs-category">конфигурация</h3>
@@ -298,7 +297,7 @@
             </div>
         </section>
 
-        <section class="map-section fade-in" id="map">
+        <section class="map-section" id="map">
             <img src="{{ asset ('/img/background/background-map.png') }}" class="background-image" alt="Map Background">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2442.286145079853!2d104.33602099191262!3d52.25634870326969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5da83c78d0d719df%3A0xa314048ed68d1175!2z0JHQsNC50LrQsNC70YzRgdC60LDRjyDRg9C7Liwg0JjRgNC60YPRgtGB0LosINCY0YDQutGD0YLRgdC60LDRjyDQvtCx0LsuLCA2NjQwNzU!5e0!3m2!1sru!2sru!4v1742996734020!5m2!1sru!2sru"
                 width="1080" height="770" style="border:1px solid; z-index: 10; border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

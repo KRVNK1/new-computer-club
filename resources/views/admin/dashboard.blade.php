@@ -393,7 +393,7 @@
         </main>
     </div>
 
-
+    <script src="{{ asset('js/animations.js') }}"></script>
 
 </body>
 

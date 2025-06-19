@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/global.css') }}">
     <link rel="stylesheet" href="{{  asset('css/global/media.css') }}">
-    <link rel="stylesheet" href="{{  asset('css/global/animations.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 

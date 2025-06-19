@@ -5,10 +5,10 @@ tabButtons.forEach((button, index) => {
     button.addEventListener('click', function () {
 
         tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active', 'fade-in', 'visible'));
+        tabContents.forEach(content => content.classList.remove('active', 'visible'));
 
         this.classList.add('active');
 
-        tabContents[index].classList.add('active', 'fade-in', 'visible');
+        tabContents[index].classList.add('active', 'visible');
     });
 });
