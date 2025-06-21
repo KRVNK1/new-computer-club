@@ -39,24 +39,3 @@ function switchTab(id) {
         }
     });
 }
-
-// ПЕРЕДЕЛАТЬТ
-// const savedTab = localStorage.getItem('activeTab');
-// if (savedTab && document.getElementById(savedTab)) {
-//     switchTab(savedTab);
-// }
-
-// paginationLinks.forEach(link => {
-//     link.addEventListener('click', function(e) {
-//         e.preventDefault();
-
-//         // Сохраняем активную вкладку
-//         const activeTab = document.querySelector('.dashboard-tab.active');
-//         if (activeTab) {
-//             localStorage.setItem('activeTab', activeTab.dataset.tab);
-//         }
-
-//         // Переходим по ссылке
-//         window.location.href = this.href;
-//     });
-// });
